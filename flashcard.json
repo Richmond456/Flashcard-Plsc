@@ -1,0 +1,384 @@
+﻿{
+    "title":  "PLSC 1 Exam Prep",
+    "subject":  "Politics",
+    "updatedAt":  "2026-04-09",
+    "cardCount":  74,
+    "categories":  [
+                       "Congress",
+                       "Presidency",
+                       "Courts",
+                       "Bureaucracy"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Congress",
+                      "term":  "Parliament",
+                      "definition":  "A system where the legislature is primarily a place for great speeches (\u0027parler\u0027). The executive cabinet makes the laws, and the legislature usually just rubber-stamps them."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Legislature",
+                      "definition":  "Literally a \u0027maker of laws.\u0027 Requires significant collaboration and compromise, having a massive, independent impact on the lawmaking process (e.g., the U.S. Congress)."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Joseph Cannon",
+                      "definition":  "A powerful Speaker of the House (\u0027Czar Cannon\u0027). A 1910 revolt stripped him of the power to name committee chairs, shifting Congress to a seniority-based system."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Speaker of the House",
+                      "definition":  "The presiding officer of the House of Representatives and the acknowledged leader of the majority party."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Standing Committees",
+                      "definition":  "Permanent committees with ongoing membership and specific jurisdictions. Developed by the 1820s to handle increased workload and build in-house expertise."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "â€œIron Law of Emulationâ€",
+                      "definition":  "The concept that Congress developed vast institutional resources (like the committee system and large staffs) to keep up with and counteract the growing power of the President and the executive branch."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Gerrymandering",
+                      "definition":  "The manipulation of electoral district boundaries to favor a specific political party or group."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Veto",
+                      "definition":  "The President\u0027s constitutional power to reject a bill passed by Congress. Congress can override it with a 2/3 vote in both chambers."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Legislative Veto",
+                      "definition":  "A mechanism previously used by Congress to override an executive agency action, later ruled broadly unconstitutional by the Supreme Court."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Cabinet",
+                      "definition":  "The 15 largest and most important agencies of the executive branch, headed by Secretaries who serve at the pleasure of the President."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Inner Cabinet",
+                      "definition":  "The Departments of State, Treasury, Defense, and Justice. They are the most powerful due to their closeness to the President (\u0027Nothing propinques like propinquity\u0027)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Stewardship Theory",
+                      "definition":  "Theodore Roosevelt\u0027s theory that the President is the steward of the people and can do anything not explicitly forbidden by the Constitution."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "FDR (Franklin D. Roosevelt)",
+                      "definition":  "Changed the nature of public expectations regarding the economy/welfare. Mastered communication (Fireside chats) and institutionalized the presidency by creating the EOP."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Prime Minister",
+                      "definition":  "The head of government in a parliamentary system, usually the leader of the majority party, who is not independently elected."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Electoral College",
+                      "definition":  "The constitutional mechanism for indirectly electing the U.S. President."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Pocket Veto",
+                      "definition":  "An indirect veto where the President leaves a bill unsigned for 10 days, and Congress adjourns during that time."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Line Item Veto",
+                      "definition":  "The power to strike specific parts of a bill while signing the rest. Unconstitutional for the U.S. President, forcing them to use \u0027Signing Statements\u0027 instead."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Executive Privilege",
+                      "definition":  "Established by Washington; the right of the executive to withhold information or papers if doing so is in the \u0027public good\u0027."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "TR (Theodore Roosevelt)",
+                      "definition":  "Considered the first modern president. Used the \u0027bully pulpit\u0027, \u0027Square Deal\u0027 branding, and expanded international influence."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Head of State",
+                      "definition":  "The largely symbolic role of the President, embodying the values, traditions, and essence of the nation (unifying and \u0027above politics\u0027)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Head of Government",
+                      "definition":  "The highly practical, functional, and intensely political role of the President in dealing with real policy concerns."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "â€œAdvise and Consentâ€",
+                      "definition":  "The constitutional power of the Senate to approve presidential treaties and confirm presidential nominations (clarified early by George Washington)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Square Deal",
+                      "definition":  "Theodore Roosevelt\u0027s domestic program focused on conservation, consumer protection, and corporate control (\u0027trust busting\u0027)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Treaty of Portsmouth",
+                      "definition":  "Brokered by Theodore Roosevelt to end the Russo-Japanese War, winning him the Nobel Peace Prize and showcasing presidential pre-eminence in foreign affairs."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Great White Fleet",
+                      "definition":  "A fleet of U.S. Navy battleships sent around the world by Theodore Roosevelt to demonstrate growing American military power."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Lend-Lease",
+                      "definition":  "An extensive use of executive orders by FDR to supply allied nations with military material before the U.S. officially entered WWII."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Brownlow Commission",
+                      "definition":  "A committee that concluded \u0027the President needs help,\u0027 leading to the creation of the Executive Office of the President (EOP) under FDR."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Budget and Accounting Act of 1921",
+                      "definition":  "Passed to deal with WWI deficits. Made the President responsible for the federal budget and created the Bureau of the Budget (now OMB)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Marbury v. Madison",
+                      "definition":  "1803 decision that established the principle of Judicial Review, asserting the Court\u0027s power to rule on the constitutionality of laws."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "McCulloch v. Maryland",
+                      "definition":  "1819 case establishing the supremacy of federal law over state law (Bank of the U.S.) and giving a broad interpretation to implied powers."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Dartmouth College v. Woodward",
+                      "definition":  "1819 case ruling that a corporation is a \u0027person\u0027, protecting them under the Contract Clause from state interference."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Gibbons v. Ogden",
+                      "definition":  "1824 Fulton steamboats case that established a broad interpretation of the federal government\u0027s power to regulate interstate commerce."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Plessy v. Ferguson",
+                      "definition":  "Infamous Supreme Court ruling establishing the \u0027separate but equal\u0027 doctrine, validating legal segregation."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Lochner v. New York",
+                      "definition":  "1905 landmark case where the Court struck down a law limiting bakers\u0027 working hours, heavily utilizing \u0027substantive due process\u0027 to protect economic liberty."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Pollock v. Farmers\u0027 Loan \u0026 Trust Co.",
+                      "definition":  "1895 case where the Court struck down the federal income tax (later overturned by the 16th Amendment)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Hammer v. Dagenhart",
+                      "definition":  "1918 case where the Court struck down federal child labor regulations, utilizing substantive due process to protect economic rights."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Footnote Four (Carolene Products)",
+                      "definition":  "Established deference to government economic regulation, but called for \u0027more searching judicial inquiry\u0027 regarding prejudice against \u0027discrete and insular minorities\u0027."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Baker v. Carr",
+                      "definition":  "1962 landmark case ruling that redistricting issues present justiciable questions, paving the way for the \u0027one person, one vote\u0027 standard."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Reynolds v. Sims \u0026 Wesberry v. Sanders",
+                      "definition":  "1964 cases expanding \u0027One Person, One Vote\u0027 to state legislatures and U.S. House districts, respectively."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Cohens v. Virginia",
+                      "definition":  "Established the Supreme Court\u0027s right to review state supreme court decisions in criminal cases involving federal laws or the Constitution."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Martin v Hunterâ€™s Lessee",
+                      "definition":  "Established the Supreme Court\u0027s authority over state courts in civil matters concerning federal law."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Earl Warren",
+                      "definition":  "Chief Justice nominated by Eisenhower who led a liberal Court that ended school segregation (Brown v. Board) and vastly expanded personal rights."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Dred Scott (Scott v Sandford)",
+                      "definition":  "1857 Taney Court decision ruling that blacks were not citizens. It invalidated the Missouri Compromise and helped precipitate the Civil War."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "John Marshall",
+                      "definition":  "Highly influential early Chief Justice (1801-1835) who established judicial review, expanded national power, and wrote 519 of the Court\u0027s 1,106 opinions."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Impeachment",
+                      "definition":  "The only constitutional way to remove a federal judge. Requires a majority vote in the House to indict and a 2/3 vote in the Senate to convict."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Roger Taney",
+                      "definition":  "Chief Justice (1836-1864) appointed by Jackson. Authored the infamous Dred Scott decision."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "â€œSwitch in time...â€",
+                      "definition":  "Refers to Justice Owen Roberts abruptly abandoning economic substantive due process to uphold New Deal legislation, narrowly avoiding FDR\u0027s \u0027Court packing plan\u0027."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Writ of Certiorari",
+                      "definition":  "A formal request for the Supreme Court to hear a case. Requires the \u0027Rule of 4\u0027 (4 justices must vote yes) to be granted."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Senatorial Courtesy",
+                      "definition":  "The custom where the Senate refuses to confirm a lower federal court judge if the senators from the nominee\u0027s home state oppose the appointment."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Standing",
+                      "definition":  "A legal requirement that the plaintiffs bringing a lawsuit must be directly at risk or actually injured by the law or action."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Precedent (Stare Decisis)",
+                      "definition":  "The legal principle of \u0027let the decision stand.\u0027 Relying on past decisions to provide stability and minimize disruptions in the law."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Amicus Curiae briefs",
+                      "definition":  "\u0027Friend of the court\u0027 briefs submitted by outside, interested parties who are not directly involved in the lawsuit."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Brown v. Board of Education",
+                      "definition":  "1954 Warren Court decision that overturned Plessy v. Ferguson, striking down De Jure segregation of public facilities."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Substantive Due Process",
+                      "definition":  "A principle allowing courts to protect substantive property/personal rights from government interference, famously used to protect economic liberties during the Lochner era."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "West Coast Hotel v. Parrish",
+                      "definition":  "The 1937 \u0027switch in time\u0027 case where the Supreme Court upheld state minimum wage laws for women, ending the Lochner era\u0027s block on economic regulation."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "â€œCourt packing planâ€",
+                      "definition":  "FDR\u0027s threat to add more justices to the Supreme Court (calling them \u0027nine old men\u0027) to stop them from striking down his New Deal legislation."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Abington School District v. Schempp",
+                      "definition":  "1963 Warren Court decision that struck down organized, government-sponsored prayer in public schools."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Griswold v. Connecticut",
+                      "definition":  "1965 case that established a constitutional right to privacy, striking down a state law banning the use of contraceptives."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Roe v. Wade",
+                      "definition":  "1973 landmark decision establishing a constitutional right to abortion under the right to privacy."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Texas v. Johnson",
+                      "definition":  "1989 case ruling that flag burning is protected free speech under the First Amendment (with conservative Justice Scalia in the majority)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Lawrence v. Texas",
+                      "definition":  "2003 case striking down state laws banning sexual acts between consenting adults, expanding personal privacy rights."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "NFIB v. Sebelius",
+                      "definition":  "2012 landmark Roberts Court decision that upheld the constitutionality of the Affordable Care Act (Obamacare)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Obergefell v. Hodges",
+                      "definition":  "2015 landmark case establishing the constitutional right to same-sex marriage nationwide."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Pendleton Act",
+                      "definition":  "1883 law passed after President Garfield\u0027s assassination that ended the Spoils System and created a modern, merit-based civil service."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Spoils System",
+                      "definition":  "The 19th-century practice of rewarding political supporters and friends with government jobs (patronage), rather than hiring based on merit."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Iron Triangle",
+                      "definition":  "A mutually beneficial, three-way relationship between a bureaucratic agency, a congressional committee, and an interest group."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Iron Rectangle",
+                      "definition":  "An extension of the Iron Triangle that includes the Federal Courts as a key player acting as a regulator."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "OMB",
+                      "definition":  "Office of Management and Budget. The agency that helps the President oversee the federal budget and supervise the bureaucracy."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Charles Guiteau",
+                      "definition":  "The frustrated office-seeker who assassinated President James A. Garfield in 1881, acting as the catalyst for civil service reform."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Police Patrol Oversight",
+                      "definition":  "A method of oversight where Congress constantly monitors bureaucratic agencies. Congress dislikes it because it is expensive and time-consuming."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Fire-Alarm Oversight",
+                      "definition":  "A method where Congress waits for the public or interest groups to complain before investigating the bureaucracy. It is highly preferred because it is cheaper."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "â€œGoing Nativeâ€",
+                      "definition":  "When political appointees placed in charge of a bureaucracy begin advocating for their agency\u0027s interests instead of the President\u0027s agenda."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Max Weber",
+                      "definition":  "German sociologist who developed the concept and features of modern bureaucracies: hierarchical, specialized, and merit-based."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Hatch Act",
+                      "definition":  "A 1939 law that limits the political activities of federal civil servants, ensuring they cannot take an active role in partisan campaigns."
+                  }
+              ]
+}

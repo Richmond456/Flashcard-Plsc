@@ -1,0 +1,1324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLSC 1 Exam Prep</title>
+  <style>
+    :root {
+      --bg: #09111b;
+      --bg-soft: #0f1b2d;
+      --panel: rgba(10, 18, 31, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.96);
+      --card: linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(20, 32, 53, 0.96));
+      --text: #ecf3ff;
+      --muted: #9eb0c8;
+      --border: rgba(148, 163, 184, 0.2);
+      --accent: #f59e0b;
+      --accent-2: #22c55e;
+      --accent-3: #38bdf8;
+      --danger: #fb7185;
+      --shadow: 0 24px 60px rgba(2, 8, 23, 0.4);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 28%),
+        linear-gradient(180deg, #07101a 0%, #0a1524 55%, #08121d 100%);
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .toolbar,
+    .content-panel,
+    .stats-panel {
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toolbar {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .segmented,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .segment,
+    .chip,
+    .action,
+    .option {
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.82);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .segment:hover,
+    .chip:hover,
+    .action:hover,
+    .option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    .segment.active,
+    .chip.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(245, 158, 11, 0.2));
+      border-color: rgba(245, 158, 11, 0.75);
+    }
+
+    .search {
+      min-width: 260px;
+      flex: 1 1 320px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+    }
+
+    .search::placeholder {
+      color: #7f93ae;
+    }
+
+    .stats-panel {
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stats-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .content-panel {
+      padding: 18px;
+    }
+
+    .study-card {
+      position: relative;
+      min-height: 420px;
+      perspective: 1200px;
+    }
+
+    .study-card-inner {
+      position: relative;
+      min-height: 420px;
+      transform-style: preserve-3d;
+      transition: transform 0.48s ease;
+    }
+
+    .study-card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      backface-visibility: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .card-face::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      border-radius: 28px 28px 0 0;
+      background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2));
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #9dd9ff;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .prompt,
+    .answer {
+      display: grid;
+      place-items: center;
+      flex: 1;
+      text-align: center;
+    }
+
+    .prompt p,
+    .answer h2 {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .prompt p {
+      font-size: clamp(1.35rem, 2.5vw, 2.3rem);
+      line-height: 1.55;
+      color: #f3f7ff;
+    }
+
+    .answer h2 {
+      font-size: clamp(1.9rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .hint {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .action.primary {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(56, 189, 248, 0.18));
+      border-color: rgba(245, 158, 11, 0.72);
+    }
+
+    .action:disabled,
+    .option:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .quiz-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .quiz-card {
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: var(--card);
+      padding: 28px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .quiz-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+      color: var(--accent-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quiz-card p {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      line-height: 1.55;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      border-radius: 18px;
+      padding: 16px 18px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .option.correct {
+      background: rgba(34, 197, 94, 0.16);
+      border-color: rgba(34, 197, 94, 0.58);
+    }
+
+    .option.wrong {
+      background: rgba(251, 113, 133, 0.16);
+      border-color: rgba(251, 113, 133, 0.58);
+    }
+
+    .feedback {
+      min-height: 28px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .review-item {
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(15, 23, 42, 0.7);
+      overflow: hidden;
+    }
+
+    .review-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .review-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .review-item .review-body {
+      padding: 0 20px 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 54px 24px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 24px 14px 42px;
+      }
+
+      .toolbar,
+      .content-panel,
+      .stats-panel {
+        border-radius: 20px;
+      }
+
+      .card-face,
+      .quiz-card {
+        padding: 22px;
+      }
+
+      .study-card,
+      .study-card-inner {
+        min-height: 470px;
+      }
+
+      .control-row {
+        align-items: stretch;
+      }
+
+      .control-group {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .action,
+      .segment,
+      .chip {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .toolbar-row {
+        justify-content: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">Politics Exam Study Deck</div>
+      <h1>PLSC 1 flashcards, quiz drills, and cram review in one file.</h1>
+      <p>Use flashcards when you want to memorize fast, quiz mode when you want pressure-tested recall, and review mode when you want to skim everything before the exam.</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-row">
+        <div id="modeButtons" class="segmented"></div>
+        <input id="searchInput" class="search" type="search" placeholder="Search terms, cases, or definitions" autocomplete="off">
+      </div>
+      <div id="categoryButtons" class="chip-row"></div>
+    </section>
+
+    <section class="stats-panel">
+      <div id="summaryLine" class="stats-line"></div>
+      <div id="quizLine" class="stats-line"></div>
+    </section>
+
+    <section id="content" class="content-panel"></section>
+
+    <div class="footer-note">
+      Shortcuts: <strong>Space</strong> flips the current card, <strong>Left/Right</strong> moves between cards in flashcard mode, and <strong>1-4</strong> answers quiz choices.
+    </div>
+  </div>
+
+  <script>
+    const deck = {
+    "title":  "PLSC 1 Exam Prep",
+    "subject":  "Politics",
+    "updatedAt":  "2026-04-09",
+    "cardCount":  74,
+    "categories":  [
+                       "Congress",
+                       "Presidency",
+                       "Courts",
+                       "Bureaucracy"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Congress",
+                      "term":  "Parliament",
+                      "definition":  "A system where the legislature is primarily a place for great speeches (\u0027parler\u0027). The executive cabinet makes the laws, and the legislature usually just rubber-stamps them."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Legislature",
+                      "definition":  "Literally a \u0027maker of laws.\u0027 Requires significant collaboration and compromise, having a massive, independent impact on the lawmaking process (e.g., the U.S. Congress)."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Joseph Cannon",
+                      "definition":  "A powerful Speaker of the House (\u0027Czar Cannon\u0027). A 1910 revolt stripped him of the power to name committee chairs, shifting Congress to a seniority-based system."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Speaker of the House",
+                      "definition":  "The presiding officer of the House of Representatives and the acknowledged leader of the majority party."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Standing Committees",
+                      "definition":  "Permanent committees with ongoing membership and specific jurisdictions. Developed by the 1820s to handle increased workload and build in-house expertise."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "â€œIron Law of Emulationâ€",
+                      "definition":  "The concept that Congress developed vast institutional resources (like the committee system and large staffs) to keep up with and counteract the growing power of the President and the executive branch."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Gerrymandering",
+                      "definition":  "The manipulation of electoral district boundaries to favor a specific political party or group."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Veto",
+                      "definition":  "The President\u0027s constitutional power to reject a bill passed by Congress. Congress can override it with a 2/3 vote in both chambers."
+                  },
+                  {
+                      "category":  "Congress",
+                      "term":  "Legislative Veto",
+                      "definition":  "A mechanism previously used by Congress to override an executive agency action, later ruled broadly unconstitutional by the Supreme Court."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Cabinet",
+                      "definition":  "The 15 largest and most important agencies of the executive branch, headed by Secretaries who serve at the pleasure of the President."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Inner Cabinet",
+                      "definition":  "The Departments of State, Treasury, Defense, and Justice. They are the most powerful due to their closeness to the President (\u0027Nothing propinques like propinquity\u0027)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Stewardship Theory",
+                      "definition":  "Theodore Roosevelt\u0027s theory that the President is the steward of the people and can do anything not explicitly forbidden by the Constitution."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "FDR (Franklin D. Roosevelt)",
+                      "definition":  "Changed the nature of public expectations regarding the economy/welfare. Mastered communication (Fireside chats) and institutionalized the presidency by creating the EOP."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Prime Minister",
+                      "definition":  "The head of government in a parliamentary system, usually the leader of the majority party, who is not independently elected."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Electoral College",
+                      "definition":  "The constitutional mechanism for indirectly electing the U.S. President."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Pocket Veto",
+                      "definition":  "An indirect veto where the President leaves a bill unsigned for 10 days, and Congress adjourns during that time."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Line Item Veto",
+                      "definition":  "The power to strike specific parts of a bill while signing the rest. Unconstitutional for the U.S. President, forcing them to use \u0027Signing Statements\u0027 instead."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Executive Privilege",
+                      "definition":  "Established by Washington; the right of the executive to withhold information or papers if doing so is in the \u0027public good\u0027."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "TR (Theodore Roosevelt)",
+                      "definition":  "Considered the first modern president. Used the \u0027bully pulpit\u0027, \u0027Square Deal\u0027 branding, and expanded international influence."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Head of State",
+                      "definition":  "The largely symbolic role of the President, embodying the values, traditions, and essence of the nation (unifying and \u0027above politics\u0027)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Head of Government",
+                      "definition":  "The highly practical, functional, and intensely political role of the President in dealing with real policy concerns."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "â€œAdvise and Consentâ€",
+                      "definition":  "The constitutional power of the Senate to approve presidential treaties and confirm presidential nominations (clarified early by George Washington)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Square Deal",
+                      "definition":  "Theodore Roosevelt\u0027s domestic program focused on conservation, consumer protection, and corporate control (\u0027trust busting\u0027)."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Treaty of Portsmouth",
+                      "definition":  "Brokered by Theodore Roosevelt to end the Russo-Japanese War, winning him the Nobel Peace Prize and showcasing presidential pre-eminence in foreign affairs."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Great White Fleet",
+                      "definition":  "A fleet of U.S. Navy battleships sent around the world by Theodore Roosevelt to demonstrate growing American military power."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Lend-Lease",
+                      "definition":  "An extensive use of executive orders by FDR to supply allied nations with military material before the U.S. officially entered WWII."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Brownlow Commission",
+                      "definition":  "A committee that concluded \u0027the President needs help,\u0027 leading to the creation of the Executive Office of the President (EOP) under FDR."
+                  },
+                  {
+                      "category":  "Presidency",
+                      "term":  "Budget and Accounting Act of 1921",
+                      "definition":  "Passed to deal with WWI deficits. Made the President responsible for the federal budget and created the Bureau of the Budget (now OMB)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Marbury v. Madison",
+                      "definition":  "1803 decision that established the principle of Judicial Review, asserting the Court\u0027s power to rule on the constitutionality of laws."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "McCulloch v. Maryland",
+                      "definition":  "1819 case establishing the supremacy of federal law over state law (Bank of the U.S.) and giving a broad interpretation to implied powers."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Dartmouth College v. Woodward",
+                      "definition":  "1819 case ruling that a corporation is a \u0027person\u0027, protecting them under the Contract Clause from state interference."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Gibbons v. Ogden",
+                      "definition":  "1824 Fulton steamboats case that established a broad interpretation of the federal government\u0027s power to regulate interstate commerce."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Plessy v. Ferguson",
+                      "definition":  "Infamous Supreme Court ruling establishing the \u0027separate but equal\u0027 doctrine, validating legal segregation."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Lochner v. New York",
+                      "definition":  "1905 landmark case where the Court struck down a law limiting bakers\u0027 working hours, heavily utilizing \u0027substantive due process\u0027 to protect economic liberty."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Pollock v. Farmers\u0027 Loan \u0026 Trust Co.",
+                      "definition":  "1895 case where the Court struck down the federal income tax (later overturned by the 16th Amendment)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Hammer v. Dagenhart",
+                      "definition":  "1918 case where the Court struck down federal child labor regulations, utilizing substantive due process to protect economic rights."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Footnote Four (Carolene Products)",
+                      "definition":  "Established deference to government economic regulation, but called for \u0027more searching judicial inquiry\u0027 regarding prejudice against \u0027discrete and insular minorities\u0027."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Baker v. Carr",
+                      "definition":  "1962 landmark case ruling that redistricting issues present justiciable questions, paving the way for the \u0027one person, one vote\u0027 standard."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Reynolds v. Sims \u0026 Wesberry v. Sanders",
+                      "definition":  "1964 cases expanding \u0027One Person, One Vote\u0027 to state legislatures and U.S. House districts, respectively."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Cohens v. Virginia",
+                      "definition":  "Established the Supreme Court\u0027s right to review state supreme court decisions in criminal cases involving federal laws or the Constitution."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Martin v Hunterâ€™s Lessee",
+                      "definition":  "Established the Supreme Court\u0027s authority over state courts in civil matters concerning federal law."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Earl Warren",
+                      "definition":  "Chief Justice nominated by Eisenhower who led a liberal Court that ended school segregation (Brown v. Board) and vastly expanded personal rights."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Dred Scott (Scott v Sandford)",
+                      "definition":  "1857 Taney Court decision ruling that blacks were not citizens. It invalidated the Missouri Compromise and helped precipitate the Civil War."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "John Marshall",
+                      "definition":  "Highly influential early Chief Justice (1801-1835) who established judicial review, expanded national power, and wrote 519 of the Court\u0027s 1,106 opinions."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Impeachment",
+                      "definition":  "The only constitutional way to remove a federal judge. Requires a majority vote in the House to indict and a 2/3 vote in the Senate to convict."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Roger Taney",
+                      "definition":  "Chief Justice (1836-1864) appointed by Jackson. Authored the infamous Dred Scott decision."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "â€œSwitch in time...â€",
+                      "definition":  "Refers to Justice Owen Roberts abruptly abandoning economic substantive due process to uphold New Deal legislation, narrowly avoiding FDR\u0027s \u0027Court packing plan\u0027."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Writ of Certiorari",
+                      "definition":  "A formal request for the Supreme Court to hear a case. Requires the \u0027Rule of 4\u0027 (4 justices must vote yes) to be granted."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Senatorial Courtesy",
+                      "definition":  "The custom where the Senate refuses to confirm a lower federal court judge if the senators from the nominee\u0027s home state oppose the appointment."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Standing",
+                      "definition":  "A legal requirement that the plaintiffs bringing a lawsuit must be directly at risk or actually injured by the law or action."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Precedent (Stare Decisis)",
+                      "definition":  "The legal principle of \u0027let the decision stand.\u0027 Relying on past decisions to provide stability and minimize disruptions in the law."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Amicus Curiae briefs",
+                      "definition":  "\u0027Friend of the court\u0027 briefs submitted by outside, interested parties who are not directly involved in the lawsuit."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Brown v. Board of Education",
+                      "definition":  "1954 Warren Court decision that overturned Plessy v. Ferguson, striking down De Jure segregation of public facilities."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Substantive Due Process",
+                      "definition":  "A principle allowing courts to protect substantive property/personal rights from government interference, famously used to protect economic liberties during the Lochner era."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "West Coast Hotel v. Parrish",
+                      "definition":  "The 1937 \u0027switch in time\u0027 case where the Supreme Court upheld state minimum wage laws for women, ending the Lochner era\u0027s block on economic regulation."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "â€œCourt packing planâ€",
+                      "definition":  "FDR\u0027s threat to add more justices to the Supreme Court (calling them \u0027nine old men\u0027) to stop them from striking down his New Deal legislation."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Abington School District v. Schempp",
+                      "definition":  "1963 Warren Court decision that struck down organized, government-sponsored prayer in public schools."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Griswold v. Connecticut",
+                      "definition":  "1965 case that established a constitutional right to privacy, striking down a state law banning the use of contraceptives."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Roe v. Wade",
+                      "definition":  "1973 landmark decision establishing a constitutional right to abortion under the right to privacy."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Texas v. Johnson",
+                      "definition":  "1989 case ruling that flag burning is protected free speech under the First Amendment (with conservative Justice Scalia in the majority)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Lawrence v. Texas",
+                      "definition":  "2003 case striking down state laws banning sexual acts between consenting adults, expanding personal privacy rights."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "NFIB v. Sebelius",
+                      "definition":  "2012 landmark Roberts Court decision that upheld the constitutionality of the Affordable Care Act (Obamacare)."
+                  },
+                  {
+                      "category":  "Courts",
+                      "term":  "Obergefell v. Hodges",
+                      "definition":  "2015 landmark case establishing the constitutional right to same-sex marriage nationwide."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Pendleton Act",
+                      "definition":  "1883 law passed after President Garfield\u0027s assassination that ended the Spoils System and created a modern, merit-based civil service."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Spoils System",
+                      "definition":  "The 19th-century practice of rewarding political supporters and friends with government jobs (patronage), rather than hiring based on merit."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Iron Triangle",
+                      "definition":  "A mutually beneficial, three-way relationship between a bureaucratic agency, a congressional committee, and an interest group."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Iron Rectangle",
+                      "definition":  "An extension of the Iron Triangle that includes the Federal Courts as a key player acting as a regulator."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "OMB",
+                      "definition":  "Office of Management and Budget. The agency that helps the President oversee the federal budget and supervise the bureaucracy."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Charles Guiteau",
+                      "definition":  "The frustrated office-seeker who assassinated President James A. Garfield in 1881, acting as the catalyst for civil service reform."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Police Patrol Oversight",
+                      "definition":  "A method of oversight where Congress constantly monitors bureaucratic agencies. Congress dislikes it because it is expensive and time-consuming."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Fire-Alarm Oversight",
+                      "definition":  "A method where Congress waits for the public or interest groups to complain before investigating the bureaucracy. It is highly preferred because it is cheaper."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "â€œGoing Nativeâ€",
+                      "definition":  "When political appointees placed in charge of a bureaucracy begin advocating for their agency\u0027s interests instead of the President\u0027s agenda."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Max Weber",
+                      "definition":  "German sociologist who developed the concept and features of modern bureaucracies: hierarchical, specialized, and merit-based."
+                  },
+                  {
+                      "category":  "Bureaucracy",
+                      "term":  "Hatch Act",
+                      "definition":  "A 1939 law that limits the political activities of federal civil servants, ensuring they cannot take an active role in partisan campaigns."
+                  }
+              ]
+};
+    const allCards = deck.cards;
+    const categoryTotals = new Map();
+    allCards.forEach((card) => {
+      categoryTotals.set(card.category, (categoryTotals.get(card.category) || 0) + 1);
+    });
+
+    const state = {
+      mode: 'flashcards',
+      category: 'All',
+      query: '',
+      currentIndex: 0,
+      flipped: false,
+      quiz: null,
+      quizAnswered: false,
+      quizCorrect: 0,
+      quizTotal: 0,
+    };
+
+    const modeButtons = document.getElementById('modeButtons');
+    const categoryButtons = document.getElementById('categoryButtons');
+    const summaryLine = document.getElementById('summaryLine');
+    const quizLine = document.getElementById('quizLine');
+    const content = document.getElementById('content');
+    const searchInput = document.getElementById('searchInput');
+
+    function escapeHtml(value) {
+      return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let index = copy.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+      }
+      return copy;
+    }
+
+    function getFilteredCards() {
+      const query = state.query.trim().toLowerCase();
+      return allCards.filter((card) => {
+        const matchesCategory = state.category === 'All' || card.category === state.category;
+        if (!matchesCategory) {
+          return false;
+        }
+
+        if (!query) {
+          return true;
+        }
+
+        return [card.category, card.term, card.definition].some((value) =>
+          value.toLowerCase().includes(query)
+        );
+      });
+    }
+
+    function clampCurrentIndex(cards) {
+      if (!cards.length) {
+        state.currentIndex = 0;
+        return;
+      }
+
+      if (state.currentIndex > cards.length - 1) {
+        state.currentIndex = cards.length - 1;
+      }
+    }
+
+    function renderModeButtons() {
+      const modes = [
+        ['flashcards', 'Flashcards'],
+        ['quiz', 'Quiz Drill'],
+        ['review', 'Review Sheet'],
+      ];
+
+      modeButtons.innerHTML = modes
+        .map(([id, label]) => `<button class="segment ${state.mode === id ? 'active' : ''}" data-action="set-mode" data-mode="${id}">${label}</button>`)
+        .join('');
+    }
+
+    function renderCategoryButtons() {
+      const categories = ['All', ...deck.categories];
+      categoryButtons.innerHTML = categories
+        .map((category) => {
+          const label = category === 'All' ? 'All Cards' : category;
+          const count = category === 'All' ? allCards.length : categoryTotals.get(category);
+          return `<button class="chip ${state.category === category ? 'active' : ''}" data-action="set-category" data-category="${category}">${label} <span style="opacity:.72">${count}</span></button>`;
+        })
+        .join('');
+    }
+
+    function renderSummary(cards) {
+      const categoryLabel = state.category === 'All' ? 'all categories' : state.category;
+      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : 'review sheet';
+      const position = cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
+
+      summaryLine.innerHTML = `
+        <span><strong>${cards.length}</strong> cards showing</span>
+        <span>${categoryLabel}</span>
+        <span>${modeLabel}</span>
+        <span>${position}</span>
+      `;
+
+      const accuracy = state.quizTotal ? Math.round((state.quizCorrect / state.quizTotal) * 100) : 0;
+      quizLine.innerHTML = `
+        <span><strong>Quiz score:</strong> ${state.quizCorrect}/${state.quizTotal}</span>
+        <span><strong>Accuracy:</strong> ${accuracy}%</span>
+      `;
+    }
+
+    function nextCard(cards) {
+      if (state.currentIndex < cards.length - 1) {
+        state.currentIndex += 1;
+        state.flipped = false;
+      }
+    }
+
+    function prevCard() {
+      if (state.currentIndex > 0) {
+        state.currentIndex -= 1;
+        state.flipped = false;
+      }
+    }
+
+    function shuffleCards(cards) {
+      const shuffled = shuffle(cards);
+      const terms = new Set(shuffled.map((card) => `${card.category}::${card.term}`));
+      const reordered = [];
+
+      shuffled.forEach((card) => {
+        const match = allCards.find((original) => original.category === card.category && original.term === card.term);
+        if (match && terms.has(`${match.category}::${match.term}`)) {
+          reordered.push(match);
+        }
+      });
+
+      if (reordered.length === allCards.length) {
+        reordered.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      } else {
+        const filteredSet = new Set(cards.map((card) => `${card.category}::${card.term}`));
+        const rest = allCards.filter((card) => !filteredSet.has(`${card.category}::${card.term}`));
+        const combined = [...reordered, ...rest];
+        combined.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      }
+
+      state.currentIndex = 0;
+      state.flipped = false;
+    }
+
+    function buildQuizQuestion(cards) {
+      if (!cards.length) {
+        return null;
+      }
+
+      const question = cards[Math.floor(Math.random() * cards.length)];
+      let pool = cards.filter((card) => card.term !== question.term);
+      if (pool.length < 3) {
+        pool = allCards.filter((card) => card.term !== question.term);
+      }
+
+      const options = shuffle(pool)
+        .slice(0, 3)
+        .concat(question);
+
+      return {
+        question,
+        options: shuffle(options),
+        selected: null,
+      };
+    }
+
+    function ensureQuiz(cards) {
+      if (!cards.length) {
+        state.quiz = null;
+        state.quizAnswered = false;
+        return;
+      }
+
+      const validCurrent = state.quiz && cards.some((card) => card.term === state.quiz.question.term && card.definition === state.quiz.question.definition);
+      if (!validCurrent) {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+      }
+    }
+
+    function renderFlashcards(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No cards match that filter.</h2>
+            <div>Try clearing your search or switching categories.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const card = cards[state.currentIndex];
+      content.innerHTML = `
+        <div class="study-card">
+          <div class="study-card-inner ${state.flipped ? 'flipped' : ''}" data-action="flip-card">
+            <article class="card-face">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Definition</span>
+              </div>
+              <div class="prompt">
+                <p>${escapeHtml(card.definition)}</p>
+              </div>
+              <div class="hint">Click the card or press Space to reveal the term.</div>
+            </article>
+            <article class="card-face card-back">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Term</span>
+              </div>
+              <div class="answer">
+                <h2>${escapeHtml(card.term)}</h2>
+              </div>
+              <div class="hint">Use Left and Right arrows to keep moving.</div>
+            </article>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <button class="action" data-action="prev-card" ${state.currentIndex === 0 ? 'disabled' : ''}>Previous</button>
+            <button class="action primary" data-action="flip-card">${state.flipped ? 'Hide term' : 'Reveal term'}</button>
+            <button class="action" data-action="next-card" ${state.currentIndex === cards.length - 1 ? 'disabled' : ''}>Next</button>
+          </div>
+          <div class="control-group">
+            <span class="counter">${state.currentIndex + 1} / ${cards.length}</span>
+            <button class="action" data-action="shuffle-cards">Shuffle</button>
+            <button class="action" data-action="restart-cards">Restart</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderQuiz(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No quiz questions match that filter.</h2>
+            <div>Clear the search to bring the deck back.</div>
+          </div>
+        `;
+        return;
+      }
+
+      ensureQuiz(cards);
+      const quiz = state.quiz;
+      const feedback = !state.quizAnswered
+        ? 'Choose the matching term for this definition.'
+        : quiz.selected === quiz.question.term
+          ? 'Correct. Keep the pace up.'
+          : `Not quite. The correct answer is ${escapeHtml(quiz.question.term)}.`;
+
+      content.innerHTML = `
+        <div class="quiz-shell">
+          <article class="quiz-card">
+            <h2>${escapeHtml(quiz.question.category)} quiz</h2>
+            <p>${escapeHtml(quiz.question.definition)}</p>
+          </article>
+          <div class="options">
+            ${quiz.options
+              .map((option, index) => {
+                const isCorrect = state.quizAnswered && option.term === quiz.question.term;
+                const isWrong = state.quizAnswered && quiz.selected === option.term && option.term !== quiz.question.term;
+                const classes = ['option'];
+                if (isCorrect) classes.push('correct');
+                if (isWrong) classes.push('wrong');
+                return `<button class="${classes.join(' ')}" data-action="answer-quiz" data-term="${escapeHtml(option.term)}" ${state.quizAnswered ? 'disabled' : ''}>${index + 1}. ${escapeHtml(option.term)}</button>`;
+              })
+              .join('')}
+          </div>
+          <div class="control-row">
+            <div class="feedback">${feedback}</div>
+            <div class="control-group">
+              <button class="action primary" data-action="next-quiz">${state.quizAnswered ? 'Next question' : 'Skip question'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReview(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No review items match that filter.</h2>
+            <div>Try a broader search or switch back to all cards.</div>
+          </div>
+        `;
+        return;
+      }
+
+      content.innerHTML = `
+        <div class="review-list">
+          ${cards
+            .map((card) => `
+              <details class="review-item">
+                <summary>
+                  <span>${escapeHtml(card.term)}</span>
+                  <span class="badge">${escapeHtml(card.category)}</span>
+                </summary>
+                <div class="review-body">${escapeHtml(card.definition)}</div>
+              </details>
+            `)
+            .join('')}
+        </div>
+      `;
+    }
+
+    function render() {
+      const cards = getFilteredCards();
+      clampCurrentIndex(cards);
+      renderModeButtons();
+      renderCategoryButtons();
+      renderSummary(cards);
+      searchInput.value = state.query;
+
+      if (state.mode === 'flashcards') {
+        renderFlashcards(cards);
+      } else if (state.mode === 'quiz') {
+        renderQuiz(cards);
+      } else {
+        renderReview(cards);
+      }
+    }
+
+    searchInput.addEventListener('input', (event) => {
+      state.query = event.target.value;
+      state.currentIndex = 0;
+      state.flipped = false;
+      state.quiz = null;
+      state.quizAnswered = false;
+      render();
+    });
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) {
+        return;
+      }
+
+      const action = button.dataset.action;
+      const cards = getFilteredCards();
+
+      if (action === 'set-mode') {
+        state.mode = button.dataset.mode;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'set-category') {
+        state.category = button.dataset.category;
+        state.currentIndex = 0;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'flip-card') {
+        state.flipped = !state.flipped;
+        render();
+        return;
+      }
+
+      if (action === 'prev-card') {
+        prevCard();
+        render();
+        return;
+      }
+
+      if (action === 'next-card') {
+        nextCard(cards);
+        render();
+        return;
+      }
+
+      if (action === 'restart-cards') {
+        state.currentIndex = 0;
+        state.flipped = false;
+        render();
+        return;
+      }
+
+      if (action === 'shuffle-cards') {
+        shuffleCards(cards);
+        render();
+        return;
+      }
+
+      if (action === 'answer-quiz') {
+        if (state.quizAnswered || !state.quiz) {
+          return;
+        }
+        state.quizAnswered = true;
+        state.quiz.selected = button.dataset.term;
+        state.quizTotal += 1;
+        if (state.quiz.selected === state.quiz.question.term) {
+          state.quizCorrect += 1;
+        }
+        render();
+        return;
+      }
+
+      if (action === 'next-quiz') {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+        render();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const cards = getFilteredCards();
+      if (state.mode === 'flashcards') {
+        if (event.code === 'Space') {
+          event.preventDefault();
+          state.flipped = !state.flipped;
+          render();
+        } else if (event.key === 'ArrowRight') {
+          nextCard(cards);
+          render();
+        } else if (event.key === 'ArrowLeft') {
+          prevCard();
+          render();
+        }
+        return;
+      }
+
+      if (state.mode === 'quiz' && /^[1-4]$/.test(event.key) && state.quiz && !state.quizAnswered) {
+        const option = state.quiz.options[Number(event.key) - 1];
+        if (option) {
+          state.quizAnswered = true;
+          state.quiz.selected = option.term;
+          state.quizTotal += 1;
+          if (state.quiz.selected === state.quiz.question.term) {
+            state.quizCorrect += 1;
+          }
+          render();
+        }
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
+
