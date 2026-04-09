@@ -1,8 +1,6 @@
-﻿# PLSC 1 Flashcards
+# Flashcard Study Decks
 
-Standalone politics flashcard site for phone and desktop study.
+Standalone flashcard sites for phone and desktop study.
 
-- Open index.html locally, or
-- Enable GitHub Pages on this repo to access it in a browser.
-
-https://richmond456.github.io/Flashcard-Plsc/
+- Politics deck: https://richmond456.github.io/Flashcard-Plsc/
+- CYBER 221 Exam 2 deck: https://richmond456.github.io/Flashcard-Plsc/cyber221-exam2/

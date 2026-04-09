@@ -1,0 +1,400 @@
+﻿{
+    "title":  "CYBER 221 Exam 2 Prep",
+    "subject":  "Cybersecurity",
+    "updatedAt":  "2026-04-09",
+    "cardCount":  77,
+    "categories":  [
+                       "Chapter 6 - Access Controls",
+                       "Chapter 7 - Cryptography",
+                       "Chapter 8 - Malware \u0026 Attack Vectors",
+                       "Chapter 9 - Security Operations",
+                       "Chapter 10 - Auditing \u0026 Monitoring"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Identification",
+                      "definition":  "The access control step that answers: Who is asking for access?"
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Authentication (access control)",
+                      "definition":  "The access control step that verifies users are who they claim to be."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Authorization",
+                      "definition":  "The access control step that decides whether a user has approval for access and what they can do."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Accountability",
+                      "definition":  "The access control principle that asks whether actions and changes can be traced to an individual."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Physical access control",
+                      "definition":  "Controls entry to buildings, parking lots, and protected areas through measures such as doors, gates, and smart cards."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Logical access control",
+                      "definition":  "Controls who can access computer systems and networks and how much access they have."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Security kernel",
+                      "definition":  "The core part of hardware, software, and firmware that intercepts access requests, checks rights, and allows or denies access."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Ownership authentication",
+                      "definition":  "Authentication based on something you have, such as a smart card, token, key, or badge."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Two-factor authentication (2FA)",
+                      "definition":  "Authentication that combines two different factor types, such as a smart card and a PIN."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Biometric acceptability",
+                      "definition":  "The measure of how comfortable users are with a biometric method, such as whether they object to retinal scans."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Threshold",
+                      "definition":  "The number of failed logon attempts that triggers an account action."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Need to know",
+                      "definition":  "The principle that access should be limited to users who require specific information to do their jobs."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Least privilege",
+                      "definition":  "The principle of giving users only the minimum access they need to perform their work."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Plaintext",
+                      "definition":  "Information in its original, readable form before it is encrypted."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Ciphertext",
+                      "definition":  "Information in scrambled form after it has been encrypted."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Encryption",
+                      "definition":  "The process of scrambling plaintext into ciphertext."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Decryption",
+                      "definition":  "The process of converting ciphertext back into readable plaintext."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Confidentiality",
+                      "definition":  "The cryptography goal that keeps information secret from unauthorized users."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Integrity",
+                      "definition":  "The cryptography goal that helps ensure information is not altered without authorization."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Authentication (cryptography goal)",
+                      "definition":  "The cryptography goal that confirms the identity of an entity."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Nonrepudiation",
+                      "definition":  "The cryptography goal that prevents a party from denying a previous statement or action."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Symmetric encryption",
+                      "definition":  "Encryption that uses the same shared secret key for both encryption and decryption."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Asymmetric encryption",
+                      "definition":  "Encryption that uses different keys, typically a public key and a private key."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Hash function",
+                      "definition":  "A one-way cryptographic function used to detect unauthorized changes to data."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Transposition cipher",
+                      "definition":  "A cipher that works by rearranging characters in a message rather than replacing them."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Diffie-Hellman",
+                      "definition":  "An asymmetric algorithm used to exchange a secret key when two parties do not already share one."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Digital signature",
+                      "definition":  "A cryptographic mechanism created by encrypting a message hash with the sender\u0027s private key."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Recipient\u0027s public key",
+                      "definition":  "The key used to encrypt a message when you want only the intended recipient to read it."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Sender\u0027s private key",
+                      "definition":  "The key used to create a digital signature so others can verify the sender."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Cryptanalysis",
+                      "definition":  "The practice of breaking codes or attempting to recover keys, algorithms, or plaintext without authorization."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Steganography",
+                      "definition":  "The practice of hiding information inside another medium such as an image, audio file, or video."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Keyspace",
+                      "definition":  "The total number of possible keys that can be used by a cipher."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "DES",
+                      "definition":  "A symmetric encryption standard often discussed as a classic example of a private-key cipher."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "AES",
+                      "definition":  "A modern symmetric encryption standard commonly used to protect data."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Typical virus activity",
+                      "definition":  "Warning signs can include unexplained disk space loss, error messages, and sluggish applications, but not usually unexpected power failures."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Ransomware",
+                      "definition":  "Malware that restricts access to files or systems and demands payment to restore access."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "CryptoLocker",
+                      "definition":  "A 2013 malware example that became well known as one of the first ransomware programs."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Trojan horse",
+                      "definition":  "A malicious program that pretends to be useful in order to trick users into installing or running it."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Cross-site scripting (XSS)",
+                      "definition":  "A web attack that injects client-side scripts into webpages viewed by users."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "SQL injection",
+                      "definition":  "An attack that targets database queries by inserting malicious Structured Query Language input."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Denial of service (DoS)",
+                      "definition":  "An attack designed to overwhelm or disrupt a system so legitimate users cannot access it."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "SYN flood",
+                      "definition":  "A denial-of-service attack that abuses TCP synchronization requests to exhaust resources."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Remote Access Tool (RAT)",
+                      "definition":  "A type of Trojan that allows an attacker to remotely control and maintain access to a compromised system."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Botnet",
+                      "definition":  "A network of infected machines controlled by an attacker to act together as an army of agents."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Phishing",
+                      "definition":  "A social engineering attack that tricks users into revealing information or taking unsafe actions."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Spear phishing",
+                      "definition":  "A more targeted version of phishing aimed at a specific person or group."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Honeypot",
+                      "definition":  "A defensive decoy system designed to attract attackers and help defenders study or distract them."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Input validation",
+                      "definition":  "A defense that checks user input to reduce attacks such as XSS or SQL injection."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Separation of duties",
+                      "definition":  "A personnel security practice that splits sensitive tasks among multiple people so no single person controls the whole process."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Job rotation",
+                      "definition":  "A control that moves employees through different roles to reduce fraud risk and broaden oversight."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Mandatory vacations",
+                      "definition":  "A personnel control that forces employees to step away from duties so hidden misconduct may be discovered."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Baseline configuration",
+                      "definition":  "A standard template of basic settings that should apply to a certain type of system, such as all Windows servers."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Security awareness program",
+                      "definition":  "A program designed to teach, inform, and motivate users to follow security policy rather than punish them."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Change control order",
+                      "definition":  "The correct sequence is request, impact assessment, approval, build and test, implement, then monitor."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Outsourcing ownership",
+                      "definition":  "The outsourcing consideration that asks who owns and is responsible for the data, media, and infrastructure."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Outsourcing advantages",
+                      "definition":  "Key benefits can include specialized expertise and redundancy."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Outsourcing disadvantages",
+                      "definition":  "Common drawbacks include less privacy, loss of control, and weaker internal skill-set building."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Data classification",
+                      "definition":  "The process of categorizing data based on sensitivity, criticality, and value."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Data destruction",
+                      "definition":  "Methods such as physical destruction and degaussing used to ensure data cannot be recovered."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Limiting access",
+                      "definition":  "An administrative control that reduces exposure by restricting access only to what people truly need."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Security testing",
+                      "definition":  "An assessment area that includes vulnerability testing and penetration testing to find weaknesses."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Vulnerability testing",
+                      "definition":  "Testing performed to identify weaknesses that may exist in systems, applications, or networks."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Penetration testing",
+                      "definition":  "Authorized testing that mimics an attacker by attempting to exploit weaknesses in a system."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Audit summary",
+                      "definition":  "The front part of an audit report that should stay concise and avoid exposing sensitive security weaknesses."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "System integrity monitoring",
+                      "definition":  "Monitoring that looks for unauthorized changes to systems and reports them to administrators."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Signature detection",
+                      "definition":  "An intrusion detection strategy that relies on pattern matching against known attack rules or signatures."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Baselines (monitoring)",
+                      "definition":  "A record of normal system or network behavior used to recognize abnormal activity."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Clipping level",
+                      "definition":  "A threshold that must be reached before a monitoring system generates an alert."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "False positive",
+                      "definition":  "An alert that incorrectly reports a problem when no real problem exists."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "False negative",
+                      "definition":  "A missed detection in which a real problem occurs but the system reports nothing is wrong."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "True positive",
+                      "definition":  "A correct alert in which the system detects a real security problem."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "True negative",
+                      "definition":  "A correct non-alert in which no problem exists and the system properly stays quiet."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "SOC 1",
+                      "definition":  "A Service Organization Control report focused on internal controls over financial reporting."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "SOC 2",
+                      "definition":  "A Service Organization Control report focused on security, confidentiality, integrity, availability, and privacy controls for service providers."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "SOC 3",
+                      "definition":  "A public-facing Service Organization Control report that summarizes security, confidentiality, integrity, availability, and privacy controls."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Audit data collection methods",
+                      "definition":  "Common methods include questionnaires, interviews, observation, checklists, document review, configuration review, policy review, and security testing."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Audit purpose",
+                      "definition":  "Audits help determine whether controls are at the right security level, installed correctly, and effective for the risks they address."
+                  }
+              ]
+}

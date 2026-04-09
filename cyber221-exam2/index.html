@@ -1,0 +1,1344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER 221 Exam 2 Prep</title>
+  <style>
+    :root {
+      --bg: #09111b;
+      --bg-soft: #0f1b2d;
+      --panel: rgba(10, 18, 31, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.96);
+      --card: linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(20, 32, 53, 0.96));
+      --text: #ecf3ff;
+      --muted: #9eb0c8;
+      --border: rgba(148, 163, 184, 0.2);
+      --accent: #f59e0b;
+      --accent-2: #22c55e;
+      --accent-3: #38bdf8;
+      --danger: #fb7185;
+      --shadow: 0 24px 60px rgba(2, 8, 23, 0.4);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 28%),
+        linear-gradient(180deg, #07101a 0%, #0a1524 55%, #08121d 100%);
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .toolbar,
+    .content-panel,
+    .stats-panel {
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toolbar {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .segmented,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .segment,
+    .chip,
+    .action,
+    .option {
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.82);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .segment:hover,
+    .chip:hover,
+    .action:hover,
+    .option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    .segment.active,
+    .chip.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(245, 158, 11, 0.2));
+      border-color: rgba(245, 158, 11, 0.75);
+    }
+
+    .search {
+      min-width: 260px;
+      flex: 1 1 320px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+    }
+
+    .search::placeholder {
+      color: #7f93ae;
+    }
+
+    .stats-panel {
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stats-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .content-panel {
+      padding: 18px;
+    }
+
+    .study-card {
+      position: relative;
+      min-height: 420px;
+      perspective: 1200px;
+    }
+
+    .study-card-inner {
+      position: relative;
+      min-height: 420px;
+      transform-style: preserve-3d;
+      transition: transform 0.48s ease;
+    }
+
+    .study-card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      backface-visibility: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .card-face::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      border-radius: 28px 28px 0 0;
+      background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2));
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #9dd9ff;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .prompt,
+    .answer {
+      display: grid;
+      place-items: center;
+      flex: 1;
+      text-align: center;
+    }
+
+    .prompt p,
+    .answer h2 {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .prompt p {
+      font-size: clamp(1.35rem, 2.5vw, 2.3rem);
+      line-height: 1.55;
+      color: #f3f7ff;
+    }
+
+    .answer h2 {
+      font-size: clamp(1.9rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .hint {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .action.primary {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(56, 189, 248, 0.18));
+      border-color: rgba(245, 158, 11, 0.72);
+    }
+
+    .action:disabled,
+    .option:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .quiz-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .quiz-card {
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: var(--card);
+      padding: 28px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .quiz-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+      color: var(--accent-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quiz-card p {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      line-height: 1.55;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      border-radius: 18px;
+      padding: 16px 18px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .option.correct {
+      background: rgba(34, 197, 94, 0.16);
+      border-color: rgba(34, 197, 94, 0.58);
+    }
+
+    .option.wrong {
+      background: rgba(251, 113, 133, 0.16);
+      border-color: rgba(251, 113, 133, 0.58);
+    }
+
+    .feedback {
+      min-height: 28px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .review-item {
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(15, 23, 42, 0.7);
+      overflow: hidden;
+    }
+
+    .review-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .review-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .review-item .review-body {
+      padding: 0 20px 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 54px 24px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 24px 14px 42px;
+      }
+
+      .toolbar,
+      .content-panel,
+      .stats-panel {
+        border-radius: 20px;
+      }
+
+      .card-face,
+      .quiz-card {
+        padding: 22px;
+      }
+
+      .study-card,
+      .study-card-inner {
+        min-height: 470px;
+      }
+
+      .control-row {
+        align-items: stretch;
+      }
+
+      .control-group {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .action,
+      .segment,
+      .chip {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .toolbar-row {
+        justify-content: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">CYBER 221 Exam 2 Study Deck</div>
+      <h1>Chapters 6 to 10 flashcards, quiz drills, and cram review in one file.</h1>
+      <p>Built from your Exam 2 review, chapter questions, and chapter slides so you can cram fast, drill recall, and search by topic before the test.</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-row">
+        <div id="modeButtons" class="segmented"></div>
+        <input id="searchInput" class="search" type="search" placeholder="Search terms, cases, or definitions" autocomplete="off">
+      </div>
+      <div id="categoryButtons" class="chip-row"></div>
+    </section>
+
+    <section class="stats-panel">
+      <div id="summaryLine" class="stats-line"></div>
+      <div id="quizLine" class="stats-line"></div>
+    </section>
+
+    <section id="content" class="content-panel"></section>
+
+    <div class="footer-note">
+      Shortcuts: <strong>Space</strong> flips the current card, <strong>Left/Right</strong> moves between cards in flashcard mode, and <strong>1-4</strong> answers quiz choices.
+    </div>
+  </div>
+
+  <script>
+    const deck = {
+    "title":  "CYBER 221 Exam 2 Prep",
+    "subject":  "Cybersecurity",
+    "updatedAt":  "2026-04-09",
+    "cardCount":  77,
+    "categories":  [
+                       "Chapter 6 - Access Controls",
+                       "Chapter 7 - Cryptography",
+                       "Chapter 8 - Malware \u0026 Attack Vectors",
+                       "Chapter 9 - Security Operations",
+                       "Chapter 10 - Auditing \u0026 Monitoring"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Identification",
+                      "definition":  "The access control step that answers: Who is asking for access?"
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Authentication (access control)",
+                      "definition":  "The access control step that verifies users are who they claim to be."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Authorization",
+                      "definition":  "The access control step that decides whether a user has approval for access and what they can do."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Accountability",
+                      "definition":  "The access control principle that asks whether actions and changes can be traced to an individual."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Physical access control",
+                      "definition":  "Controls entry to buildings, parking lots, and protected areas through measures such as doors, gates, and smart cards."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Logical access control",
+                      "definition":  "Controls who can access computer systems and networks and how much access they have."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Security kernel",
+                      "definition":  "The core part of hardware, software, and firmware that intercepts access requests, checks rights, and allows or denies access."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Ownership authentication",
+                      "definition":  "Authentication based on something you have, such as a smart card, token, key, or badge."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Two-factor authentication (2FA)",
+                      "definition":  "Authentication that combines two different factor types, such as a smart card and a PIN."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Biometric acceptability",
+                      "definition":  "The measure of how comfortable users are with a biometric method, such as whether they object to retinal scans."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Threshold",
+                      "definition":  "The number of failed logon attempts that triggers an account action."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Need to know",
+                      "definition":  "The principle that access should be limited to users who require specific information to do their jobs."
+                  },
+                  {
+                      "category":  "Chapter 6 - Access Controls",
+                      "term":  "Least privilege",
+                      "definition":  "The principle of giving users only the minimum access they need to perform their work."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Plaintext",
+                      "definition":  "Information in its original, readable form before it is encrypted."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Ciphertext",
+                      "definition":  "Information in scrambled form after it has been encrypted."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Encryption",
+                      "definition":  "The process of scrambling plaintext into ciphertext."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Decryption",
+                      "definition":  "The process of converting ciphertext back into readable plaintext."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Confidentiality",
+                      "definition":  "The cryptography goal that keeps information secret from unauthorized users."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Integrity",
+                      "definition":  "The cryptography goal that helps ensure information is not altered without authorization."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Authentication (cryptography goal)",
+                      "definition":  "The cryptography goal that confirms the identity of an entity."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Nonrepudiation",
+                      "definition":  "The cryptography goal that prevents a party from denying a previous statement or action."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Symmetric encryption",
+                      "definition":  "Encryption that uses the same shared secret key for both encryption and decryption."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Asymmetric encryption",
+                      "definition":  "Encryption that uses different keys, typically a public key and a private key."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Hash function",
+                      "definition":  "A one-way cryptographic function used to detect unauthorized changes to data."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Transposition cipher",
+                      "definition":  "A cipher that works by rearranging characters in a message rather than replacing them."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Diffie-Hellman",
+                      "definition":  "An asymmetric algorithm used to exchange a secret key when two parties do not already share one."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Digital signature",
+                      "definition":  "A cryptographic mechanism created by encrypting a message hash with the sender\u0027s private key."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Recipient\u0027s public key",
+                      "definition":  "The key used to encrypt a message when you want only the intended recipient to read it."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Sender\u0027s private key",
+                      "definition":  "The key used to create a digital signature so others can verify the sender."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Cryptanalysis",
+                      "definition":  "The practice of breaking codes or attempting to recover keys, algorithms, or plaintext without authorization."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Steganography",
+                      "definition":  "The practice of hiding information inside another medium such as an image, audio file, or video."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "Keyspace",
+                      "definition":  "The total number of possible keys that can be used by a cipher."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "DES",
+                      "definition":  "A symmetric encryption standard often discussed as a classic example of a private-key cipher."
+                  },
+                  {
+                      "category":  "Chapter 7 - Cryptography",
+                      "term":  "AES",
+                      "definition":  "A modern symmetric encryption standard commonly used to protect data."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Typical virus activity",
+                      "definition":  "Warning signs can include unexplained disk space loss, error messages, and sluggish applications, but not usually unexpected power failures."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Ransomware",
+                      "definition":  "Malware that restricts access to files or systems and demands payment to restore access."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "CryptoLocker",
+                      "definition":  "A 2013 malware example that became well known as one of the first ransomware programs."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Trojan horse",
+                      "definition":  "A malicious program that pretends to be useful in order to trick users into installing or running it."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Cross-site scripting (XSS)",
+                      "definition":  "A web attack that injects client-side scripts into webpages viewed by users."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "SQL injection",
+                      "definition":  "An attack that targets database queries by inserting malicious Structured Query Language input."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Denial of service (DoS)",
+                      "definition":  "An attack designed to overwhelm or disrupt a system so legitimate users cannot access it."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "SYN flood",
+                      "definition":  "A denial-of-service attack that abuses TCP synchronization requests to exhaust resources."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Remote Access Tool (RAT)",
+                      "definition":  "A type of Trojan that allows an attacker to remotely control and maintain access to a compromised system."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Botnet",
+                      "definition":  "A network of infected machines controlled by an attacker to act together as an army of agents."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Phishing",
+                      "definition":  "A social engineering attack that tricks users into revealing information or taking unsafe actions."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Spear phishing",
+                      "definition":  "A more targeted version of phishing aimed at a specific person or group."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Honeypot",
+                      "definition":  "A defensive decoy system designed to attract attackers and help defenders study or distract them."
+                  },
+                  {
+                      "category":  "Chapter 8 - Malware \u0026 Attack Vectors",
+                      "term":  "Input validation",
+                      "definition":  "A defense that checks user input to reduce attacks such as XSS or SQL injection."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Separation of duties",
+                      "definition":  "A personnel security practice that splits sensitive tasks among multiple people so no single person controls the whole process."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Job rotation",
+                      "definition":  "A control that moves employees through different roles to reduce fraud risk and broaden oversight."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Mandatory vacations",
+                      "definition":  "A personnel control that forces employees to step away from duties so hidden misconduct may be discovered."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Baseline configuration",
+                      "definition":  "A standard template of basic settings that should apply to a certain type of system, such as all Windows servers."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Security awareness program",
+                      "definition":  "A program designed to teach, inform, and motivate users to follow security policy rather than punish them."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Change control order",
+                      "definition":  "The correct sequence is request, impact assessment, approval, build and test, implement, then monitor."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Outsourcing ownership",
+                      "definition":  "The outsourcing consideration that asks who owns and is responsible for the data, media, and infrastructure."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Outsourcing advantages",
+                      "definition":  "Key benefits can include specialized expertise and redundancy."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Outsourcing disadvantages",
+                      "definition":  "Common drawbacks include less privacy, loss of control, and weaker internal skill-set building."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Data classification",
+                      "definition":  "The process of categorizing data based on sensitivity, criticality, and value."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Data destruction",
+                      "definition":  "Methods such as physical destruction and degaussing used to ensure data cannot be recovered."
+                  },
+                  {
+                      "category":  "Chapter 9 - Security Operations",
+                      "term":  "Limiting access",
+                      "definition":  "An administrative control that reduces exposure by restricting access only to what people truly need."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Security testing",
+                      "definition":  "An assessment area that includes vulnerability testing and penetration testing to find weaknesses."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Vulnerability testing",
+                      "definition":  "Testing performed to identify weaknesses that may exist in systems, applications, or networks."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Penetration testing",
+                      "definition":  "Authorized testing that mimics an attacker by attempting to exploit weaknesses in a system."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Audit summary",
+                      "definition":  "The front part of an audit report that should stay concise and avoid exposing sensitive security weaknesses."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "System integrity monitoring",
+                      "definition":  "Monitoring that looks for unauthorized changes to systems and reports them to administrators."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Signature detection",
+                      "definition":  "An intrusion detection strategy that relies on pattern matching against known attack rules or signatures."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Baselines (monitoring)",
+                      "definition":  "A record of normal system or network behavior used to recognize abnormal activity."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Clipping level",
+                      "definition":  "A threshold that must be reached before a monitoring system generates an alert."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "False positive",
+                      "definition":  "An alert that incorrectly reports a problem when no real problem exists."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "False negative",
+                      "definition":  "A missed detection in which a real problem occurs but the system reports nothing is wrong."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "True positive",
+                      "definition":  "A correct alert in which the system detects a real security problem."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "True negative",
+                      "definition":  "A correct non-alert in which no problem exists and the system properly stays quiet."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "SOC 1",
+                      "definition":  "A Service Organization Control report focused on internal controls over financial reporting."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "SOC 2",
+                      "definition":  "A Service Organization Control report focused on security, confidentiality, integrity, availability, and privacy controls for service providers."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "SOC 3",
+                      "definition":  "A public-facing Service Organization Control report that summarizes security, confidentiality, integrity, availability, and privacy controls."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Audit data collection methods",
+                      "definition":  "Common methods include questionnaires, interviews, observation, checklists, document review, configuration review, policy review, and security testing."
+                  },
+                  {
+                      "category":  "Chapter 10 - Auditing \u0026 Monitoring",
+                      "term":  "Audit purpose",
+                      "definition":  "Audits help determine whether controls are at the right security level, installed correctly, and effective for the risks they address."
+                  }
+              ]
+};
+    const allCards = deck.cards;
+    const categoryTotals = new Map();
+    allCards.forEach((card) => {
+      categoryTotals.set(card.category, (categoryTotals.get(card.category) || 0) + 1);
+    });
+
+    const state = {
+      mode: 'flashcards',
+      category: 'All',
+      query: '',
+      currentIndex: 0,
+      flipped: false,
+      quiz: null,
+      quizAnswered: false,
+      quizCorrect: 0,
+      quizTotal: 0,
+    };
+
+    const modeButtons = document.getElementById('modeButtons');
+    const categoryButtons = document.getElementById('categoryButtons');
+    const summaryLine = document.getElementById('summaryLine');
+    const quizLine = document.getElementById('quizLine');
+    const content = document.getElementById('content');
+    const searchInput = document.getElementById('searchInput');
+
+    function escapeHtml(value) {
+      return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let index = copy.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+      }
+      return copy;
+    }
+
+    function getFilteredCards() {
+      const query = state.query.trim().toLowerCase();
+      return allCards.filter((card) => {
+        const matchesCategory = state.category === 'All' || card.category === state.category;
+        if (!matchesCategory) {
+          return false;
+        }
+
+        if (!query) {
+          return true;
+        }
+
+        return [card.category, card.term, card.definition].some((value) =>
+          value.toLowerCase().includes(query)
+        );
+      });
+    }
+
+    function clampCurrentIndex(cards) {
+      if (!cards.length) {
+        state.currentIndex = 0;
+        return;
+      }
+
+      if (state.currentIndex > cards.length - 1) {
+        state.currentIndex = cards.length - 1;
+      }
+    }
+
+    function renderModeButtons() {
+      const modes = [
+        ['flashcards', 'Flashcards'],
+        ['quiz', 'Quiz Drill'],
+        ['review', 'Review Sheet'],
+      ];
+
+      modeButtons.innerHTML = modes
+        .map(([id, label]) => `<button class="segment ${state.mode === id ? 'active' : ''}" data-action="set-mode" data-mode="${id}">${label}</button>`)
+        .join('');
+    }
+
+    function renderCategoryButtons() {
+      const categories = ['All', ...deck.categories];
+      categoryButtons.innerHTML = categories
+        .map((category) => {
+          const label = category === 'All' ? 'All Cards' : category;
+          const count = category === 'All' ? allCards.length : categoryTotals.get(category);
+          return `<button class="chip ${state.category === category ? 'active' : ''}" data-action="set-category" data-category="${category}">${label} <span style="opacity:.72">${count}</span></button>`;
+        })
+        .join('');
+    }
+
+    function renderSummary(cards) {
+      const categoryLabel = state.category === 'All' ? 'all categories' : state.category;
+      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : 'review sheet';
+      const position = cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
+
+      summaryLine.innerHTML = `
+        <span><strong>${cards.length}</strong> cards showing</span>
+        <span>${categoryLabel}</span>
+        <span>${modeLabel}</span>
+        <span>${position}</span>
+      `;
+
+      const accuracy = state.quizTotal ? Math.round((state.quizCorrect / state.quizTotal) * 100) : 0;
+      quizLine.innerHTML = `
+        <span><strong>Quiz score:</strong> ${state.quizCorrect}/${state.quizTotal}</span>
+        <span><strong>Accuracy:</strong> ${accuracy}%</span>
+      `;
+    }
+
+    function nextCard(cards) {
+      if (state.currentIndex < cards.length - 1) {
+        state.currentIndex += 1;
+        state.flipped = false;
+      }
+    }
+
+    function prevCard() {
+      if (state.currentIndex > 0) {
+        state.currentIndex -= 1;
+        state.flipped = false;
+      }
+    }
+
+    function shuffleCards(cards) {
+      const shuffled = shuffle(cards);
+      const terms = new Set(shuffled.map((card) => `${card.category}::${card.term}`));
+      const reordered = [];
+
+      shuffled.forEach((card) => {
+        const match = allCards.find((original) => original.category === card.category && original.term === card.term);
+        if (match && terms.has(`${match.category}::${match.term}`)) {
+          reordered.push(match);
+        }
+      });
+
+      if (reordered.length === allCards.length) {
+        reordered.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      } else {
+        const filteredSet = new Set(cards.map((card) => `${card.category}::${card.term}`));
+        const rest = allCards.filter((card) => !filteredSet.has(`${card.category}::${card.term}`));
+        const combined = [...reordered, ...rest];
+        combined.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      }
+
+      state.currentIndex = 0;
+      state.flipped = false;
+    }
+
+    function buildQuizQuestion(cards) {
+      if (!cards.length) {
+        return null;
+      }
+
+      const question = cards[Math.floor(Math.random() * cards.length)];
+      let pool = cards.filter((card) => card.term !== question.term);
+      if (pool.length < 3) {
+        pool = allCards.filter((card) => card.term !== question.term);
+      }
+
+      const options = shuffle(pool)
+        .slice(0, 3)
+        .concat(question);
+
+      return {
+        question,
+        options: shuffle(options),
+        selected: null,
+      };
+    }
+
+    function ensureQuiz(cards) {
+      if (!cards.length) {
+        state.quiz = null;
+        state.quizAnswered = false;
+        return;
+      }
+
+      const validCurrent = state.quiz && cards.some((card) => card.term === state.quiz.question.term && card.definition === state.quiz.question.definition);
+      if (!validCurrent) {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+      }
+    }
+
+    function renderFlashcards(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No cards match that filter.</h2>
+            <div>Try clearing your search or switching categories.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const card = cards[state.currentIndex];
+      content.innerHTML = `
+        <div class="study-card">
+          <div class="study-card-inner ${state.flipped ? 'flipped' : ''}" data-action="flip-card">
+            <article class="card-face">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Definition</span>
+              </div>
+              <div class="prompt">
+                <p>${escapeHtml(card.definition)}</p>
+              </div>
+              <div class="hint">Click the card or press Space to reveal the term.</div>
+            </article>
+            <article class="card-face card-back">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Term</span>
+              </div>
+              <div class="answer">
+                <h2>${escapeHtml(card.term)}</h2>
+              </div>
+              <div class="hint">Use Left and Right arrows to keep moving.</div>
+            </article>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <button class="action" data-action="prev-card" ${state.currentIndex === 0 ? 'disabled' : ''}>Previous</button>
+            <button class="action primary" data-action="flip-card">${state.flipped ? 'Hide term' : 'Reveal term'}</button>
+            <button class="action" data-action="next-card" ${state.currentIndex === cards.length - 1 ? 'disabled' : ''}>Next</button>
+          </div>
+          <div class="control-group">
+            <span class="counter">${state.currentIndex + 1} / ${cards.length}</span>
+            <button class="action" data-action="shuffle-cards">Shuffle</button>
+            <button class="action" data-action="restart-cards">Restart</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderQuiz(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No quiz questions match that filter.</h2>
+            <div>Clear the search to bring the deck back.</div>
+          </div>
+        `;
+        return;
+      }
+
+      ensureQuiz(cards);
+      const quiz = state.quiz;
+      const feedback = !state.quizAnswered
+        ? 'Choose the matching term for this definition.'
+        : quiz.selected === quiz.question.term
+          ? 'Correct. Keep the pace up.'
+          : `Not quite. The correct answer is ${escapeHtml(quiz.question.term)}.`;
+
+      content.innerHTML = `
+        <div class="quiz-shell">
+          <article class="quiz-card">
+            <h2>${escapeHtml(quiz.question.category)} quiz</h2>
+            <p>${escapeHtml(quiz.question.definition)}</p>
+          </article>
+          <div class="options">
+            ${quiz.options
+              .map((option, index) => {
+                const isCorrect = state.quizAnswered && option.term === quiz.question.term;
+                const isWrong = state.quizAnswered && quiz.selected === option.term && option.term !== quiz.question.term;
+                const classes = ['option'];
+                if (isCorrect) classes.push('correct');
+                if (isWrong) classes.push('wrong');
+                return `<button class="${classes.join(' ')}" data-action="answer-quiz" data-term="${escapeHtml(option.term)}" ${state.quizAnswered ? 'disabled' : ''}>${index + 1}. ${escapeHtml(option.term)}</button>`;
+              })
+              .join('')}
+          </div>
+          <div class="control-row">
+            <div class="feedback">${feedback}</div>
+            <div class="control-group">
+              <button class="action primary" data-action="next-quiz">${state.quizAnswered ? 'Next question' : 'Skip question'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReview(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No review items match that filter.</h2>
+            <div>Try a broader search or switch back to all cards.</div>
+          </div>
+        `;
+        return;
+      }
+
+      content.innerHTML = `
+        <div class="review-list">
+          ${cards
+            .map((card) => `
+              <details class="review-item">
+                <summary>
+                  <span>${escapeHtml(card.term)}</span>
+                  <span class="badge">${escapeHtml(card.category)}</span>
+                </summary>
+                <div class="review-body">${escapeHtml(card.definition)}</div>
+              </details>
+            `)
+            .join('')}
+        </div>
+      `;
+    }
+
+    function render() {
+      const cards = getFilteredCards();
+      clampCurrentIndex(cards);
+      renderModeButtons();
+      renderCategoryButtons();
+      renderSummary(cards);
+      searchInput.value = state.query;
+
+      if (state.mode === 'flashcards') {
+        renderFlashcards(cards);
+      } else if (state.mode === 'quiz') {
+        renderQuiz(cards);
+      } else {
+        renderReview(cards);
+      }
+    }
+
+    searchInput.addEventListener('input', (event) => {
+      state.query = event.target.value;
+      state.currentIndex = 0;
+      state.flipped = false;
+      state.quiz = null;
+      state.quizAnswered = false;
+      render();
+    });
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) {
+        return;
+      }
+
+      const action = button.dataset.action;
+      const cards = getFilteredCards();
+
+      if (action === 'set-mode') {
+        state.mode = button.dataset.mode;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'set-category') {
+        state.category = button.dataset.category;
+        state.currentIndex = 0;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'flip-card') {
+        state.flipped = !state.flipped;
+        render();
+        return;
+      }
+
+      if (action === 'prev-card') {
+        prevCard();
+        render();
+        return;
+      }
+
+      if (action === 'next-card') {
+        nextCard(cards);
+        render();
+        return;
+      }
+
+      if (action === 'restart-cards') {
+        state.currentIndex = 0;
+        state.flipped = false;
+        render();
+        return;
+      }
+
+      if (action === 'shuffle-cards') {
+        shuffleCards(cards);
+        render();
+        return;
+      }
+
+      if (action === 'answer-quiz') {
+        if (state.quizAnswered || !state.quiz) {
+          return;
+        }
+        state.quizAnswered = true;
+        state.quiz.selected = button.dataset.term;
+        state.quizTotal += 1;
+        if (state.quiz.selected === state.quiz.question.term) {
+          state.quizCorrect += 1;
+        }
+        render();
+        return;
+      }
+
+      if (action === 'next-quiz') {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+        render();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const cards = getFilteredCards();
+      if (state.mode === 'flashcards') {
+        if (event.code === 'Space') {
+          event.preventDefault();
+          state.flipped = !state.flipped;
+          render();
+        } else if (event.key === 'ArrowRight') {
+          nextCard(cards);
+          render();
+        } else if (event.key === 'ArrowLeft') {
+          prevCard();
+          render();
+        }
+        return;
+      }
+
+      if (state.mode === 'quiz' && /^[1-4]$/.test(event.key) && state.quiz && !state.quizAnswered) {
+        const option = state.quiz.options[Number(event.key) - 1];
+        if (option) {
+          state.quizAnswered = true;
+          state.quiz.selected = option.term;
+          state.quizTotal += 1;
+          if (state.quiz.selected === state.quiz.question.term) {
+            state.quizCorrect += 1;
+          }
+          render();
+        }
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
+
+
+
+
+
