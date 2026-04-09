@@ -350,9 +350,11 @@
     }
 
     .feedback {
-      min-height: 28px;
+      min-height: 72px;
       color: var(--muted);
       font-weight: 600;
+      line-height: 1.6;
+      max-width: 760px;
     }
 
     .review-list {
@@ -1069,6 +1071,25 @@
       }
     }
 
+    function buildQuizFeedback(quiz) {
+      if (!state.quizAnswered) {
+        return 'Choose the matching term for this definition.';
+      }
+
+      const selectedCard = quiz.options.find((option) => option.term === quiz.selected);
+      const correctCard = quiz.question;
+
+      if (quiz.selected === correctCard.term) {
+        return `Correct. ${escapeHtml(correctCard.term)} is right because ${escapeHtml(correctCard.definition)}`;
+      }
+
+      const selectedExplanation = selectedCard
+        ? `${escapeHtml(selectedCard.term)} means ${escapeHtml(selectedCard.definition)}`
+        : `You chose ${escapeHtml(quiz.selected)}.`;
+
+      return `Not quite. ${selectedExplanation} The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctCard.definition)}`;
+    }
+
     function renderFlashcards(cards) {
       if (!cards.length) {
         content.innerHTML = `
@@ -1134,11 +1155,7 @@
 
       ensureQuiz(cards);
       const quiz = state.quiz;
-      const feedback = !state.quizAnswered
-        ? 'Choose the matching term for this definition.'
-        : quiz.selected === quiz.question.term
-          ? 'Correct. Keep the pace up.'
-          : `Not quite. The correct answer is ${escapeHtml(quiz.question.term)}.`;
+      const feedback = buildQuizFeedback(quiz);
 
       content.innerHTML = `
         <div class="quiz-shell">
