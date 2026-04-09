@@ -37,7 +37,7 @@
                   },
                   {
                       "category":  "Congress",
-                      "term":  "â€œIron Law of Emulationâ€",
+                      "term":  "Iron Law of Emulation",
                       "definition":  "The concept that Congress developed vast institutional resources (like the committee system and large staffs) to keep up with and counteract the growing power of the President and the executive branch."
                   },
                   {
@@ -117,7 +117,7 @@
                   },
                   {
                       "category":  "Presidency",
-                      "term":  "â€œAdvise and Consentâ€",
+                      "term":  "Advise and Consent",
                       "definition":  "The constitutional power of the Senate to approve presidential treaties and confirm presidential nominations (clarified early by George Washington)."
                   },
                   {
@@ -212,7 +212,7 @@
                   },
                   {
                       "category":  "Courts",
-                      "term":  "Martin v Hunterâ€™s Lessee",
+                      "term":  "Martin v. Hunter\u0027s Lessee",
                       "definition":  "Established the Supreme Court\u0027s authority over state courts in civil matters concerning federal law."
                   },
                   {
@@ -242,7 +242,7 @@
                   },
                   {
                       "category":  "Courts",
-                      "term":  "â€œSwitch in time...â€",
+                      "term":  "Switch in time...",
                       "definition":  "Refers to Justice Owen Roberts abruptly abandoning economic substantive due process to uphold New Deal legislation, narrowly avoiding FDR\u0027s \u0027Court packing plan\u0027."
                   },
                   {
@@ -287,7 +287,7 @@
                   },
                   {
                       "category":  "Courts",
-                      "term":  "â€œCourt packing planâ€",
+                      "term":  "Court packing plan",
                       "definition":  "FDR\u0027s threat to add more justices to the Supreme Court (calling them \u0027nine old men\u0027) to stop them from striking down his New Deal legislation."
                   },
                   {
@@ -367,7 +367,7 @@
                   },
                   {
                       "category":  "Bureaucracy",
-                      "term":  "â€œGoing Nativeâ€",
+                      "term":  "Going Native",
                       "definition":  "When political appointees placed in charge of a bureaucracy begin advocating for their agency\u0027s interests instead of the President\u0027s agenda."
                   },
                   {
@@ -382,4 +382,3 @@
                   }
               ]
 }
-
