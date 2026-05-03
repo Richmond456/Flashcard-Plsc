@@ -1,0 +1,1347 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER 221 Final Exam Prep</title>
+  <style>
+    :root {
+      --bg: #09111b;
+      --bg-soft: #0f1b2d;
+      --panel: rgba(10, 18, 31, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.96);
+      --card: linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(20, 32, 53, 0.96));
+      --text: #ecf3ff;
+      --muted: #9eb0c8;
+      --border: rgba(148, 163, 184, 0.2);
+      --accent: #f59e0b;
+      --accent-2: #22c55e;
+      --accent-3: #38bdf8;
+      --danger: #fb7185;
+      --shadow: 0 24px 60px rgba(2, 8, 23, 0.4);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 28%),
+        linear-gradient(180deg, #07101a 0%, #0a1524 55%, #08121d 100%);
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .toolbar,
+    .content-panel,
+    .stats-panel {
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toolbar {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .segmented,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .segment,
+    .chip,
+    .action,
+    .option {
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.82);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .segment:hover,
+    .chip:hover,
+    .action:hover,
+    .option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    .segment.active,
+    .chip.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(245, 158, 11, 0.2));
+      border-color: rgba(245, 158, 11, 0.75);
+    }
+
+    .search {
+      min-width: 260px;
+      flex: 1 1 320px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+    }
+
+    .search::placeholder {
+      color: #7f93ae;
+    }
+
+    .stats-panel {
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stats-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .content-panel {
+      padding: 18px;
+    }
+
+    .study-card {
+      position: relative;
+      min-height: 420px;
+      perspective: 1200px;
+    }
+
+    .study-card-inner {
+      position: relative;
+      min-height: 420px;
+      transform-style: preserve-3d;
+      transition: transform 0.48s ease;
+    }
+
+    .study-card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      backface-visibility: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .card-face::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      border-radius: 28px 28px 0 0;
+      background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2));
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #9dd9ff;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .prompt,
+    .answer {
+      display: grid;
+      place-items: center;
+      flex: 1;
+      text-align: center;
+    }
+
+    .prompt p,
+    .answer h2 {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .prompt p {
+      font-size: clamp(1.35rem, 2.5vw, 2.3rem);
+      line-height: 1.55;
+      color: #f3f7ff;
+    }
+
+    .answer h2 {
+      font-size: clamp(1.9rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .hint {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .action.primary {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(56, 189, 248, 0.18));
+      border-color: rgba(245, 158, 11, 0.72);
+    }
+
+    .action:disabled,
+    .option:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .quiz-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .quiz-card {
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: var(--card);
+      padding: 28px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .quiz-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+      color: var(--accent-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quiz-card p {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      line-height: 1.55;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      border-radius: 18px;
+      padding: 16px 18px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .option.correct {
+      background: rgba(34, 197, 94, 0.16);
+      border-color: rgba(34, 197, 94, 0.58);
+    }
+
+    .option.wrong {
+      background: rgba(251, 113, 133, 0.16);
+      border-color: rgba(251, 113, 133, 0.58);
+    }
+
+    .feedback {
+      min-height: 72px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .review-item {
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(15, 23, 42, 0.7);
+      overflow: hidden;
+    }
+
+    .review-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .review-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .review-item .review-body {
+      padding: 0 20px 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 54px 24px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 24px 14px 42px;
+      }
+
+      .toolbar,
+      .content-panel,
+      .stats-panel {
+        border-radius: 20px;
+      }
+
+      .card-face,
+      .quiz-card {
+        padding: 22px;
+      }
+
+      .study-card,
+      .study-card-inner {
+        min-height: 470px;
+      }
+
+      .control-row {
+        align-items: stretch;
+      }
+
+      .control-group {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .action,
+      .segment,
+      .chip {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .toolbar-row {
+        justify-content: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">CYBER 221 Final Study Deck</div>
+      <h1>Chapters 11 to 15 flashcards, quiz drills, and cram review in one file.</h1>
+      <p>Built from your final exam review, chapter questions, and chapter slides so you can cram fast, drill recall, and search by topic before the test.</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-row">
+        <div id="modeButtons" class="segmented"></div>
+        <input id="searchInput" class="search" type="search" placeholder="Search terms, cases, or definitions" autocomplete="off">
+      </div>
+      <div id="categoryButtons" class="chip-row"></div>
+    </section>
+
+    <section class="stats-panel">
+      <div id="summaryLine" class="stats-line"></div>
+      <div id="quizLine" class="stats-line"></div>
+    </section>
+
+    <section id="content" class="content-panel"></section>
+
+    <div class="footer-note">
+      Shortcuts: <strong>Space</strong> flips the current card, <strong>Left/Right</strong> moves between cards in flashcard mode, and <strong>1-4</strong> answers quiz choices.
+    </div>
+  </div>
+
+  <script>
+    const deck = {
+    "title":  "CYBER 221 Final Exam Prep",
+    "subject":  "Cybersecurity",
+    "updatedAt":  "2026-05-02",
+    "cardCount":  74,
+    "categories":  [
+                       "Chapter 11 - Contingency Planning",
+                       "Chapter 12 - Digital Forensics",
+                       "Chapter 13 - Security Standards",
+                       "Chapter 14 - Security Certifications",
+                       "Chapter 15 - Compliance Laws"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Business Continuity Plan (BCP)",
+                      "definition":  "A plan focused on keeping critical business functions operating during and after a disruption."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Disaster Recovery Plan (DRP)",
+                      "definition":  "A plan focused on restoring IT systems, data, and operations after a disaster or major disruption."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Critical Business Function (CBF)",
+                      "definition":  "A business process or service that is essential for the organization to keep operating."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Maximum Tolerable Downtime (MTD)",
+                      "definition":  "The longest time an organization can survive without a specific critical business function."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Recovery Time Objective (RTO)",
+                      "definition":  "The target amount of time allowed to restore a critical business function after disruption."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Recovery Point Objective (RPO)",
+                      "definition":  "The maximum acceptable amount of data loss measured as time since the last recoverable backup or restore point."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Disaster",
+                      "definition":  "An event that prevents a critical business function from operating longer than its maximum tolerable downtime."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Incident",
+                      "definition":  "An event that results in an actual or threatened violation of security policy."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Incident response process",
+                      "definition":  "The process commonly summarized as preparation, identification, notification, response, and follow-up."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Identification phase",
+                      "definition":  "The incident-handling step where the organization determines whether an event is truly an incident and performs triage."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Response phase",
+                      "definition":  "The incident-handling step focused on limiting damage, containing the incident, and beginning active handling."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Full backup",
+                      "definition":  "A backup that copies all selected data to backup media."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Differential backup",
+                      "definition":  "A backup that copies all data changed since the last full backup. Restoring usually needs the full backup plus the latest differential."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Incremental backup",
+                      "definition":  "A backup that copies only data changed since the most recent backup and is usually faster to create than a differential backup."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Mirrored site",
+                      "definition":  "A fully redundant recovery site that mirrors the primary site and can take over with very little delay."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Hot site",
+                      "definition":  "A recovery site with hardware, software, connectivity, and near-ready operations for quick recovery."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Warm site",
+                      "definition":  "A recovery site with some infrastructure in place but requiring additional setup or data restoration before full use."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Cold site",
+                      "definition":  "A basic recovery location with minimal equipment or services, usually the cheapest but slowest to activate."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Mobile site",
+                      "definition":  "A portable recovery facility that can be moved to provide temporary operations after a disruption."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Digital forensics",
+                      "definition":  "The process of identifying, preserving, collecting, examining, and presenting digital evidence."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Real evidence",
+                      "definition":  "Physical evidence that can be brought into court, such as a device or storage media."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Documentary evidence",
+                      "definition":  "Evidence stored in computer memory or storage, such as emails, logs, databases, files, and digital records."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Testimonial evidence",
+                      "definition":  "Evidence given through witness statements or testimony."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Demonstrative evidence",
+                      "definition":  "Evidence used to explain or illustrate facts, such as diagrams, timelines, models, or charts."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Order of volatility",
+                      "definition":  "The principle of collecting the most volatile data first, such as registers, cache, and RAM, before it changes or disappears."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Chain of custody",
+                      "definition":  "The running documentation showing how evidence was collected, handled, transferred, stored, and protected."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Provenance",
+                      "definition":  "The point of origin or history of a piece of evidence, often traced through the chain of custody."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Legal hold",
+                      "definition":  "A process requiring an organization to preserve and not alter evidence that may be used in court."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "E-discovery",
+                      "definition":  "The process of identifying, preserving, collecting, and producing electronically stored information for legal matters."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Computer as target",
+                      "definition":  "A crime role where the computer or system is the object being attacked."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Computer as instrument",
+                      "definition":  "A crime role where the computer is used as the tool to commit the crime."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Computer as repository",
+                      "definition":  "A crime role where the computer stores evidence or data related to the crime."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "FAT32 and NTFS",
+                      "definition":  "Windows file systems that digital forensic specialists may need to understand."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Mobile device forensics",
+                      "definition":  "Forensics involving mobile devices, which can be volatile, remotely managed, and still require ordinary chain-of-custody procedures."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "NIST",
+                      "definition":  "A U.S. Department of Commerce agency that provides measurement and technology standards and creates security standards and guidelines."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "NIST Special Publications",
+                      "definition":  "NIST documents that provide standards, guidelines, and recommended practices, including information security guidance."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "ISO",
+                      "definition":  "A nongovernmental international organization that develops and publishes standards across many industries."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "OSI Reference Model",
+                      "definition":  "An ISO model that describes how separate computer systems communicate across networks."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "OSI Application layer",
+                      "definition":  "The OSI layer that provides the user interface that displays information to the user."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "W3C",
+                      "definition":  "The main international standards organization for the World Wide Web, including standards such as HTML and CSS."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "IETF",
+                      "definition":  "The organization that develops and promotes Internet standards, especially engineering standards for TCP/IP."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "RFC",
+                      "definition":  "A Request for Comments document used for Internet standards and technical specifications; RFCs do not change once published."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "Proposed Standard (PS)",
+                      "definition":  "The initial official stage of an RFC that defines a formal standard."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "Draft Standard (DS)",
+                      "definition":  "The second IETF RFC standards stage after participants demonstrate deployment in working environments."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "Standard (STD)",
+                      "definition":  "A mature IETF standard designation for specifications that have reached full standards status."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "IEEE",
+                      "definition":  "An international nonprofit organization that develops standards related to electricity, electronics, and networking."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "IEEE 802.3",
+                      "definition":  "The IEEE standard that contains the specification for Ethernet networking."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "PCI DSS as a standard",
+                      "definition":  "A standard used to protect payment card transactions and cardholder data."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "(ISC)2",
+                      "definition":  "The International Information System Security Certification Consortium, a major organization offering security certifications."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "Certified in Cybersecurity (CC)",
+                      "definition":  "An entry-level (ISC)2 certification for security professionals."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CISSP",
+                      "definition":  "The flagship (ISC)2 certification for experienced security professionals, managers, CISOs, CSOs, and senior security engineers."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CISSP domains",
+                      "definition":  "The CISSP exam covers eight domains in the (ISC)2 Common Body of Knowledge."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "Associate of (ISC)2",
+                      "definition":  "A credential for people who pass an (ISC)2 exam but have not yet met the experience requirement for the full certification."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CCSP",
+                      "definition":  "The Certified Cloud Security Professional credential for securing and managing cloud computing environments."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CompTIA Security+",
+                      "definition":  "A vendor-neutral entry-level information security certification often considered a first step for IT professionals."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "ISACA",
+                      "definition":  "An organization that offers certifications and practices focused heavily on information systems audit, control, governance, and risk."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "EC-Council",
+                      "definition":  "The organization that offers the Certified Ethical Hacker (CEH), CHFI, and Licensed Penetration Tester certifications."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "Certified Ethical Hacker (CEH)",
+                      "definition":  "An EC-Council certification focused on ethical hacking knowledge and techniques."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "GIAC",
+                      "definition":  "A certification organization offering technical information security credentials in areas such as incident handling, forensics, and wireless security."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "HIPAA",
+                      "definition":  "A U.S. law addressing the privacy and security of health information, including protection of electronic PHI."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "PHI",
+                      "definition":  "Protected health information, which includes personally identifiable health data covered by HIPAA."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "ePHI",
+                      "definition":  "Electronic protected health information whose confidentiality, integrity, and availability must be protected under HIPAA."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "PCI DSS",
+                      "definition":  "A payment card industry standard that helps merchants and financial institutions protect cardholder data."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "GLBA",
+                      "definition":  "The Gramm-Leach-Bliley Act, which addresses privacy and security of consumer financial information."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "FFIEC",
+                      "definition":  "The Federal Financial Institutions Examination Council, a regulatory committee serving the U.S. banking community."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "SOX",
+                      "definition":  "The Sarbanes-Oxley Act, which applies to publicly traded companies and helps protect investors from financial fraud."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "SOX Section 404",
+                      "definition":  "A requirement for executive officers to establish, maintain, review, and report on internal controls over financial reporting."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "ICFR",
+                      "definition":  "Internal controls over financial reporting, a major focus of SOX Section 404."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "GDPR",
+                      "definition":  "A European Union regulation that controls how personal data of EU citizens is collected, stored, used, and retired."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "FISMA",
+                      "definition":  "The Federal Information Security Management Act, which provides guidance for running federal information systems."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "PII",
+                      "definition":  "Personally identifiable information, such as names, addresses, SSNs, driver\u0027s license numbers, financial data, health data, biometrics, and credentials."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "Integrity controls",
+                      "definition":  "Controls that prevent unauthorized modification of information, such as controls protecting accurate financial reports and records."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "HIPAA and PCI DSS similarity",
+                      "definition":  "Both include requirements that protect the confidentiality, integrity, and availability of data."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "GLBA oversight agencies",
+                      "definition":  "GLBA oversight includes agencies such as the SEC, FTC, FDIC, Federal Reserve, NCUA, OCC, and OTS, but not the FCC."
+                  }
+              ]
+};
+    const allCards = deck.cards;
+    const categoryTotals = new Map();
+    allCards.forEach((card) => {
+      categoryTotals.set(card.category, (categoryTotals.get(card.category) || 0) + 1);
+    });
+
+    const state = {
+      mode: 'flashcards',
+      category: 'All',
+      query: '',
+      currentIndex: 0,
+      flipped: false,
+      quiz: null,
+      quizAnswered: false,
+      quizCorrect: 0,
+      quizTotal: 0,
+    };
+
+    const modeButtons = document.getElementById('modeButtons');
+    const categoryButtons = document.getElementById('categoryButtons');
+    const summaryLine = document.getElementById('summaryLine');
+    const quizLine = document.getElementById('quizLine');
+    const content = document.getElementById('content');
+    const searchInput = document.getElementById('searchInput');
+
+    function escapeHtml(value) {
+      return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let index = copy.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+      }
+      return copy;
+    }
+
+    function getFilteredCards() {
+      const query = state.query.trim().toLowerCase();
+      return allCards.filter((card) => {
+        const matchesCategory = state.category === 'All' || card.category === state.category;
+        if (!matchesCategory) {
+          return false;
+        }
+
+        if (!query) {
+          return true;
+        }
+
+        return [card.category, card.term, card.definition].some((value) =>
+          value.toLowerCase().includes(query)
+        );
+      });
+    }
+
+    function clampCurrentIndex(cards) {
+      if (!cards.length) {
+        state.currentIndex = 0;
+        return;
+      }
+
+      if (state.currentIndex > cards.length - 1) {
+        state.currentIndex = cards.length - 1;
+      }
+    }
+
+    function renderModeButtons() {
+      const modes = [
+        ['flashcards', 'Flashcards'],
+        ['quiz', 'Quiz Drill'],
+        ['review', 'Review Sheet'],
+      ];
+
+      modeButtons.innerHTML = modes
+        .map(([id, label]) => `<button class="segment ${state.mode === id ? 'active' : ''}" data-action="set-mode" data-mode="${id}">${label}</button>`)
+        .join('');
+    }
+
+    function renderCategoryButtons() {
+      const categories = ['All', ...deck.categories];
+      categoryButtons.innerHTML = categories
+        .map((category) => {
+          const label = category === 'All' ? 'All Cards' : category;
+          const count = category === 'All' ? allCards.length : categoryTotals.get(category);
+          return `<button class="chip ${state.category === category ? 'active' : ''}" data-action="set-category" data-category="${category}">${label} <span style="opacity:.72">${count}</span></button>`;
+        })
+        .join('');
+    }
+
+    function renderSummary(cards) {
+      const categoryLabel = state.category === 'All' ? 'all categories' : state.category;
+      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : 'review sheet';
+      const position = cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
+
+      summaryLine.innerHTML = `
+        <span><strong>${cards.length}</strong> cards showing</span>
+        <span>${categoryLabel}</span>
+        <span>${modeLabel}</span>
+        <span>${position}</span>
+      `;
+
+      const accuracy = state.quizTotal ? Math.round((state.quizCorrect / state.quizTotal) * 100) : 0;
+      quizLine.innerHTML = `
+        <span><strong>Quiz score:</strong> ${state.quizCorrect}/${state.quizTotal}</span>
+        <span><strong>Accuracy:</strong> ${accuracy}%</span>
+      `;
+    }
+
+    function nextCard(cards) {
+      if (state.currentIndex < cards.length - 1) {
+        state.currentIndex += 1;
+        state.flipped = false;
+      }
+    }
+
+    function prevCard() {
+      if (state.currentIndex > 0) {
+        state.currentIndex -= 1;
+        state.flipped = false;
+      }
+    }
+
+    function shuffleCards(cards) {
+      const shuffled = shuffle(cards);
+      const terms = new Set(shuffled.map((card) => `${card.category}::${card.term}`));
+      const reordered = [];
+
+      shuffled.forEach((card) => {
+        const match = allCards.find((original) => original.category === card.category && original.term === card.term);
+        if (match && terms.has(`${match.category}::${match.term}`)) {
+          reordered.push(match);
+        }
+      });
+
+      if (reordered.length === allCards.length) {
+        reordered.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      } else {
+        const filteredSet = new Set(cards.map((card) => `${card.category}::${card.term}`));
+        const rest = allCards.filter((card) => !filteredSet.has(`${card.category}::${card.term}`));
+        const combined = [...reordered, ...rest];
+        combined.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      }
+
+      state.currentIndex = 0;
+      state.flipped = false;
+    }
+
+    function buildQuizQuestion(cards) {
+      if (!cards.length) {
+        return null;
+      }
+
+      const question = cards[Math.floor(Math.random() * cards.length)];
+      let pool = cards.filter((card) => card.term !== question.term);
+      if (pool.length < 3) {
+        pool = allCards.filter((card) => card.term !== question.term);
+      }
+
+      const options = shuffle(pool)
+        .slice(0, 3)
+        .concat(question);
+
+      return {
+        question,
+        options: shuffle(options),
+        selected: null,
+      };
+    }
+
+    function ensureQuiz(cards) {
+      if (!cards.length) {
+        state.quiz = null;
+        state.quizAnswered = false;
+        return;
+      }
+
+      const validCurrent = state.quiz && cards.some((card) => card.term === state.quiz.question.term && card.definition === state.quiz.question.definition);
+      if (!validCurrent) {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+      }
+    }
+
+    function buildQuizFeedback(quiz) {
+      if (!state.quizAnswered) {
+        return 'Choose the matching term for this definition.';
+      }
+
+      const selectedCard = quiz.options.find((option) => option.term === quiz.selected);
+      const correctCard = quiz.question;
+
+      if (quiz.selected === correctCard.term) {
+        return `Correct. ${escapeHtml(correctCard.term)} is right because ${escapeHtml(correctCard.definition)}`;
+      }
+
+      const selectedExplanation = selectedCard
+        ? `${escapeHtml(selectedCard.term)} means ${escapeHtml(selectedCard.definition)}`
+        : `You chose ${escapeHtml(quiz.selected)}.`;
+
+      return `Not quite. ${selectedExplanation} The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctCard.definition)}`;
+    }
+
+    function renderFlashcards(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No cards match that filter.</h2>
+            <div>Try clearing your search or switching categories.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const card = cards[state.currentIndex];
+      content.innerHTML = `
+        <div class="study-card">
+          <div class="study-card-inner ${state.flipped ? 'flipped' : ''}" data-action="flip-card">
+            <article class="card-face">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Definition</span>
+              </div>
+              <div class="prompt">
+                <p>${escapeHtml(card.definition)}</p>
+              </div>
+              <div class="hint">Click the card or press Space to reveal the term.</div>
+            </article>
+            <article class="card-face card-back">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Term</span>
+              </div>
+              <div class="answer">
+                <h2>${escapeHtml(card.term)}</h2>
+              </div>
+              <div class="hint">Use Left and Right arrows to keep moving.</div>
+            </article>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <button class="action" data-action="prev-card" ${state.currentIndex === 0 ? 'disabled' : ''}>Previous</button>
+            <button class="action primary" data-action="flip-card">${state.flipped ? 'Hide term' : 'Reveal term'}</button>
+            <button class="action" data-action="next-card" ${state.currentIndex === cards.length - 1 ? 'disabled' : ''}>Next</button>
+          </div>
+          <div class="control-group">
+            <span class="counter">${state.currentIndex + 1} / ${cards.length}</span>
+            <button class="action" data-action="shuffle-cards">Shuffle</button>
+            <button class="action" data-action="restart-cards">Restart</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderQuiz(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No quiz questions match that filter.</h2>
+            <div>Clear the search to bring the deck back.</div>
+          </div>
+        `;
+        return;
+      }
+
+      ensureQuiz(cards);
+      const quiz = state.quiz;
+      const feedback = buildQuizFeedback(quiz);
+
+      content.innerHTML = `
+        <div class="quiz-shell">
+          <article class="quiz-card">
+            <h2>${escapeHtml(quiz.question.category)} quiz</h2>
+            <p>${escapeHtml(quiz.question.definition)}</p>
+          </article>
+          <div class="options">
+            ${quiz.options
+              .map((option, index) => {
+                const isCorrect = state.quizAnswered && option.term === quiz.question.term;
+                const isWrong = state.quizAnswered && quiz.selected === option.term && option.term !== quiz.question.term;
+                const classes = ['option'];
+                if (isCorrect) classes.push('correct');
+                if (isWrong) classes.push('wrong');
+                return `<button class="${classes.join(' ')}" data-action="answer-quiz" data-term="${escapeHtml(option.term)}" ${state.quizAnswered ? 'disabled' : ''}>${index + 1}. ${escapeHtml(option.term)}</button>`;
+              })
+              .join('')}
+          </div>
+          <div class="control-row">
+            <div class="feedback">${feedback}</div>
+            <div class="control-group">
+              <button class="action primary" data-action="next-quiz">${state.quizAnswered ? 'Next question' : 'Skip question'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReview(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No review items match that filter.</h2>
+            <div>Try a broader search or switch back to all cards.</div>
+          </div>
+        `;
+        return;
+      }
+
+      content.innerHTML = `
+        <div class="review-list">
+          ${cards
+            .map((card) => `
+              <details class="review-item">
+                <summary>
+                  <span>${escapeHtml(card.term)}</span>
+                  <span class="badge">${escapeHtml(card.category)}</span>
+                </summary>
+                <div class="review-body">${escapeHtml(card.definition)}</div>
+              </details>
+            `)
+            .join('')}
+        </div>
+      `;
+    }
+
+    function render() {
+      const cards = getFilteredCards();
+      clampCurrentIndex(cards);
+      renderModeButtons();
+      renderCategoryButtons();
+      renderSummary(cards);
+      searchInput.value = state.query;
+
+      if (state.mode === 'flashcards') {
+        renderFlashcards(cards);
+      } else if (state.mode === 'quiz') {
+        renderQuiz(cards);
+      } else {
+        renderReview(cards);
+      }
+    }
+
+    searchInput.addEventListener('input', (event) => {
+      state.query = event.target.value;
+      state.currentIndex = 0;
+      state.flipped = false;
+      state.quiz = null;
+      state.quizAnswered = false;
+      render();
+    });
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) {
+        return;
+      }
+
+      const action = button.dataset.action;
+      const cards = getFilteredCards();
+
+      if (action === 'set-mode') {
+        state.mode = button.dataset.mode;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'set-category') {
+        state.category = button.dataset.category;
+        state.currentIndex = 0;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'flip-card') {
+        state.flipped = !state.flipped;
+        render();
+        return;
+      }
+
+      if (action === 'prev-card') {
+        prevCard();
+        render();
+        return;
+      }
+
+      if (action === 'next-card') {
+        nextCard(cards);
+        render();
+        return;
+      }
+
+      if (action === 'restart-cards') {
+        state.currentIndex = 0;
+        state.flipped = false;
+        render();
+        return;
+      }
+
+      if (action === 'shuffle-cards') {
+        shuffleCards(cards);
+        render();
+        return;
+      }
+
+      if (action === 'answer-quiz') {
+        if (state.quizAnswered || !state.quiz) {
+          return;
+        }
+        state.quizAnswered = true;
+        state.quiz.selected = button.dataset.term;
+        state.quizTotal += 1;
+        if (state.quiz.selected === state.quiz.question.term) {
+          state.quizCorrect += 1;
+        }
+        render();
+        return;
+      }
+
+      if (action === 'next-quiz') {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+        render();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const cards = getFilteredCards();
+      if (state.mode === 'flashcards') {
+        if (event.code === 'Space') {
+          event.preventDefault();
+          state.flipped = !state.flipped;
+          render();
+        } else if (event.key === 'ArrowRight') {
+          nextCard(cards);
+          render();
+        } else if (event.key === 'ArrowLeft') {
+          prevCard();
+          render();
+        }
+        return;
+      }
+
+      if (state.mode === 'quiz' && /^[1-4]$/.test(event.key) && state.quiz && !state.quizAnswered) {
+        const option = state.quiz.options[Number(event.key) - 1];
+        if (option) {
+          state.quizAnswered = true;
+          state.quiz.selected = option.term;
+          state.quizTotal += 1;
+          if (state.quiz.selected === state.quiz.question.term) {
+            state.quizCorrect += 1;
+          }
+          render();
+        }
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
+
+
+
+
+
+

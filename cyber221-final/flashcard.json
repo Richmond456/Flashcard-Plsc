@@ -1,0 +1,385 @@
+﻿{
+    "title":  "CYBER 221 Final Exam Prep",
+    "subject":  "Cybersecurity",
+    "updatedAt":  "2026-05-02",
+    "cardCount":  74,
+    "categories":  [
+                       "Chapter 11 - Contingency Planning",
+                       "Chapter 12 - Digital Forensics",
+                       "Chapter 13 - Security Standards",
+                       "Chapter 14 - Security Certifications",
+                       "Chapter 15 - Compliance Laws"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Business Continuity Plan (BCP)",
+                      "definition":  "A plan focused on keeping critical business functions operating during and after a disruption."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Disaster Recovery Plan (DRP)",
+                      "definition":  "A plan focused on restoring IT systems, data, and operations after a disaster or major disruption."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Critical Business Function (CBF)",
+                      "definition":  "A business process or service that is essential for the organization to keep operating."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Maximum Tolerable Downtime (MTD)",
+                      "definition":  "The longest time an organization can survive without a specific critical business function."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Recovery Time Objective (RTO)",
+                      "definition":  "The target amount of time allowed to restore a critical business function after disruption."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Recovery Point Objective (RPO)",
+                      "definition":  "The maximum acceptable amount of data loss measured as time since the last recoverable backup or restore point."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Disaster",
+                      "definition":  "An event that prevents a critical business function from operating longer than its maximum tolerable downtime."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Incident",
+                      "definition":  "An event that results in an actual or threatened violation of security policy."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Incident response process",
+                      "definition":  "The process commonly summarized as preparation, identification, notification, response, and follow-up."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Identification phase",
+                      "definition":  "The incident-handling step where the organization determines whether an event is truly an incident and performs triage."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Response phase",
+                      "definition":  "The incident-handling step focused on limiting damage, containing the incident, and beginning active handling."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Full backup",
+                      "definition":  "A backup that copies all selected data to backup media."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Differential backup",
+                      "definition":  "A backup that copies all data changed since the last full backup. Restoring usually needs the full backup plus the latest differential."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Incremental backup",
+                      "definition":  "A backup that copies only data changed since the most recent backup and is usually faster to create than a differential backup."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Mirrored site",
+                      "definition":  "A fully redundant recovery site that mirrors the primary site and can take over with very little delay."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Hot site",
+                      "definition":  "A recovery site with hardware, software, connectivity, and near-ready operations for quick recovery."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Warm site",
+                      "definition":  "A recovery site with some infrastructure in place but requiring additional setup or data restoration before full use."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Cold site",
+                      "definition":  "A basic recovery location with minimal equipment or services, usually the cheapest but slowest to activate."
+                  },
+                  {
+                      "category":  "Chapter 11 - Contingency Planning",
+                      "term":  "Mobile site",
+                      "definition":  "A portable recovery facility that can be moved to provide temporary operations after a disruption."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Digital forensics",
+                      "definition":  "The process of identifying, preserving, collecting, examining, and presenting digital evidence."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Real evidence",
+                      "definition":  "Physical evidence that can be brought into court, such as a device or storage media."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Documentary evidence",
+                      "definition":  "Evidence stored in computer memory or storage, such as emails, logs, databases, files, and digital records."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Testimonial evidence",
+                      "definition":  "Evidence given through witness statements or testimony."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Demonstrative evidence",
+                      "definition":  "Evidence used to explain or illustrate facts, such as diagrams, timelines, models, or charts."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Order of volatility",
+                      "definition":  "The principle of collecting the most volatile data first, such as registers, cache, and RAM, before it changes or disappears."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Chain of custody",
+                      "definition":  "The running documentation showing how evidence was collected, handled, transferred, stored, and protected."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Provenance",
+                      "definition":  "The point of origin or history of a piece of evidence, often traced through the chain of custody."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Legal hold",
+                      "definition":  "A process requiring an organization to preserve and not alter evidence that may be used in court."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "E-discovery",
+                      "definition":  "The process of identifying, preserving, collecting, and producing electronically stored information for legal matters."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Computer as target",
+                      "definition":  "A crime role where the computer or system is the object being attacked."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Computer as instrument",
+                      "definition":  "A crime role where the computer is used as the tool to commit the crime."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Computer as repository",
+                      "definition":  "A crime role where the computer stores evidence or data related to the crime."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "FAT32 and NTFS",
+                      "definition":  "Windows file systems that digital forensic specialists may need to understand."
+                  },
+                  {
+                      "category":  "Chapter 12 - Digital Forensics",
+                      "term":  "Mobile device forensics",
+                      "definition":  "Forensics involving mobile devices, which can be volatile, remotely managed, and still require ordinary chain-of-custody procedures."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "NIST",
+                      "definition":  "A U.S. Department of Commerce agency that provides measurement and technology standards and creates security standards and guidelines."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "NIST Special Publications",
+                      "definition":  "NIST documents that provide standards, guidelines, and recommended practices, including information security guidance."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "ISO",
+                      "definition":  "A nongovernmental international organization that develops and publishes standards across many industries."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "OSI Reference Model",
+                      "definition":  "An ISO model that describes how separate computer systems communicate across networks."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "OSI Application layer",
+                      "definition":  "The OSI layer that provides the user interface that displays information to the user."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "W3C",
+                      "definition":  "The main international standards organization for the World Wide Web, including standards such as HTML and CSS."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "IETF",
+                      "definition":  "The organization that develops and promotes Internet standards, especially engineering standards for TCP/IP."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "RFC",
+                      "definition":  "A Request for Comments document used for Internet standards and technical specifications; RFCs do not change once published."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "Proposed Standard (PS)",
+                      "definition":  "The initial official stage of an RFC that defines a formal standard."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "Draft Standard (DS)",
+                      "definition":  "The second IETF RFC standards stage after participants demonstrate deployment in working environments."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "Standard (STD)",
+                      "definition":  "A mature IETF standard designation for specifications that have reached full standards status."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "IEEE",
+                      "definition":  "An international nonprofit organization that develops standards related to electricity, electronics, and networking."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "IEEE 802.3",
+                      "definition":  "The IEEE standard that contains the specification for Ethernet networking."
+                  },
+                  {
+                      "category":  "Chapter 13 - Security Standards",
+                      "term":  "PCI DSS as a standard",
+                      "definition":  "A standard used to protect payment card transactions and cardholder data."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "(ISC)2",
+                      "definition":  "The International Information System Security Certification Consortium, a major organization offering security certifications."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "Certified in Cybersecurity (CC)",
+                      "definition":  "An entry-level (ISC)2 certification for security professionals."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CISSP",
+                      "definition":  "The flagship (ISC)2 certification for experienced security professionals, managers, CISOs, CSOs, and senior security engineers."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CISSP domains",
+                      "definition":  "The CISSP exam covers eight domains in the (ISC)2 Common Body of Knowledge."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "Associate of (ISC)2",
+                      "definition":  "A credential for people who pass an (ISC)2 exam but have not yet met the experience requirement for the full certification."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CCSP",
+                      "definition":  "The Certified Cloud Security Professional credential for securing and managing cloud computing environments."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "CompTIA Security+",
+                      "definition":  "A vendor-neutral entry-level information security certification often considered a first step for IT professionals."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "ISACA",
+                      "definition":  "An organization that offers certifications and practices focused heavily on information systems audit, control, governance, and risk."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "EC-Council",
+                      "definition":  "The organization that offers the Certified Ethical Hacker (CEH), CHFI, and Licensed Penetration Tester certifications."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "Certified Ethical Hacker (CEH)",
+                      "definition":  "An EC-Council certification focused on ethical hacking knowledge and techniques."
+                  },
+                  {
+                      "category":  "Chapter 14 - Security Certifications",
+                      "term":  "GIAC",
+                      "definition":  "A certification organization offering technical information security credentials in areas such as incident handling, forensics, and wireless security."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "HIPAA",
+                      "definition":  "A U.S. law addressing the privacy and security of health information, including protection of electronic PHI."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "PHI",
+                      "definition":  "Protected health information, which includes personally identifiable health data covered by HIPAA."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "ePHI",
+                      "definition":  "Electronic protected health information whose confidentiality, integrity, and availability must be protected under HIPAA."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "PCI DSS",
+                      "definition":  "A payment card industry standard that helps merchants and financial institutions protect cardholder data."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "GLBA",
+                      "definition":  "The Gramm-Leach-Bliley Act, which addresses privacy and security of consumer financial information."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "FFIEC",
+                      "definition":  "The Federal Financial Institutions Examination Council, a regulatory committee serving the U.S. banking community."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "SOX",
+                      "definition":  "The Sarbanes-Oxley Act, which applies to publicly traded companies and helps protect investors from financial fraud."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "SOX Section 404",
+                      "definition":  "A requirement for executive officers to establish, maintain, review, and report on internal controls over financial reporting."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "ICFR",
+                      "definition":  "Internal controls over financial reporting, a major focus of SOX Section 404."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "GDPR",
+                      "definition":  "A European Union regulation that controls how personal data of EU citizens is collected, stored, used, and retired."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "FISMA",
+                      "definition":  "The Federal Information Security Management Act, which provides guidance for running federal information systems."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "PII",
+                      "definition":  "Personally identifiable information, such as names, addresses, SSNs, driver\u0027s license numbers, financial data, health data, biometrics, and credentials."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "Integrity controls",
+                      "definition":  "Controls that prevent unauthorized modification of information, such as controls protecting accurate financial reports and records."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "HIPAA and PCI DSS similarity",
+                      "definition":  "Both include requirements that protect the confidentiality, integrity, and availability of data."
+                  },
+                  {
+                      "category":  "Chapter 15 - Compliance Laws",
+                      "term":  "GLBA oversight agencies",
+                      "definition":  "GLBA oversight includes agencies such as the SEC, FTC, FDIC, Federal Reserve, NCUA, OCC, and OTS, but not the FCC."
+                  }
+              ]
+}
