@@ -481,14 +481,19 @@
     const deck = {
     "title":  "CYBER 221 Final Exam Prep",
     "subject":  "Cybersecurity",
-    "updatedAt":  "2026-05-02",
-    "cardCount":  74,
+    "updatedAt":  "2026-05-03",
+    "cardCount":  112,
     "categories":  [
                        "Chapter 11 - Contingency Planning",
                        "Chapter 12 - Digital Forensics",
                        "Chapter 13 - Security Standards",
                        "Chapter 14 - Security Certifications",
-                       "Chapter 15 - Compliance Laws"
+                       "Chapter 15 - Compliance Laws",
+                       "Chapter 11 - Practice Questions",
+                       "Chapter 12 - Practice Questions",
+                       "Chapter 13 - Practice Questions",
+                       "Chapter 14 - Practice Questions",
+                       "Chapter 15 - Practice Questions"
                    ],
     "cards":  [
                   {
@@ -860,6 +865,500 @@
                       "category":  "Chapter 15 - Compliance Laws",
                       "term":  "GLBA oversight agencies",
                       "definition":  "GLBA oversight includes agencies such as the SEC, FTC, FDIC, Federal Reserve, NCUA, OCC, and OTS, but not the FCC."
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "Maximum tolerable downtime (MTD)",
+                      "definition":  "Isabella is assessing how long her agency can continue without a data center during a power outage. It can survive for up to 9 hours. Which concept describes that maximum survival time?",
+                      "choices":  [
+                                      "Critical business function (CBF)",
+                                      "Maximum tolerable downtime (MTD)",
+                                      "Recovery time objective (RTO)",
+                                      "Recovery point objective (RPO)"
+                                  ],
+                      "explanation":  "MTD is the longest time an organization can survive without a critical business function before the outage becomes unacceptable.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "Recovery time objective (RTO)",
+                      "definition":  "Isabella determines it will take about 6 hours to move data center operations to another location. Which concept describes the time needed to restore the function?",
+                      "choices":  [
+                                      "Critical business function (CBF)",
+                                      "Maximum tolerable downtime (MTD)",
+                                      "Recovery time objective (RTO)",
+                                      "Recovery point objective (RPO)"
+                                  ],
+                      "explanation":  "RTO is the target timeframe for restoring a critical business function after an interruption.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "2 backups",
+                      "definition":  "A server has a full backup on Sunday at 1 a.m. and differential backups Monday through Friday at 1 a.m. If it fails Wednesday at 9 a.m., how many backups are needed to restore it?",
+                      "choices":  [
+                                      "1",
+                                      "2",
+                                      "3",
+                                      "4"
+                                  ],
+                      "explanation":  "With differential backups, restore the last full backup plus the most recent differential backup, so Sunday full plus Wednesday differential equals 2 backups.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "It is faster to create differential weekday backups than incremental weekday backups.",
+                      "definition":  "Which statement is NOT true about backup strategies?",
+                      "choices":  [
+                                      "A full backup backs up all files.",
+                                      "A differential backup backs up files changed since the last full backup.",
+                                      "An incremental backup backs up files changed since the last full or incremental backup.",
+                                      "It is faster to create differential weekday backups than incremental weekday backups."
+                                  ],
+                      "explanation":  "Incremental weekday backups are usually faster to create because they only capture changes since the last backup, while differentials grow until the next full backup.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "Response",
+                      "definition":  "In which incident-handling step is the goal to contain the incident and prevent more damage?",
+                      "choices":  [
+                                      "Preparation",
+                                      "Identification",
+                                      "Response",
+                                      "Recovery"
+                                  ],
+                      "explanation":  "The response phase focuses on containing the incident, limiting harm, and starting active handling of the event.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "Identification",
+                      "definition":  "In which incident-handling step does triage take place to determine whether an incident occurred and how serious it is?",
+                      "choices":  [
+                                      "Identification",
+                                      "Preparation",
+                                      "Response",
+                                      "Recovery"
+                                  ],
+                      "explanation":  "Identification includes initial detection, triage, severity assessment, and deciding whether an event is truly an incident.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 11 - Practice Questions",
+                      "term":  "Disaster",
+                      "definition":  "What is an event that prevents a critical business function from operating for longer than its maximum tolerable downtime?",
+                      "choices":  [
+                                      "Incident",
+                                      "Breach",
+                                      "Disaster",
+                                      "Contingency"
+                                  ],
+                      "explanation":  "A disaster is severe enough to stop a critical business function beyond the organization\u0027s maximum tolerable downtime.",
+                      "source":  "Chapter 11 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Documentary evidence",
+                      "definition":  "Evidence stored in memory, storage, documents, logs, databases, email, or other files is what type of evidence?",
+                      "choices":  [
+                                      "Real evidence",
+                                      "Documentary evidence",
+                                      "Testimonial evidence",
+                                      "Demonstrative evidence"
+                                  ],
+                      "explanation":  "Documentary evidence includes records such as email, logs, files, databases, and digital media that document activity.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Mainframes",
+                      "definition":  "A digital forensics specialist is least likely to need in-depth knowledge of which topic?",
+                      "choices":  [
+                                      "Operating systems",
+                                      "File systems",
+                                      "Mainframes",
+                                      "Storage devices"
+                                  ],
+                      "explanation":  "Digital forensics specialists need broad knowledge of hardware, memory, storage, operating systems, file systems, networks, and software; mainframes are less commonly required in typical cases.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Perpetrator",
+                      "definition":  "A computing device may be the target, instrument, or repository in a crime. Which role does the computer itself not play?",
+                      "choices":  [
+                                      "Perpetrator",
+                                      "Target",
+                                      "Instrument",
+                                      "Repository"
+                                  ],
+                      "explanation":  "The perpetrator is the person committing the crime; a computer can be used in the crime but is not the human actor.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Consider data volatility",
+                      "definition":  "Which forensic principle helps ensure that evidence in memory is collected before it disappears?",
+                      "choices":  [
+                                      "Document everything",
+                                      "Make copies",
+                                      "Maintain chain of custody",
+                                      "Consider data volatility"
+                                  ],
+                      "explanation":  "Volatile data, such as memory contents, can disappear quickly, so investigators collect it before less volatile evidence.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Chain of custody and provenance",
+                      "definition":  "Which two concepts establish that evidence was collected and handled properly and help determine where it originated?",
+                      "choices":  [
+                                      "Authentication and authorization",
+                                      "Chain of custody and provenance",
+                                      "Hashing and encryption",
+                                      "Preservation and deletion"
+                                  ],
+                      "explanation":  "Chain of custody documents evidence handling, while provenance helps establish the origin and history of the evidence.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Windows",
+                      "definition":  "FAT32 and NTFS are file systems most closely associated with which operating system family?",
+                      "choices":  [
+                                      "Linux",
+                                      "Windows",
+                                      "macOS",
+                                      "Android"
+                                  ],
+                      "explanation":  "FAT32 and NTFS are commonly associated with Windows systems; Linux often uses ext file systems and macOS uses APFS.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Mobile devices do not need ordinary chain of custody.",
+                      "definition":  "Which statement is NOT true about mobile forensics?",
+                      "choices":  [
+                                      "Mobile devices may contain many kinds of useful evidence.",
+                                      "Mobile devices do not need ordinary chain of custody.",
+                                      "Mobile data can be volatile or remotely changed.",
+                                      "Mobile devices may require special collection methods."
+                                  ],
+                      "explanation":  "Mobile forensic evidence still requires proper preservation, documentation, and chain of custody like other digital evidence.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 12 - Practice Questions",
+                      "term":  "Legal hold",
+                      "definition":  "What process requires an organization to preserve and not alter evidence that may be needed for court or litigation?",
+                      "choices":  [
+                                      "Legal hold",
+                                      "Incident response",
+                                      "Risk assessment",
+                                      "Backup rotation"
+                                  ],
+                      "explanation":  "A legal hold tells an organization to preserve relevant records and prevent deletion or alteration because litigation or investigation may require them.",
+                      "source":  "Chapter 12 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "W3C",
+                      "definition":  "Which organization is a major source for CSS and HTML standards?",
+                      "choices":  [
+                                      "ISO",
+                                      "IEEE",
+                                      "IETF",
+                                      "W3C"
+                                  ],
+                      "explanation":  "The World Wide Web Consortium, or W3C, develops major web standards including HTML and CSS.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "TCP/IP",
+                      "definition":  "The IETF primarily focuses on standards for what major networking protocol suite?",
+                      "choices":  [
+                                      "Bluetooth",
+                                      "TCP/IP",
+                                      "HTML/CSS",
+                                      "Payment cards"
+                                  ],
+                      "explanation":  "The Internet Engineering Task Force develops and publishes internet standards, especially those related to TCP/IP.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "Application layer",
+                      "definition":  "Which OSI model layer includes user-facing network services and interfaces that display information?",
+                      "choices":  [
+                                      "Application layer",
+                                      "Transport layer",
+                                      "Network layer",
+                                      "Physical layer"
+                                  ],
+                      "explanation":  "The application layer is the top OSI layer and supports services that interact directly with user applications.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "RFCs may be modified.",
+                      "definition":  "Which statement is NOT true about RFCs?",
+                      "choices":  [
+                                      "RFCs are published by the IETF process.",
+                                      "RFCs may be modified.",
+                                      "RFCs can document internet standards.",
+                                      "A changed standard is normally issued as a new RFC."
+                                  ],
+                      "explanation":  "Published RFCs do not change in place; if the standard changes, a new RFC is created.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "IEEE 802.3",
+                      "definition":  "Which standard is associated with Ethernet?",
+                      "choices":  [
+                                      "IEEE 802.11",
+                                      "IEEE 802.3",
+                                      "ISO 27001",
+                                      "PCI DSS"
+                                  ],
+                      "explanation":  "IEEE 802.3 defines Ethernet standards; IEEE 802.11 is associated with wireless LANs.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "Draft Standard (DS)",
+                      "definition":  "In the IETF RFC standards process, what is the second stage after successful deployment in working environments?",
+                      "choices":  [
+                                      "Proposed Standard (PS)",
+                                      "Draft Standard (DS)",
+                                      "Internet Standard (STD)",
+                                      "Experimental RFC"
+                                  ],
+                      "explanation":  "Draft Standard is the next maturity stage after a proposed standard has shown successful implementation and deployment.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "ISO",
+                      "definition":  "Which organization provides the official definition of the OSI model?",
+                      "choices":  [
+                                      "IETF",
+                                      "ISO",
+                                      "IEEE",
+                                      "NIST"
+                                  ],
+                      "explanation":  "The International Organization for Standardization, or ISO, defines the OSI reference model.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "NIST",
+                      "definition":  "Which U.S. federal agency in the Department of Commerce provides measurement and technology standards and guidance?",
+                      "choices":  [
+                                      "FCC",
+                                      "FTC",
+                                      "FBI",
+                                      "NIST"
+                                  ],
+                      "explanation":  "The National Institute of Standards and Technology, or NIST, provides standards and guidance for technology, measurement, and cybersecurity.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 13 - Practice Questions",
+                      "term":  "Credit card information",
+                      "definition":  "PCI DSS is designed to protect what type of information?",
+                      "choices":  [
+                                      "Health records",
+                                      "Credit card information",
+                                      "Tax filings",
+                                      "Student grades"
+                                  ],
+                      "explanation":  "PCI DSS protects payment card data and applies to organizations that store, process, or transmit cardholder data.",
+                      "source":  "Chapter 13 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "Certified in Cybersecurity (CC)",
+                      "definition":  "Which ISC2 certification is an entry-level starting point before more advanced ISC2 certifications?",
+                      "choices":  [
+                                      "Certified in Cybersecurity (CC)",
+                                      "CISSP",
+                                      "CCSP",
+                                      "CISM"
+                                  ],
+                      "explanation":  "Certified in Cybersecurity, or CC, is ISC2\u0027s entry-level certification for people beginning in cybersecurity.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "CISSP",
+                      "definition":  "Which ISC2 flagship certification targets experienced security professionals and middle or senior managers?",
+                      "choices":  [
+                                      "Security+",
+                                      "CC",
+                                      "CISSP",
+                                      "CEH"
+                                  ],
+                      "explanation":  "CISSP is ISC2\u0027s flagship advanced certification for experienced cybersecurity professionals and managers.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "Associate of (ISC)2",
+                      "definition":  "A person passes the CISSP exam but does not yet have the required work experience. Which credential can they hold?",
+                      "choices":  [
+                                      "CISSP provisional",
+                                      "Security+",
+                                      "CCSP",
+                                      "Associate of (ISC)2"
+                                  ],
+                      "explanation":  "Associate of (ISC)2 is used when someone passes an ISC2 exam but has not yet completed the experience requirement.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "8",
+                      "definition":  "How many domains are covered by the CISSP Common Body of Knowledge?",
+                      "choices":  [
+                                      "6",
+                                      "8",
+                                      "10",
+                                      "12"
+                                  ],
+                      "explanation":  "The CISSP exam is organized around 8 domains in the ISC2 Common Body of Knowledge.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "CompTIA Security+",
+                      "definition":  "For someone with little or no security experience, which certification is often a basic first step?",
+                      "choices":  [
+                                      "CISSP",
+                                      "CompTIA Security+",
+                                      "CISM",
+                                      "CISA"
+                                  ],
+                      "explanation":  "CompTIA Security+ is a common entry-level cybersecurity certification for foundational security knowledge.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "ISACA",
+                      "definition":  "Which organization is known for certifications focused on information systems auditing, governance, and risk?",
+                      "choices":  [
+                                      "ISC2",
+                                      "CompTIA",
+                                      "EC-Council",
+                                      "ISACA"
+                                  ],
+                      "explanation":  "ISACA is known for certifications such as CISA, CISM, CRISC, and CGEIT, which emphasize auditing, governance, risk, and management.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 14 - Practice Questions",
+                      "term":  "EC-Council",
+                      "definition":  "Which organization offers the Certified Ethical Hacker (CEH) credential?",
+                      "choices":  [
+                                      "CompTIA",
+                                      "EC-Council",
+                                      "ISC2",
+                                      "ISACA"
+                                  ],
+                      "explanation":  "The Certified Ethical Hacker, or CEH, credential is offered by EC-Council.",
+                      "source":  "Chapter 14 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "GDPR",
+                      "definition":  "Which law or regulation is most directly connected to protecting consumer data that originates in Europe?",
+                      "choices":  [
+                                      "HIPAA",
+                                      "SOX",
+                                      "GLBA",
+                                      "GDPR"
+                                  ],
+                      "explanation":  "The General Data Protection Regulation, or GDPR, protects personal data of people in the European Union and affects many organizations that handle EU data.",
+                      "source":  "Chapter 15 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "FISMA",
+                      "definition":  "Which U.S. federal law provides information security guidance and requirements for federal agency systems?",
+                      "choices":  [
+                                      "HIPAA",
+                                      "FISMA",
+                                      "SOX",
+                                      "PCI DSS"
+                                  ],
+                      "explanation":  "FISMA establishes information security requirements for U.S. federal agencies and their information systems.",
+                      "source":  "Chapter 15 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "NIST",
+                      "definition":  "Which U.S. agency creates information security standards and guidelines used by federal government and industry?",
+                      "choices":  [
+                                      "FTC",
+                                      "FCC",
+                                      "NIST",
+                                      "SEC"
+                                  ],
+                      "explanation":  "NIST creates cybersecurity standards, frameworks, and guidance used by federal agencies and widely adopted by industry.",
+                      "source":  "Chapter 15 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "FCC",
+                      "definition":  "Which agency is NOT typically listed as an oversight agency for GLBA?",
+                      "choices":  [
+                                      "FTC",
+                                      "Federal Reserve",
+                                      "FDIC",
+                                      "FCC"
+                                  ],
+                      "explanation":  "GLBA oversight is tied to financial regulators and the FTC; the FCC is not one of the main GLBA oversight agencies.",
+                      "source":  "Chapter 15 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "Publicly traded companies",
+                      "definition":  "Which organizations are required to comply with SOX?",
+                      "choices":  [
+                                      "Hospitals",
+                                      "Publicly traded companies",
+                                      "Universities",
+                                      "Small private businesses only"
+                                  ],
+                      "explanation":  "SOX applies to publicly traded companies and focuses on financial reporting controls and accountability.",
+                      "source":  "Chapter 15 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "Integrity",
+                      "definition":  "Which security objective is most directly supported by controls that ensure financial reports are accurate and not improperly changed?",
+                      "choices":  [
+                                      "Integrity",
+                                      "Availability",
+                                      "Confidentiality",
+                                      "Nonrepudiation"
+                                  ],
+                      "explanation":  "Integrity means information is accurate, complete, and protected from unauthorized or improper modification.",
+                      "source":  "Chapter 15 Questions"
+                  },
+                  {
+                      "category":  "Chapter 15 - Practice Questions",
+                      "term":  "Both protect confidentiality, integrity, and availability.",
+                      "definition":  "How are HIPAA and PCI DSS alike from an information security point of view?",
+                      "choices":  [
+                                      "Both only apply to banks.",
+                                      "Both protect confidentiality, integrity, and availability.",
+                                      "Both only apply in Europe.",
+                                      "Both are optional guidelines with no security requirements."
+                                  ],
+                      "explanation":  "HIPAA and PCI DSS both include security requirements that protect data confidentiality, integrity, and availability, even though they cover different data types.",
+                      "source":  "Chapter 15 Questions"
                   }
               ]
 };
@@ -1026,6 +1525,15 @@
       }
 
       const question = cards[Math.floor(Math.random() * cards.length)];
+      if (Array.isArray(question.choices) && question.choices.length) {
+        return {
+          question,
+          options: shuffle(question.choices.map((term) => ({ term, definition: '' }))),
+          selected: null,
+          usesProvidedChoices: true,
+        };
+      }
+
       let pool = cards.filter((card) => card.term !== question.term);
       if (pool.length < 3) {
         pool = allCards.filter((card) => card.term !== question.term);
@@ -1063,16 +1571,21 @@
 
       const selectedCard = quiz.options.find((option) => option.term === quiz.selected);
       const correctCard = quiz.question;
+      const correctExplanation = correctCard.explanation || correctCard.definition;
 
       if (quiz.selected === correctCard.term) {
-        return `Correct. ${escapeHtml(correctCard.term)} is right because ${escapeHtml(correctCard.definition)}`;
+        return `Correct. ${escapeHtml(correctCard.term)} is right because ${escapeHtml(correctExplanation)}`;
+      }
+
+      if (quiz.usesProvidedChoices) {
+        return `Not quite. The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctExplanation)}`;
       }
 
       const selectedExplanation = selectedCard
         ? `${escapeHtml(selectedCard.term)} means ${escapeHtml(selectedCard.definition)}`
         : `You chose ${escapeHtml(quiz.selected)}.`;
 
-      return `Not quite. ${selectedExplanation} The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctCard.definition)}`;
+      return `Not quite. ${selectedExplanation} The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctExplanation)}`;
     }
 
     function renderFlashcards(cards) {
@@ -1339,6 +1852,7 @@
   </script>
 </body>
 </html>
+
 
 
 
