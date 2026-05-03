@@ -1,0 +1,475 @@
+﻿{
+    "title":  "PLSC 1 Final Exam Prep",
+    "subject":  "American Politics",
+    "updatedAt":  "2026-05-02",
+    "cardCount":  92,
+    "categories":  [
+                       "Policy-Making",
+                       "Economic Policy",
+                       "Civil Liberties",
+                       "Selective Incorporation",
+                       "Civil Rights"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Agenda",
+                      "definition":  "The set of issues that government officials and institutions are actively considering for action."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Expanded federal agenda",
+                      "definition":  "The growth in what Americans consider a legitimate role for national government, especially since the New Deal."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Externalities",
+                      "definition":  "Side effects of private or public action that affect others and can push government to intervene."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Bounded rationality",
+                      "definition":  "The idea that people are rational but use shortcuts and limited information because they are not paying close attention to every policy issue."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Tragedy of the commons",
+                      "definition":  "A situation where concentrated short-term self-interest harms broader, diffuse, long-term public interests."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "James Q. Wilson policy typology",
+                      "definition":  "A framework that categorizes policies by whether perceived costs and benefits are distributed broadly or concentrated narrowly."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Majoritarian politics",
+                      "definition":  "Distributed costs and distributed benefits; large public-good issues such as national defense or broad economic policy."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Interest group politics",
+                      "definition":  "Concentrated costs and concentrated benefits; small groups fight intensely because both sides have clear stakes."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Client politics",
+                      "definition":  "Distributed costs and concentrated benefits; a small group benefits while the broad public pays, often through pork barrel or earmark politics."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Entrepreneurial politics",
+                      "definition":  "Concentrated costs and distributed benefits; a policy entrepreneur mobilizes the public against a small group that pays the cost."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Logrolling",
+                      "definition":  "Trading votes, often used in Congress to pass client or pork barrel policies for different constituencies."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Competitive regulatory policy",
+                      "definition":  "A policy that appears to protect consumers but may protect producers by limiting competition."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Policy entrepreneur",
+                      "definition":  "A person who invests energy and skill to mobilize public support for policy change, often in entrepreneurial politics."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Upton Sinclair",
+                      "definition":  "A policy entrepreneur whose work helped expose problems in food production and spur regulatory reform."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Ralph Nader",
+                      "definition":  "A policy entrepreneur associated with consumer protection and public-interest regulation."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Monetarism",
+                      "definition":  "An economic theory arguing that the money supply is key and that inflation is the worst economic danger."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Milton Friedman",
+                      "definition":  "A major monetarist economist associated with the Chicago School and conservative economic thought."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Keynesianism",
+                      "definition":  "An economic theory favoring aggressive fiscal policy to manage demand, balance supply and demand, and pursue full employment."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Counter-cyclical spending",
+                      "definition":  "Government spending during economic downturns to increase demand and reduce unemployment."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "One-eyed Keynesianism",
+                      "definition":  "The political habit of deficit spending during downturns while avoiding tax increases or spending cuts during good times."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Supply-side economics",
+                      "definition":  "An economic theory arguing that the economy is driven by supply and that tax cuts for capital-producing groups can spur growth."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Laffer curve",
+                      "definition":  "The idea associated with Art Laffer that tax rates can become so high that cutting them may increase economic activity and revenue."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Economic planning",
+                      "definition":  "Government efforts to guide or limit industry for national goals such as efficiency, equality, jobs, or strategic production."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Monetary policy",
+                      "definition":  "Policy involving the amount of money circulating in the economy, usually managed by the Federal Reserve."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Fiscal policy",
+                      "definition":  "The use of taxation and spending to affect the economy."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "The Fed",
+                      "definition":  "The Federal Reserve Board, the main actor in monetary policy and the banker to the banks."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Reserve rate",
+                      "definition":  "The amount banks must keep on hand; raising it tightens the money supply by leaving less money available to lend."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Discount rate",
+                      "definition":  "The interest rate the Fed charges banks; raising it tightens money because banks pass higher costs to borrowers."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Buying bonds",
+                      "definition":  "A Federal Reserve action that loosens the money supply by putting money into circulation."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Selling bonds",
+                      "definition":  "A Federal Reserve action that tightens the money supply by taking money out of circulation."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Tax loopholes",
+                      "definition":  "Tax rules designed to reward or punish behaviors, often fitting client politics because benefits are concentrated."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Entitlements",
+                      "definition":  "Mandated spending programs such as Social Security and Medicare that automatically pay eligible recipients."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Automatic stabilizers",
+                      "definition":  "Built-in counter-cyclical spending, such as entitlement spending that rises when unemployment rises."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Industrial policy",
+                      "definition":  "Government support or guidance for industries, such as R\u0026D funding, patents, bailouts, subsidies, or access to public lands."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "R\u0026D",
+                      "definition":  "Research and development, often supported by government through agencies, universities, military spending, or subsidies."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Civil liberties",
+                      "definition":  "Freedoms from government; limits on what government can legally do to individuals."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Civil rights",
+                      "definition":  "Protections guaranteed by government to certain groups, often focused on opportunity and outcomes."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Negative rights",
+                      "definition":  "Rights that protect individuals from government interference rather than requiring government to provide something."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Magna Carta",
+                      "definition":  "A 1215 document imposing written limits on the king and helping establish ideas such as due process and limits on punishment."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "General writs",
+                      "definition":  "Broad search warrants used by the British that helped inspire Fourth Amendment protections against unreasonable searches."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Massachusetts Compromise",
+                      "definition":  "The agreement that states would ratify the Constitution with the understanding that a Bill of Rights would be added."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Privacy liberties",
+                      "definition":  "Civil liberties protecting a sphere of personal life from government, grounded in amendments such as the First, Third, and Fourth."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Penumbral right",
+                      "definition":  "An implied right inferred from the shadows or edges of explicit constitutional guarantees, especially the right to privacy in Griswold."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Griswold v. Connecticut",
+                      "definition":  "The 1965 case striking down a ban on contraception for married people and establishing a broader constitutional right to privacy."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Symbolic speech",
+                      "definition":  "Nonverbal expression protected as speech, such as flag burning."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Prior restraint",
+                      "definition":  "Government censorship before publication; American courts generally view it with deep suspicion."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Participation liberties",
+                      "definition":  "Civil liberties tied to self-government, including voting, petitioning government, and political participation."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "24th Amendment",
+                      "definition":  "The constitutional amendment that abolished the poll tax in federal elections."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Baker v. Carr",
+                      "definition":  "The 1962 case making malapportionment claims justiciable and helping lead to the one person, one vote principle."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Punishment liberties",
+                      "definition":  "Protections against arbitrary, abusive, or inhumane criminal procedure and punishment."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Exclusionary rule",
+                      "definition":  "The rule that illegally obtained evidence cannot be used in court; the fruit of the poisonous tree is itself poisoned."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Self-incrimination",
+                      "definition":  "The Fifth Amendment protection against being forced to testify against oneself."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Double jeopardy",
+                      "definition":  "The Fifth Amendment protection against being tried twice for the same offense."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Search and seizure",
+                      "definition":  "Fourth Amendment protection against unreasonable government searches and seizures of persons, houses, papers, and effects."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Selective incorporation",
+                      "definition":  "The process by which the Supreme Court applied most Bill of Rights protections to the states through the Fourteenth Amendment."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Barron v. Baltimore",
+                      "definition":  "The 1833 case holding that the Bill of Rights did not apply to state governments."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Privileges or Immunities Clause",
+                      "definition":  "A Fourteenth Amendment clause originally interpreted narrowly and not used by the Court to apply the Bill of Rights to states."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Twining v. New Jersey",
+                      "definition":  "The 1908 case holding that the Fifth Amendment protection against self-incrimination did not apply in state trials at that time."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Gitlow v. New York",
+                      "definition":  "The 1925 case that upheld Gitlow\u0027s conviction but recognized that the Fourteenth Amendment Due Process Clause extends First Amendment protections to states."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Near v. Minnesota",
+                      "definition":  "The 1931 case overturning a state prior restraint and strengthening freedom of the press against state governments."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Mapp v. Ohio",
+                      "definition":  "The 1961 case incorporating the exclusionary rule against the states."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Gideon v. Wainwright",
+                      "definition":  "The 1963 case incorporating the right to counsel for criminal defendants in state courts."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Duncan v. Louisiana",
+                      "definition":  "The 1968 case incorporating the right to a jury trial and stating that incorporated rights are fundamental to the American scheme of justice."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "McDonald v. Chicago",
+                      "definition":  "The 2010 case applying the Second Amendment against state and local handgun bans while still allowing some regulation."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "American Dilemma",
+                      "definition":  "The tension between America\u0027s commitment to equality and its discomfort with group rights, made sharper by race."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Redeemer governments",
+                      "definition":  "White-dominated Southern governments that returned to power after Reconstruction and rolled back Black civil rights."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Compromise of 1877",
+                      "definition":  "The deal resolving the Hayes-Tilden election: Republicans got the presidency and federal troops were withdrawn from the South."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Disenfranchisement devices",
+                      "definition":  "Tools such as poll taxes, literacy tests, understanding tests, morals tests, and white primaries used to restrict voting."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Plessy v. Ferguson",
+                      "definition":  "The 1896 case establishing separate but equal and weakening Equal Protection for racial minorities."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "De jure segregation",
+                      "definition":  "Segregation required or enforced by law."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "De facto segregation",
+                      "definition":  "Segregation existing in practice because of social, economic, or residential patterns rather than direct legal command."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Protective paternalism",
+                      "definition":  "Legal limits on women\u0027s opportunities justified as protection, such as restrictions on jobs, jury duty, or other civic roles."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Craig v. Boren",
+                      "definition":  "The 1976 case applying intermediate scrutiny to gender discrimination and striking down different drinking ages for men and women."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Intermediate scrutiny",
+                      "definition":  "The standard for gender classifications: laws must have a substantial relationship to an important legislative purpose."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Strict scrutiny",
+                      "definition":  "The toughest judicial standard, used for race; laws must be closely related to a compelling state purpose."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Korematsu v. United States",
+                      "definition":  "The 1944 Japanese internment case, often noted as an early use of strict scrutiny."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Second Reconstruction",
+                      "definition":  "The post-1940s federal effort to expand and enforce civil rights, especially after World War II and during the Cold War."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Great Migration",
+                      "definition":  "The movement of Black Americans to Northern cities, making Black voters important to the New Deal coalition."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Double V Campaign",
+                      "definition":  "World War II-era demand for victory over fascism abroad and victory over racism at home."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "NAACP Legal Defense Fund",
+                      "definition":  "The legal arm that organized and supported civil rights litigation, with Thurgood Marshall as chief litigator."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Smith v. Allwright",
+                      "definition":  "The 1944 case striking down the white-only primary, greatly increasing Black voter registration in the South."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Brown v. Board of Education",
+                      "definition":  "The 1954 case unanimously overturning Plessy in public education and declaring segregated schools inherently unequal."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Brown II",
+                      "definition":  "The 1955 follow-up ordering desegregation with all deliberate speed, but leaving enforcement largely to federal district judges."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Civil Rights Act of 1964",
+                      "definition":  "The law banning discrimination in public accommodations and federally aided programs and creating the EEOC."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Voting Rights Act of 1965",
+                      "definition":  "A law enforcing the Fifteenth Amendment by banning voting devices and requiring pre-clearance in covered jurisdictions."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Pre-clearance",
+                      "definition":  "The requirement that covered jurisdictions receive federal approval before changing voting laws or procedures."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Shelby County v. Holder",
+                      "definition":  "The 2013 case invalidating the Voting Rights Act coverage formula, weakening the pre-clearance system."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Title IX",
+                      "definition":  "A 1972 law prohibiting sex-based discrimination in education programs receiving federal money."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "ADA",
+                      "definition":  "The Americans with Disabilities Act of 1990, a major law protecting people with disabilities from discrimination."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Second Redemption",
+                      "definition":  "A term for civil rights rollbacks or limits after the Second Reconstruction, such as decisions limiting desegregation remedies."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Milliken v. Bradley",
+                      "definition":  "The 1974 case holding that courts could not require cross-district busing for racial balance, making de facto segregation harder to remedy."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Affirmative action",
+                      "definition":  "Policies that consider race or other group status to remedy past discrimination, promote diversity, or expand opportunity."
+                  }
+              ]
+}

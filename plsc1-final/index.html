@@ -1,0 +1,1438 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLSC 1 Final Exam Prep</title>
+  <style>
+    :root {
+      --bg: #09111b;
+      --bg-soft: #0f1b2d;
+      --panel: rgba(10, 18, 31, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.96);
+      --card: linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(20, 32, 53, 0.96));
+      --text: #ecf3ff;
+      --muted: #9eb0c8;
+      --border: rgba(148, 163, 184, 0.2);
+      --accent: #f59e0b;
+      --accent-2: #22c55e;
+      --accent-3: #38bdf8;
+      --danger: #fb7185;
+      --shadow: 0 24px 60px rgba(2, 8, 23, 0.4);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 28%),
+        linear-gradient(180deg, #07101a 0%, #0a1524 55%, #08121d 100%);
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .toolbar,
+    .content-panel,
+    .stats-panel {
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toolbar {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .segmented,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .segment,
+    .chip,
+    .action,
+    .option {
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.82);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .segment:hover,
+    .chip:hover,
+    .action:hover,
+    .option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    .segment.active,
+    .chip.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(245, 158, 11, 0.2));
+      border-color: rgba(245, 158, 11, 0.75);
+    }
+
+    .search {
+      min-width: 260px;
+      flex: 1 1 320px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+    }
+
+    .search::placeholder {
+      color: #7f93ae;
+    }
+
+    .stats-panel {
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stats-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .content-panel {
+      padding: 18px;
+    }
+
+    .study-card {
+      position: relative;
+      min-height: 420px;
+      perspective: 1200px;
+    }
+
+    .study-card-inner {
+      position: relative;
+      min-height: 420px;
+      transform-style: preserve-3d;
+      transition: transform 0.48s ease;
+    }
+
+    .study-card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      backface-visibility: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .card-face::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      border-radius: 28px 28px 0 0;
+      background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2));
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #9dd9ff;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .prompt,
+    .answer {
+      display: grid;
+      place-items: center;
+      flex: 1;
+      text-align: center;
+    }
+
+    .prompt p,
+    .answer h2 {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .prompt p {
+      font-size: clamp(1.35rem, 2.5vw, 2.3rem);
+      line-height: 1.55;
+      color: #f3f7ff;
+    }
+
+    .answer h2 {
+      font-size: clamp(1.9rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .hint {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .action.primary {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(56, 189, 248, 0.18));
+      border-color: rgba(245, 158, 11, 0.72);
+    }
+
+    .action:disabled,
+    .option:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .quiz-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .quiz-card {
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: var(--card);
+      padding: 28px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .quiz-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+      color: var(--accent-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quiz-card p {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      line-height: 1.55;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      border-radius: 18px;
+      padding: 16px 18px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .option.correct {
+      background: rgba(34, 197, 94, 0.16);
+      border-color: rgba(34, 197, 94, 0.58);
+    }
+
+    .option.wrong {
+      background: rgba(251, 113, 133, 0.16);
+      border-color: rgba(251, 113, 133, 0.58);
+    }
+
+    .feedback {
+      min-height: 72px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .review-item {
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(15, 23, 42, 0.7);
+      overflow: hidden;
+    }
+
+    .review-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .review-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .review-item .review-body {
+      padding: 0 20px 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 54px 24px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 24px 14px 42px;
+      }
+
+      .toolbar,
+      .content-panel,
+      .stats-panel {
+        border-radius: 20px;
+      }
+
+      .card-face,
+      .quiz-card {
+        padding: 22px;
+      }
+
+      .study-card,
+      .study-card-inner {
+        min-height: 470px;
+      }
+
+      .control-row {
+        align-items: stretch;
+      }
+
+      .control-group {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .action,
+      .segment,
+      .chip {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .toolbar-row {
+        justify-content: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">PLSC 1 Final Study Deck</div>
+      <h1>Policy, economy, liberties, incorporation, and civil rights in one study deck.</h1>
+      <p>Built from your final exam review sheet and April lecture notes so you can cram fast, drill recall, and search by topic before the test.</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-row">
+        <div id="modeButtons" class="segmented"></div>
+        <input id="searchInput" class="search" type="search" placeholder="Search terms, cases, or definitions" autocomplete="off">
+      </div>
+      <div id="categoryButtons" class="chip-row"></div>
+    </section>
+
+    <section class="stats-panel">
+      <div id="summaryLine" class="stats-line"></div>
+      <div id="quizLine" class="stats-line"></div>
+    </section>
+
+    <section id="content" class="content-panel"></section>
+
+    <div class="footer-note">
+      Shortcuts: <strong>Space</strong> flips the current card, <strong>Left/Right</strong> moves between cards in flashcard mode, and <strong>1-4</strong> answers quiz choices.
+    </div>
+  </div>
+
+  <script>
+    const deck = {
+    "title":  "PLSC 1 Final Exam Prep",
+    "subject":  "American Politics",
+    "updatedAt":  "2026-05-02",
+    "cardCount":  92,
+    "categories":  [
+                       "Policy-Making",
+                       "Economic Policy",
+                       "Civil Liberties",
+                       "Selective Incorporation",
+                       "Civil Rights"
+                   ],
+    "cards":  [
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Agenda",
+                      "definition":  "The set of issues that government officials and institutions are actively considering for action."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Expanded federal agenda",
+                      "definition":  "The growth in what Americans consider a legitimate role for national government, especially since the New Deal."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Externalities",
+                      "definition":  "Side effects of private or public action that affect others and can push government to intervene."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Bounded rationality",
+                      "definition":  "The idea that people are rational but use shortcuts and limited information because they are not paying close attention to every policy issue."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Tragedy of the commons",
+                      "definition":  "A situation where concentrated short-term self-interest harms broader, diffuse, long-term public interests."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "James Q. Wilson policy typology",
+                      "definition":  "A framework that categorizes policies by whether perceived costs and benefits are distributed broadly or concentrated narrowly."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Majoritarian politics",
+                      "definition":  "Distributed costs and distributed benefits; large public-good issues such as national defense or broad economic policy."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Interest group politics",
+                      "definition":  "Concentrated costs and concentrated benefits; small groups fight intensely because both sides have clear stakes."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Client politics",
+                      "definition":  "Distributed costs and concentrated benefits; a small group benefits while the broad public pays, often through pork barrel or earmark politics."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Entrepreneurial politics",
+                      "definition":  "Concentrated costs and distributed benefits; a policy entrepreneur mobilizes the public against a small group that pays the cost."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Logrolling",
+                      "definition":  "Trading votes, often used in Congress to pass client or pork barrel policies for different constituencies."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Competitive regulatory policy",
+                      "definition":  "A policy that appears to protect consumers but may protect producers by limiting competition."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Policy entrepreneur",
+                      "definition":  "A person who invests energy and skill to mobilize public support for policy change, often in entrepreneurial politics."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Upton Sinclair",
+                      "definition":  "A policy entrepreneur whose work helped expose problems in food production and spur regulatory reform."
+                  },
+                  {
+                      "category":  "Policy-Making",
+                      "term":  "Ralph Nader",
+                      "definition":  "A policy entrepreneur associated with consumer protection and public-interest regulation."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Monetarism",
+                      "definition":  "An economic theory arguing that the money supply is key and that inflation is the worst economic danger."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Milton Friedman",
+                      "definition":  "A major monetarist economist associated with the Chicago School and conservative economic thought."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Keynesianism",
+                      "definition":  "An economic theory favoring aggressive fiscal policy to manage demand, balance supply and demand, and pursue full employment."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Counter-cyclical spending",
+                      "definition":  "Government spending during economic downturns to increase demand and reduce unemployment."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "One-eyed Keynesianism",
+                      "definition":  "The political habit of deficit spending during downturns while avoiding tax increases or spending cuts during good times."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Supply-side economics",
+                      "definition":  "An economic theory arguing that the economy is driven by supply and that tax cuts for capital-producing groups can spur growth."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Laffer curve",
+                      "definition":  "The idea associated with Art Laffer that tax rates can become so high that cutting them may increase economic activity and revenue."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Economic planning",
+                      "definition":  "Government efforts to guide or limit industry for national goals such as efficiency, equality, jobs, or strategic production."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Monetary policy",
+                      "definition":  "Policy involving the amount of money circulating in the economy, usually managed by the Federal Reserve."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Fiscal policy",
+                      "definition":  "The use of taxation and spending to affect the economy."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "The Fed",
+                      "definition":  "The Federal Reserve Board, the main actor in monetary policy and the banker to the banks."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Reserve rate",
+                      "definition":  "The amount banks must keep on hand; raising it tightens the money supply by leaving less money available to lend."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Discount rate",
+                      "definition":  "The interest rate the Fed charges banks; raising it tightens money because banks pass higher costs to borrowers."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Buying bonds",
+                      "definition":  "A Federal Reserve action that loosens the money supply by putting money into circulation."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Selling bonds",
+                      "definition":  "A Federal Reserve action that tightens the money supply by taking money out of circulation."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Tax loopholes",
+                      "definition":  "Tax rules designed to reward or punish behaviors, often fitting client politics because benefits are concentrated."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Entitlements",
+                      "definition":  "Mandated spending programs such as Social Security and Medicare that automatically pay eligible recipients."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Automatic stabilizers",
+                      "definition":  "Built-in counter-cyclical spending, such as entitlement spending that rises when unemployment rises."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "Industrial policy",
+                      "definition":  "Government support or guidance for industries, such as R\u0026D funding, patents, bailouts, subsidies, or access to public lands."
+                  },
+                  {
+                      "category":  "Economic Policy",
+                      "term":  "R\u0026D",
+                      "definition":  "Research and development, often supported by government through agencies, universities, military spending, or subsidies."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Civil liberties",
+                      "definition":  "Freedoms from government; limits on what government can legally do to individuals."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Civil rights",
+                      "definition":  "Protections guaranteed by government to certain groups, often focused on opportunity and outcomes."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Negative rights",
+                      "definition":  "Rights that protect individuals from government interference rather than requiring government to provide something."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Magna Carta",
+                      "definition":  "A 1215 document imposing written limits on the king and helping establish ideas such as due process and limits on punishment."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "General writs",
+                      "definition":  "Broad search warrants used by the British that helped inspire Fourth Amendment protections against unreasonable searches."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Massachusetts Compromise",
+                      "definition":  "The agreement that states would ratify the Constitution with the understanding that a Bill of Rights would be added."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Privacy liberties",
+                      "definition":  "Civil liberties protecting a sphere of personal life from government, grounded in amendments such as the First, Third, and Fourth."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Penumbral right",
+                      "definition":  "An implied right inferred from the shadows or edges of explicit constitutional guarantees, especially the right to privacy in Griswold."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Griswold v. Connecticut",
+                      "definition":  "The 1965 case striking down a ban on contraception for married people and establishing a broader constitutional right to privacy."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Symbolic speech",
+                      "definition":  "Nonverbal expression protected as speech, such as flag burning."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Prior restraint",
+                      "definition":  "Government censorship before publication; American courts generally view it with deep suspicion."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Participation liberties",
+                      "definition":  "Civil liberties tied to self-government, including voting, petitioning government, and political participation."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "24th Amendment",
+                      "definition":  "The constitutional amendment that abolished the poll tax in federal elections."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Baker v. Carr",
+                      "definition":  "The 1962 case making malapportionment claims justiciable and helping lead to the one person, one vote principle."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Punishment liberties",
+                      "definition":  "Protections against arbitrary, abusive, or inhumane criminal procedure and punishment."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Exclusionary rule",
+                      "definition":  "The rule that illegally obtained evidence cannot be used in court; the fruit of the poisonous tree is itself poisoned."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Self-incrimination",
+                      "definition":  "The Fifth Amendment protection against being forced to testify against oneself."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Double jeopardy",
+                      "definition":  "The Fifth Amendment protection against being tried twice for the same offense."
+                  },
+                  {
+                      "category":  "Civil Liberties",
+                      "term":  "Search and seizure",
+                      "definition":  "Fourth Amendment protection against unreasonable government searches and seizures of persons, houses, papers, and effects."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Selective incorporation",
+                      "definition":  "The process by which the Supreme Court applied most Bill of Rights protections to the states through the Fourteenth Amendment."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Barron v. Baltimore",
+                      "definition":  "The 1833 case holding that the Bill of Rights did not apply to state governments."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Privileges or Immunities Clause",
+                      "definition":  "A Fourteenth Amendment clause originally interpreted narrowly and not used by the Court to apply the Bill of Rights to states."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Twining v. New Jersey",
+                      "definition":  "The 1908 case holding that the Fifth Amendment protection against self-incrimination did not apply in state trials at that time."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Gitlow v. New York",
+                      "definition":  "The 1925 case that upheld Gitlow\u0027s conviction but recognized that the Fourteenth Amendment Due Process Clause extends First Amendment protections to states."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Near v. Minnesota",
+                      "definition":  "The 1931 case overturning a state prior restraint and strengthening freedom of the press against state governments."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Mapp v. Ohio",
+                      "definition":  "The 1961 case incorporating the exclusionary rule against the states."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Gideon v. Wainwright",
+                      "definition":  "The 1963 case incorporating the right to counsel for criminal defendants in state courts."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "Duncan v. Louisiana",
+                      "definition":  "The 1968 case incorporating the right to a jury trial and stating that incorporated rights are fundamental to the American scheme of justice."
+                  },
+                  {
+                      "category":  "Selective Incorporation",
+                      "term":  "McDonald v. Chicago",
+                      "definition":  "The 2010 case applying the Second Amendment against state and local handgun bans while still allowing some regulation."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "American Dilemma",
+                      "definition":  "The tension between America\u0027s commitment to equality and its discomfort with group rights, made sharper by race."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Redeemer governments",
+                      "definition":  "White-dominated Southern governments that returned to power after Reconstruction and rolled back Black civil rights."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Compromise of 1877",
+                      "definition":  "The deal resolving the Hayes-Tilden election: Republicans got the presidency and federal troops were withdrawn from the South."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Disenfranchisement devices",
+                      "definition":  "Tools such as poll taxes, literacy tests, understanding tests, morals tests, and white primaries used to restrict voting."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Plessy v. Ferguson",
+                      "definition":  "The 1896 case establishing separate but equal and weakening Equal Protection for racial minorities."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "De jure segregation",
+                      "definition":  "Segregation required or enforced by law."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "De facto segregation",
+                      "definition":  "Segregation existing in practice because of social, economic, or residential patterns rather than direct legal command."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Protective paternalism",
+                      "definition":  "Legal limits on women\u0027s opportunities justified as protection, such as restrictions on jobs, jury duty, or other civic roles."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Craig v. Boren",
+                      "definition":  "The 1976 case applying intermediate scrutiny to gender discrimination and striking down different drinking ages for men and women."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Intermediate scrutiny",
+                      "definition":  "The standard for gender classifications: laws must have a substantial relationship to an important legislative purpose."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Strict scrutiny",
+                      "definition":  "The toughest judicial standard, used for race; laws must be closely related to a compelling state purpose."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Korematsu v. United States",
+                      "definition":  "The 1944 Japanese internment case, often noted as an early use of strict scrutiny."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Second Reconstruction",
+                      "definition":  "The post-1940s federal effort to expand and enforce civil rights, especially after World War II and during the Cold War."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Great Migration",
+                      "definition":  "The movement of Black Americans to Northern cities, making Black voters important to the New Deal coalition."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Double V Campaign",
+                      "definition":  "World War II-era demand for victory over fascism abroad and victory over racism at home."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "NAACP Legal Defense Fund",
+                      "definition":  "The legal arm that organized and supported civil rights litigation, with Thurgood Marshall as chief litigator."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Smith v. Allwright",
+                      "definition":  "The 1944 case striking down the white-only primary, greatly increasing Black voter registration in the South."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Brown v. Board of Education",
+                      "definition":  "The 1954 case unanimously overturning Plessy in public education and declaring segregated schools inherently unequal."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Brown II",
+                      "definition":  "The 1955 follow-up ordering desegregation with all deliberate speed, but leaving enforcement largely to federal district judges."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Civil Rights Act of 1964",
+                      "definition":  "The law banning discrimination in public accommodations and federally aided programs and creating the EEOC."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Voting Rights Act of 1965",
+                      "definition":  "A law enforcing the Fifteenth Amendment by banning voting devices and requiring pre-clearance in covered jurisdictions."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Pre-clearance",
+                      "definition":  "The requirement that covered jurisdictions receive federal approval before changing voting laws or procedures."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Shelby County v. Holder",
+                      "definition":  "The 2013 case invalidating the Voting Rights Act coverage formula, weakening the pre-clearance system."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Title IX",
+                      "definition":  "A 1972 law prohibiting sex-based discrimination in education programs receiving federal money."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "ADA",
+                      "definition":  "The Americans with Disabilities Act of 1990, a major law protecting people with disabilities from discrimination."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Second Redemption",
+                      "definition":  "A term for civil rights rollbacks or limits after the Second Reconstruction, such as decisions limiting desegregation remedies."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Milliken v. Bradley",
+                      "definition":  "The 1974 case holding that courts could not require cross-district busing for racial balance, making de facto segregation harder to remedy."
+                  },
+                  {
+                      "category":  "Civil Rights",
+                      "term":  "Affirmative action",
+                      "definition":  "Policies that consider race or other group status to remedy past discrimination, promote diversity, or expand opportunity."
+                  }
+              ]
+};
+    const allCards = deck.cards;
+    const categoryTotals = new Map();
+    allCards.forEach((card) => {
+      categoryTotals.set(card.category, (categoryTotals.get(card.category) || 0) + 1);
+    });
+
+    const state = {
+      mode: 'flashcards',
+      category: 'All',
+      query: '',
+      currentIndex: 0,
+      flipped: false,
+      quiz: null,
+      quizAnswered: false,
+      quizCorrect: 0,
+      quizTotal: 0,
+    };
+
+    const modeButtons = document.getElementById('modeButtons');
+    const categoryButtons = document.getElementById('categoryButtons');
+    const summaryLine = document.getElementById('summaryLine');
+    const quizLine = document.getElementById('quizLine');
+    const content = document.getElementById('content');
+    const searchInput = document.getElementById('searchInput');
+
+    function escapeHtml(value) {
+      return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let index = copy.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+      }
+      return copy;
+    }
+
+    function getFilteredCards() {
+      const query = state.query.trim().toLowerCase();
+      return allCards.filter((card) => {
+        const matchesCategory = state.category === 'All' || card.category === state.category;
+        if (!matchesCategory) {
+          return false;
+        }
+
+        if (!query) {
+          return true;
+        }
+
+        return [card.category, card.term, card.definition].some((value) =>
+          value.toLowerCase().includes(query)
+        );
+      });
+    }
+
+    function clampCurrentIndex(cards) {
+      if (!cards.length) {
+        state.currentIndex = 0;
+        return;
+      }
+
+      if (state.currentIndex > cards.length - 1) {
+        state.currentIndex = cards.length - 1;
+      }
+    }
+
+    function renderModeButtons() {
+      const modes = [
+        ['flashcards', 'Flashcards'],
+        ['quiz', 'Quiz Drill'],
+        ['review', 'Review Sheet'],
+      ];
+
+      modeButtons.innerHTML = modes
+        .map(([id, label]) => `<button class="segment ${state.mode === id ? 'active' : ''}" data-action="set-mode" data-mode="${id}">${label}</button>`)
+        .join('');
+    }
+
+    function renderCategoryButtons() {
+      const categories = ['All', ...deck.categories];
+      categoryButtons.innerHTML = categories
+        .map((category) => {
+          const label = category === 'All' ? 'All Cards' : category;
+          const count = category === 'All' ? allCards.length : categoryTotals.get(category);
+          return `<button class="chip ${state.category === category ? 'active' : ''}" data-action="set-category" data-category="${category}">${label} <span style="opacity:.72">${count}</span></button>`;
+        })
+        .join('');
+    }
+
+    function renderSummary(cards) {
+      const categoryLabel = state.category === 'All' ? 'all categories' : state.category;
+      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : 'review sheet';
+      const position = cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
+
+      summaryLine.innerHTML = `
+        <span><strong>${cards.length}</strong> cards showing</span>
+        <span>${categoryLabel}</span>
+        <span>${modeLabel}</span>
+        <span>${position}</span>
+      `;
+
+      const accuracy = state.quizTotal ? Math.round((state.quizCorrect / state.quizTotal) * 100) : 0;
+      quizLine.innerHTML = `
+        <span><strong>Quiz score:</strong> ${state.quizCorrect}/${state.quizTotal}</span>
+        <span><strong>Accuracy:</strong> ${accuracy}%</span>
+      `;
+    }
+
+    function nextCard(cards) {
+      if (state.currentIndex < cards.length - 1) {
+        state.currentIndex += 1;
+        state.flipped = false;
+      }
+    }
+
+    function prevCard() {
+      if (state.currentIndex > 0) {
+        state.currentIndex -= 1;
+        state.flipped = false;
+      }
+    }
+
+    function shuffleCards(cards) {
+      const shuffled = shuffle(cards);
+      const terms = new Set(shuffled.map((card) => `${card.category}::${card.term}`));
+      const reordered = [];
+
+      shuffled.forEach((card) => {
+        const match = allCards.find((original) => original.category === card.category && original.term === card.term);
+        if (match && terms.has(`${match.category}::${match.term}`)) {
+          reordered.push(match);
+        }
+      });
+
+      if (reordered.length === allCards.length) {
+        reordered.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      } else {
+        const filteredSet = new Set(cards.map((card) => `${card.category}::${card.term}`));
+        const rest = allCards.filter((card) => !filteredSet.has(`${card.category}::${card.term}`));
+        const combined = [...reordered, ...rest];
+        combined.forEach((card, index) => {
+          allCards[index] = card;
+        });
+      }
+
+      state.currentIndex = 0;
+      state.flipped = false;
+    }
+
+    function buildQuizQuestion(cards) {
+      if (!cards.length) {
+        return null;
+      }
+
+      const question = cards[Math.floor(Math.random() * cards.length)];
+      let pool = cards.filter((card) => card.term !== question.term);
+      if (pool.length < 3) {
+        pool = allCards.filter((card) => card.term !== question.term);
+      }
+
+      const options = shuffle(pool)
+        .slice(0, 3)
+        .concat(question);
+
+      return {
+        question,
+        options: shuffle(options),
+        selected: null,
+      };
+    }
+
+    function ensureQuiz(cards) {
+      if (!cards.length) {
+        state.quiz = null;
+        state.quizAnswered = false;
+        return;
+      }
+
+      const validCurrent = state.quiz && cards.some((card) => card.term === state.quiz.question.term && card.definition === state.quiz.question.definition);
+      if (!validCurrent) {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+      }
+    }
+
+    function buildQuizFeedback(quiz) {
+      if (!state.quizAnswered) {
+        return 'Choose the matching term for this definition.';
+      }
+
+      const selectedCard = quiz.options.find((option) => option.term === quiz.selected);
+      const correctCard = quiz.question;
+
+      if (quiz.selected === correctCard.term) {
+        return `Correct. ${escapeHtml(correctCard.term)} is right because ${escapeHtml(correctCard.definition)}`;
+      }
+
+      const selectedExplanation = selectedCard
+        ? `${escapeHtml(selectedCard.term)} means ${escapeHtml(selectedCard.definition)}`
+        : `You chose ${escapeHtml(quiz.selected)}.`;
+
+      return `Not quite. ${selectedExplanation} The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctCard.definition)}`;
+    }
+
+    function renderFlashcards(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No cards match that filter.</h2>
+            <div>Try clearing your search or switching categories.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const card = cards[state.currentIndex];
+      content.innerHTML = `
+        <div class="study-card">
+          <div class="study-card-inner ${state.flipped ? 'flipped' : ''}" data-action="flip-card">
+            <article class="card-face">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Definition</span>
+              </div>
+              <div class="prompt">
+                <p>${escapeHtml(card.definition)}</p>
+              </div>
+              <div class="hint">Click the card or press Space to reveal the term.</div>
+            </article>
+            <article class="card-face card-back">
+              <div class="meta">
+                <span class="badge">${escapeHtml(card.category)}</span>
+                <span>Term</span>
+              </div>
+              <div class="answer">
+                <h2>${escapeHtml(card.term)}</h2>
+              </div>
+              <div class="hint">Use Left and Right arrows to keep moving.</div>
+            </article>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <button class="action" data-action="prev-card" ${state.currentIndex === 0 ? 'disabled' : ''}>Previous</button>
+            <button class="action primary" data-action="flip-card">${state.flipped ? 'Hide term' : 'Reveal term'}</button>
+            <button class="action" data-action="next-card" ${state.currentIndex === cards.length - 1 ? 'disabled' : ''}>Next</button>
+          </div>
+          <div class="control-group">
+            <span class="counter">${state.currentIndex + 1} / ${cards.length}</span>
+            <button class="action" data-action="shuffle-cards">Shuffle</button>
+            <button class="action" data-action="restart-cards">Restart</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderQuiz(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No quiz questions match that filter.</h2>
+            <div>Clear the search to bring the deck back.</div>
+          </div>
+        `;
+        return;
+      }
+
+      ensureQuiz(cards);
+      const quiz = state.quiz;
+      const feedback = buildQuizFeedback(quiz);
+
+      content.innerHTML = `
+        <div class="quiz-shell">
+          <article class="quiz-card">
+            <h2>${escapeHtml(quiz.question.category)} quiz</h2>
+            <p>${escapeHtml(quiz.question.definition)}</p>
+          </article>
+          <div class="options">
+            ${quiz.options
+              .map((option, index) => {
+                const isCorrect = state.quizAnswered && option.term === quiz.question.term;
+                const isWrong = state.quizAnswered && quiz.selected === option.term && option.term !== quiz.question.term;
+                const classes = ['option'];
+                if (isCorrect) classes.push('correct');
+                if (isWrong) classes.push('wrong');
+                return `<button class="${classes.join(' ')}" data-action="answer-quiz" data-term="${escapeHtml(option.term)}" ${state.quizAnswered ? 'disabled' : ''}>${index + 1}. ${escapeHtml(option.term)}</button>`;
+              })
+              .join('')}
+          </div>
+          <div class="control-row">
+            <div class="feedback">${feedback}</div>
+            <div class="control-group">
+              <button class="action primary" data-action="next-quiz">${state.quizAnswered ? 'Next question' : 'Skip question'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReview(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No review items match that filter.</h2>
+            <div>Try a broader search or switch back to all cards.</div>
+          </div>
+        `;
+        return;
+      }
+
+      content.innerHTML = `
+        <div class="review-list">
+          ${cards
+            .map((card) => `
+              <details class="review-item">
+                <summary>
+                  <span>${escapeHtml(card.term)}</span>
+                  <span class="badge">${escapeHtml(card.category)}</span>
+                </summary>
+                <div class="review-body">${escapeHtml(card.definition)}</div>
+              </details>
+            `)
+            .join('')}
+        </div>
+      `;
+    }
+
+    function render() {
+      const cards = getFilteredCards();
+      clampCurrentIndex(cards);
+      renderModeButtons();
+      renderCategoryButtons();
+      renderSummary(cards);
+      searchInput.value = state.query;
+
+      if (state.mode === 'flashcards') {
+        renderFlashcards(cards);
+      } else if (state.mode === 'quiz') {
+        renderQuiz(cards);
+      } else {
+        renderReview(cards);
+      }
+    }
+
+    searchInput.addEventListener('input', (event) => {
+      state.query = event.target.value;
+      state.currentIndex = 0;
+      state.flipped = false;
+      state.quiz = null;
+      state.quizAnswered = false;
+      render();
+    });
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) {
+        return;
+      }
+
+      const action = button.dataset.action;
+      const cards = getFilteredCards();
+
+      if (action === 'set-mode') {
+        state.mode = button.dataset.mode;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'set-category') {
+        state.category = button.dataset.category;
+        state.currentIndex = 0;
+        state.flipped = false;
+        state.quiz = null;
+        state.quizAnswered = false;
+        render();
+        return;
+      }
+
+      if (action === 'flip-card') {
+        state.flipped = !state.flipped;
+        render();
+        return;
+      }
+
+      if (action === 'prev-card') {
+        prevCard();
+        render();
+        return;
+      }
+
+      if (action === 'next-card') {
+        nextCard(cards);
+        render();
+        return;
+      }
+
+      if (action === 'restart-cards') {
+        state.currentIndex = 0;
+        state.flipped = false;
+        render();
+        return;
+      }
+
+      if (action === 'shuffle-cards') {
+        shuffleCards(cards);
+        render();
+        return;
+      }
+
+      if (action === 'answer-quiz') {
+        if (state.quizAnswered || !state.quiz) {
+          return;
+        }
+        state.quizAnswered = true;
+        state.quiz.selected = button.dataset.term;
+        state.quizTotal += 1;
+        if (state.quiz.selected === state.quiz.question.term) {
+          state.quizCorrect += 1;
+        }
+        render();
+        return;
+      }
+
+      if (action === 'next-quiz') {
+        state.quiz = buildQuizQuestion(cards);
+        state.quizAnswered = false;
+        render();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const cards = getFilteredCards();
+      if (state.mode === 'flashcards') {
+        if (event.code === 'Space') {
+          event.preventDefault();
+          state.flipped = !state.flipped;
+          render();
+        } else if (event.key === 'ArrowRight') {
+          nextCard(cards);
+          render();
+        } else if (event.key === 'ArrowLeft') {
+          prevCard();
+          render();
+        }
+        return;
+      }
+
+      if (state.mode === 'quiz' && /^[1-4]$/.test(event.key) && state.quiz && !state.quizAnswered) {
+        const option = state.quiz.options[Number(event.key) - 1];
+        if (option) {
+          state.quizAnswered = true;
+          state.quiz.selected = option.term;
+          state.quizTotal += 1;
+          if (state.quiz.selected === state.quiz.question.term) {
+            state.quizCorrect += 1;
+          }
+          render();
+        }
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
