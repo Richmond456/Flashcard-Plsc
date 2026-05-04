@@ -391,6 +391,39 @@
       line-height: 1.7;
     }
 
+    .case-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .case-item {
+      border-radius: 22px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.14), rgba(15, 23, 42, 0.82));
+      padding: 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .case-item h2 {
+      margin: 0;
+      font-size: clamp(1.3rem, 2.4vw, 2rem);
+    }
+
+    .case-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .case-tip {
+      color: var(--accent-3);
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .empty {
       text-align: center;
       padding: 54px 24px;
@@ -1014,6 +1047,10 @@
       });
     }
 
+    function isCaseCard(card) {
+      return /\bv\.\s/i.test(card.term);
+    }
+
     function clampCurrentIndex(cards) {
       if (!cards.length) {
         state.currentIndex = 0;
@@ -1029,6 +1066,7 @@
       const modes = [
         ['flashcards', 'Flashcards'],
         ['quiz', 'Quiz Drill'],
+        ['cases', 'Cases'],
         ['review', 'Review Sheet'],
       ];
 
@@ -1050,8 +1088,8 @@
 
     function renderSummary(cards) {
       const categoryLabel = state.category === 'All' ? 'all categories' : state.category;
-      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : 'review sheet';
-      const position = cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
+      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : state.mode === 'cases' ? 'case cram' : 'review sheet';
+      const position = state.mode === 'cases' ? `${cards.length} cases` : cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
 
       summaryLine.innerHTML = `
         <span><strong>${cards.length}</strong> cards showing</span>
@@ -1288,8 +1326,38 @@
       `;
     }
 
+    function renderCases(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No cases match that filter.</h2>
+            <div>Try clearing search or switching to All Cards.</div>
+          </div>
+        `;
+        return;
+      }
+
+      content.innerHTML = `
+        <div class="case-list">
+          ${cards
+            .map((card) => `
+              <article class="case-item">
+                <div class="meta">
+                  <span class="badge">${escapeHtml(card.category)}</span>
+                  <span>Case to know</span>
+                </div>
+                <h2>${escapeHtml(card.term)}</h2>
+                <p>${escapeHtml(card.definition)}</p>
+                <div class="case-tip">Cram cue: remember what rule or right changed because of this case.</div>
+              </article>
+            `)
+            .join('')}
+        </div>
+      `;
+    }
+
     function render() {
-      const cards = getFilteredCards();
+      const cards = state.mode === 'cases' ? getFilteredCards().filter(isCaseCard) : getFilteredCards();
       clampCurrentIndex(cards);
       renderModeButtons();
       renderCategoryButtons();
@@ -1300,6 +1368,8 @@
         renderFlashcards(cards);
       } else if (state.mode === 'quiz') {
         renderQuiz(cards);
+      } else if (state.mode === 'cases') {
+        renderCases(cards);
       } else {
         renderReview(cards);
       }
