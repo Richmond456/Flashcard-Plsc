@@ -1002,6 +1002,9 @@
       quizAnswered: false,
       quizCorrect: 0,
       quizTotal: 0,
+      caseQuiz: null,
+      caseQuizCorrect: 0,
+      caseQuizTotal: 0,
     };
 
     const modeButtons = document.getElementById('modeButtons');
@@ -1051,6 +1054,14 @@
       return /\bv\.\s/i.test(card.term);
     }
 
+    function cardKey(card) {
+      return `${card.category}::${card.term}::${card.definition}`;
+    }
+
+    function findCardByKey(cards, key) {
+      return cards.find((card) => cardKey(card) === key);
+    }
+
     function clampCurrentIndex(cards) {
       if (!cards.length) {
         state.currentIndex = 0;
@@ -1067,6 +1078,7 @@
         ['flashcards', 'Flashcards'],
         ['quiz', 'Quiz Drill'],
         ['cases', 'Cases'],
+        ['caseQuiz', 'Case Quiz'],
         ['review', 'Review Sheet'],
       ];
 
@@ -1088,8 +1100,12 @@
 
     function renderSummary(cards) {
       const categoryLabel = state.category === 'All' ? 'all categories' : state.category;
-      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : state.mode === 'cases' ? 'case cram' : 'review sheet';
-      const position = state.mode === 'cases' ? `${cards.length} cases` : cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
+      const modeLabel = state.mode === 'flashcards' ? 'flashcards' : state.mode === 'quiz' ? 'quiz drill' : state.mode === 'cases' ? 'case cram' : state.mode === 'caseQuiz' ? 'case quiz' : 'review sheet';
+      const position = state.mode === 'cases'
+        ? `${cards.length} cases`
+        : state.mode === 'caseQuiz' && state.caseQuiz
+          ? `case ${state.caseQuiz.index + 1} of ${state.caseQuiz.order.length}`
+          : cards.length ? `card ${state.currentIndex + 1} of ${cards.length}` : 'no matches';
 
       summaryLine.innerHTML = `
         <span><strong>${cards.length}</strong> cards showing</span>
@@ -1098,9 +1114,12 @@
         <span>${position}</span>
       `;
 
-      const accuracy = state.quizTotal ? Math.round((state.quizCorrect / state.quizTotal) * 100) : 0;
+      const scoreCorrect = state.mode === 'caseQuiz' ? state.caseQuizCorrect : state.quizCorrect;
+      const scoreTotal = state.mode === 'caseQuiz' ? state.caseQuizTotal : state.quizTotal;
+      const scoreLabel = state.mode === 'caseQuiz' ? 'Case quiz score' : 'Quiz score';
+      const accuracy = scoreTotal ? Math.round((scoreCorrect / scoreTotal) * 100) : 0;
       quizLine.innerHTML = `
-        <span><strong>Quiz score:</strong> ${state.quizCorrect}/${state.quizTotal}</span>
+        <span><strong>${scoreLabel}:</strong> ${scoreCorrect}/${scoreTotal}</span>
         <span><strong>Accuracy:</strong> ${accuracy}%</span>
       `;
     }
@@ -1201,6 +1220,69 @@
         : `You chose ${escapeHtml(quiz.selected)}.`;
 
       return `Not quite. ${selectedExplanation} The correct answer is ${escapeHtml(correctCard.term)} because ${escapeHtml(correctCard.definition)}`;
+    }
+
+    function buildCaseQuizOptions(question, cards) {
+      const allCaseCards = allCards.filter(isCaseCard);
+      const optionSource = cards.length >= 4 ? cards : allCaseCards;
+      const distractors = shuffle(optionSource.filter((card) => card.term !== question.term)).slice(0, 3);
+      return shuffle([...distractors, question]);
+    }
+
+    function startCaseQuiz(cards) {
+      const order = shuffle(cards).map(cardKey);
+      state.caseQuiz = {
+        signature: [...order].sort().join('|'),
+        order,
+        index: 0,
+        question: null,
+        options: [],
+        selected: null,
+        answered: false,
+      };
+      prepareCaseQuizQuestion(cards);
+    }
+
+    function prepareCaseQuizQuestion(cards) {
+      const quiz = state.caseQuiz;
+      const question = findCardByKey(cards, quiz.order[quiz.index]) || cards[0];
+      quiz.question = question;
+      quiz.options = buildCaseQuizOptions(question, cards);
+      quiz.selected = null;
+      quiz.answered = false;
+    }
+
+    function ensureCaseQuiz(cards) {
+      if (!cards.length) {
+        state.caseQuiz = null;
+        return;
+      }
+
+      const signature = cards.map(cardKey).sort().join('|');
+      const needsNewRound = !state.caseQuiz || state.caseQuiz.signature !== signature || !state.caseQuiz.question;
+      if (needsNewRound) {
+        startCaseQuiz(cards);
+      }
+    }
+
+    function advanceCaseQuiz(cards) {
+      ensureCaseQuiz(cards);
+      if (!state.caseQuiz) {
+        return;
+      }
+
+      if (state.caseQuiz.index < state.caseQuiz.order.length - 1) {
+        state.caseQuiz.index += 1;
+        prepareCaseQuizQuestion(cards);
+      } else {
+        startCaseQuiz(cards);
+      }
+    }
+
+    function resetCaseQuizScore() {
+      state.caseQuiz = null;
+      state.caseQuizCorrect = 0;
+      state.caseQuizTotal = 0;
     }
 
     function renderFlashcards(cards) {
@@ -1356,9 +1438,62 @@
       `;
     }
 
+    function renderCaseQuiz(cards) {
+      if (!cards.length) {
+        content.innerHTML = `
+          <div class="empty">
+            <h2>No case quiz questions match that filter.</h2>
+            <div>Clear search or switch to All Cards to cover every case.</div>
+          </div>
+        `;
+        return;
+      }
+
+      ensureCaseQuiz(cards);
+      const quiz = state.caseQuiz;
+      const isCorrect = quiz.answered && quiz.selected === quiz.question.term;
+      const feedback = !quiz.answered
+        ? 'Pick the case name that matches this ruling or outcome.'
+        : isCorrect
+          ? `Correct. ${escapeHtml(quiz.question.term)} is the case because ${escapeHtml(quiz.question.definition)}`
+          : `Not quite. The correct case is ${escapeHtml(quiz.question.term)} because ${escapeHtml(quiz.question.definition)}`;
+      const nextLabel = quiz.answered && quiz.index === quiz.order.length - 1 ? 'Restart case round' : quiz.answered ? 'Next case' : 'Skip case';
+
+      content.innerHTML = `
+        <div class="quiz-shell">
+          <article class="quiz-card">
+            <h2>Case quiz ${quiz.index + 1} / ${quiz.order.length}</h2>
+            <p>${escapeHtml(quiz.question.definition)}</p>
+          </article>
+          <div class="options">
+            ${quiz.options
+              .map((option, index) => {
+                const optionIsCorrect = quiz.answered && option.term === quiz.question.term;
+                const optionIsWrong = quiz.answered && quiz.selected === option.term && option.term !== quiz.question.term;
+                const classes = ['option'];
+                if (optionIsCorrect) classes.push('correct');
+                if (optionIsWrong) classes.push('wrong');
+                return `<button class="${classes.join(' ')}" data-action="answer-case-quiz" data-term="${escapeHtml(option.term)}" ${quiz.answered ? 'disabled' : ''}>${index + 1}. ${escapeHtml(option.term)}</button>`;
+              })
+              .join('')}
+          </div>
+          <div class="control-row">
+            <div class="feedback">${feedback}</div>
+            <div class="control-group">
+              <button class="action" data-action="restart-case-quiz">Restart</button>
+              <button class="action primary" data-action="next-case-quiz">${nextLabel}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     function render() {
-      const cards = state.mode === 'cases' ? getFilteredCards().filter(isCaseCard) : getFilteredCards();
+      const cards = state.mode === 'cases' || state.mode === 'caseQuiz' ? getFilteredCards().filter(isCaseCard) : getFilteredCards();
       clampCurrentIndex(cards);
+      if (state.mode === 'caseQuiz') {
+        ensureCaseQuiz(cards);
+      }
       renderModeButtons();
       renderCategoryButtons();
       renderSummary(cards);
@@ -1370,6 +1505,8 @@
         renderQuiz(cards);
       } else if (state.mode === 'cases') {
         renderCases(cards);
+      } else if (state.mode === 'caseQuiz') {
+        renderCaseQuiz(cards);
       } else {
         renderReview(cards);
       }
@@ -1381,6 +1518,7 @@
       state.flipped = false;
       state.quiz = null;
       state.quizAnswered = false;
+      resetCaseQuizScore();
       render();
     });
 
@@ -1391,13 +1529,14 @@
       }
 
       const action = button.dataset.action;
-      const cards = getFilteredCards();
+      const cards = state.mode === 'cases' || state.mode === 'caseQuiz' ? getFilteredCards().filter(isCaseCard) : getFilteredCards();
 
       if (action === 'set-mode') {
         state.mode = button.dataset.mode;
         state.flipped = false;
         state.quiz = null;
         state.quizAnswered = false;
+        state.caseQuiz = null;
         render();
         return;
       }
@@ -1408,6 +1547,7 @@
         state.flipped = false;
         state.quiz = null;
         state.quizAnswered = false;
+        resetCaseQuizScore();
         render();
         return;
       }
@@ -1457,6 +1597,33 @@
         return;
       }
 
+      if (action === 'answer-case-quiz') {
+        if (!state.caseQuiz || state.caseQuiz.answered) {
+          return;
+        }
+        state.caseQuiz.answered = true;
+        state.caseQuiz.selected = button.dataset.term;
+        state.caseQuizTotal += 1;
+        if (state.caseQuiz.selected === state.caseQuiz.question.term) {
+          state.caseQuizCorrect += 1;
+        }
+        render();
+        return;
+      }
+
+      if (action === 'next-case-quiz') {
+        advanceCaseQuiz(cards);
+        render();
+        return;
+      }
+
+      if (action === 'restart-case-quiz') {
+        resetCaseQuizScore();
+        ensureCaseQuiz(cards);
+        render();
+        return;
+      }
+
       if (action === 'next-quiz') {
         state.quiz = buildQuizQuestion(cards);
         state.quizAnswered = false;
@@ -1465,7 +1632,7 @@
     });
 
     document.addEventListener('keydown', (event) => {
-      const cards = getFilteredCards();
+      const cards = state.mode === 'caseQuiz' ? getFilteredCards().filter(isCaseCard) : getFilteredCards();
       if (state.mode === 'flashcards') {
         if (event.code === 'Space') {
           event.preventDefault();
@@ -1489,6 +1656,19 @@
           state.quizTotal += 1;
           if (state.quiz.selected === state.quiz.question.term) {
             state.quizCorrect += 1;
+          }
+          render();
+        }
+      }
+
+      if (state.mode === 'caseQuiz' && /^[1-4]$/.test(event.key) && state.caseQuiz && !state.caseQuiz.answered) {
+        const option = state.caseQuiz.options[Number(event.key) - 1];
+        if (option) {
+          state.caseQuiz.answered = true;
+          state.caseQuiz.selected = option.term;
+          state.caseQuizTotal += 1;
+          if (state.caseQuiz.selected === state.caseQuiz.question.term) {
+            state.caseQuizCorrect += 1;
           }
           render();
         }
