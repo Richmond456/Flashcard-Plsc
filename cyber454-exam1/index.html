@@ -1,0 +1,2052 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Cyber 454 Study Hub</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="Cyber 454 Study Hub" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Cyber 454 Study Hub&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+.cursor-interaction {
+  cursor: var(--cursor-interaction, pointer);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: var(--cursor-interaction, pointer);
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: var(--cursor-interaction, pointer);
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const hasOwn = Object.hasOwn;
+  const parentWindow = globalThis.parent;
+  const stringify = JSON.stringify;
+  const parse = JSON.parse;
+  const encode = TextEncoder.prototype.encode.bind(new TextEncoder());
+  const initialStateElement = document.getElementById(
+    &quot;codex-visualization-widget-state&quot;,
+  );
+  const initialGlobals = parse(initialStateElement?.textContent ?? &quot;{}&quot;);
+  initialStateElement?.remove();
+  /** @type {Record&lt;string, unknown&gt; | null} */
+  let state = initialGlobals.widgetState ?? null;
+  const statePersistence = initialGlobals.statePersistence ?? &quot;none&quot;;
+  let nextStateRequestId = 0;
+  /** @type {Map&lt;number, { resolve: () =&gt; void; reject: (error: Error) =&gt; void; timeout: ReturnType&lt;typeof globalThis.setTimeout&gt;; serializedState: string }&gt;} */
+  const pendingStateWrites = new Map();
+  const persistenceError = () =&gt;
+    Object.assign(
+      new Error(&quot;The host could not persist the widget state update&quot;),
+      {
+        code: -32000,
+        data: { code: &quot;widget_state_persistence_failed&quot;, retryable: false },
+      },
+    );
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  /**
+   * @param {Record&lt;string, unknown&gt; | ((previous: Record&lt;string, unknown&gt; | null) =&gt; Record&lt;string, unknown&gt;)} next
+   * @returns {Promise&lt;void&gt;}
+   */
+  const setWidgetState = async (next) =&gt; {
+    const nextState = typeof next === &quot;function&quot; ? next(state) : next;
+    if (
+      nextState == null ||
+      typeof nextState !== &quot;object&quot; ||
+      isArray(nextState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const inputState = stringify(
+      nextState,
+      (_key, /** @type {unknown} */ value) =&gt; {
+        if (
+          typeof value === &quot;undefined&quot; ||
+          typeof value === &quot;function&quot; ||
+          typeof value === &quot;symbol&quot; ||
+          (typeof value === &quot;number&quot; &amp;&amp; !Number.isFinite(value))
+        ) {
+          throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+        }
+        return value;
+      },
+    );
+    const parsedState = parse(inputState);
+    if (
+      parsedState == null ||
+      typeof parsedState !== &quot;object&quot; ||
+      isArray(parsedState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const storedState = {
+      modelContent: null,
+      privateContent: null,
+      ...parsedState,
+    };
+    const serializedState = stringify(storedState);
+    if (encode(serializedState).length &gt; 16 * 1024) {
+      throw new TypeError(
+        &quot;Widget state must be a JSON object of at most 16 KiB&quot;,
+      );
+    }
+    if (
+      hasOwn(storedState, &quot;imageIds&quot;) &amp;&amp;
+      (!isArray(storedState.imageIds) ||
+        storedState.imageIds.some(
+          (/** @type {unknown} */ id) =&gt; typeof id !== &quot;string&quot;,
+        ))
+    ) {
+      throw new TypeError(&quot;Widget state imageIds must be an array of strings&quot;);
+    }
+    if (storedState.imageIds?.length &gt; 0) {
+      throw Object.assign(
+        new TypeError(&quot;Visualization state does not support image attachments&quot;),
+        { code: -32602, data: { code: &quot;images_unsupported&quot; } },
+      );
+    }
+    state = storedState;
+    globalThis.openai.widgetState = state;
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: { widgetState: state } },
+      }),
+    );
+    if (statePersistence === &quot;none&quot;) {
+      throw persistenceError();
+    }
+    const id = ++nextStateRequestId;
+    return new Promise((resolve, reject) =&gt; {
+      const timeout = globalThis.setTimeout(() =&gt; {
+        pendingStateWrites.delete(id);
+        reject(persistenceError());
+      }, 30_000);
+      pendingStateWrites.set(id, { resolve, reject, timeout, serializedState });
+      postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+    });
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      setWidgetState,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+      widgetState: state,
+      statePersistence,
+      stateModelContext: &quot;none&quot;,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        hostPort != null ||
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data?.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            } else if (
+              typeof data === &quot;object&quot; &amp;&amp;
+              data?.type === &quot;widget-state-result&quot;
+            ) {
+              /** @type {unknown} */
+              const id = data.id;
+              if (typeof id !== &quot;number&quot;) {
+                return;
+              }
+              const pending = pendingStateWrites.get(id);
+              if (pending != null) {
+                pendingStateWrites.delete(id);
+                globalThis.clearTimeout(pending.timeout);
+                if (data.ok === true) {
+                  pending.resolve();
+                } else {
+                  pending.reject(persistenceError());
+                }
+              }
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      for (const [id, { serializedState }] of pendingStateWrites) {
+        postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+      }
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;div id=&quot;cyber454-hub&quot;&gt;
+  &lt;h2&gt;CYBER 454 · Exam 1 study hub&lt;/h2&gt;
+  &lt;div class=&quot;viz-row text-small&quot;&gt;&lt;span&gt;Tuesday, September 22&lt;/span&gt;&lt;span&gt;Chapters 1–4 only&lt;/span&gt;&lt;span&gt;25 questions · 50 minutes&lt;/span&gt;&lt;/div&gt;
+  &lt;hr&gt;
+  &lt;div class=&quot;viz-controls&quot; id=&quot;study-nav&quot; aria-label=&quot;Study sections&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-view=&quot;plan&quot; aria-pressed=&quot;true&quot;&gt;Study plan&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-view=&quot;read&quot; aria-pressed=&quot;false&quot;&gt;Read&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-view=&quot;cards&quot; aria-pressed=&quot;false&quot;&gt;Flashcards&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-view=&quot;quiz&quot; aria-pressed=&quot;false&quot;&gt;Practice &amp; mock exam&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;chapter-controls&quot; class=&quot;viz-controls&quot; hidden&gt;
+    &lt;label class=&quot;form-label&quot;&gt;Chapter &lt;select id=&quot;chapter-choice&quot; class=&quot;form-select&quot;&gt;&lt;option value=&quot;1&quot;&gt;1 · Introduction to Forensics&lt;/option&gt;&lt;option value=&quot;2&quot;&gt;2 · Computer Crime&lt;/option&gt;&lt;option value=&quot;3&quot;&gt;3 · Methods and Labs&lt;/option&gt;&lt;option value=&quot;4&quot;&gt;4 · Hiding and Scrambling&lt;/option&gt;&lt;option value=&quot;0&quot;&gt;All four chapters&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;study-panel&quot;&gt;&lt;/div&gt;
+  &lt;hr&gt;
+  &lt;div class=&quot;text-small&quot;&gt;Original study aids based on your four chapter PDFs. Practice questions are generated for revision, not actual exam questions. Page numbers refer to PDF pages. Chapter 3 lab concepts are included; separate lab assignments and readings are excluded.&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+#cyber454-hub { color:var(--foreground); overflow-wrap:anywhere; }
+#cyber454-hub #study-panel { margin-top:20px; }
+#cyber454-hub .study-block { margin:20px 0; }
+#cyber454-hub .study-options { display:grid; gap:10px; margin:16px 0; }
+#cyber454-hub .study-note { margin:16px 0; }
+#cyber454-hub .study-note p { margin:8px 0; }
+#cyber454-hub summary { padding:8px 0; }
+#cyber454-hub .study-card { margin:16px 0; }
+#cyber454-hub [hidden] { display:none !important; }
+&lt;/style&gt;
+&lt;script type=&quot;application/json&quot; id=&quot;cyber454-data&quot;&gt;{&quot;chapters&quot;: [&quot;Introduction to Forensics&quot;, &quot;Overview of Computer Crime&quot;, &quot;Forensic Methods and Labs&quot;, &quot;Hiding and Scrambling Information&quot;], &quot;cards&quot;: [[1, &quot;3–7&quot;, &quot;What is the goal of computer forensics?&quot;, &quot;Identify, collect, examine, preserve, analyze, and present digital material so it can support an investigation and be used as evidence. Collection affects admissibility; analysis connects the facts; presentation explains the findings.&quot;], [1, &quot;12–13&quot;, &quot;What makes raw data relevant evidence?&quot;, &quot;Its connection to the investigation and the finding it supports. A random file is not useful evidence merely because it exists. The four listed categories are real (the item itself), documentary (records/documents), testimonial (witness statements), and demonstrative (illustrations or models used to explain evidence).&quot;], [1, &quot;16&quot;, &quot;What is chain of custody?&quot;, &quot;The documented history of who held or transferred an item of evidence, when, and for what purpose. It helps establish that the item presented is the item collected and that its handling can be accounted for.&quot;], [1, &quot;16&quot;, &quot;What are the four general evidence-handling guidelines?&quot;, &quot;Maintain chain of custody; interact with the suspect device as little as possible; create a document trail; secure evidence. Think: preserve the evidence and make your actions explainable.&quot;], [1, &quot;8–10&quot;, &quot;Expert report versus expert testimony?&quot;, &quot;The report records tests, findings, and conclusions and includes the examiner&#x27;s CV. The slides call for thorough, error-free reporting and reputable support for conclusions. Testimony is the examiner&#x27;s spoken evidence; a deposition occurs before trial.&quot;], [1, &quot;9–10&quot;, &quot;Which evidence rules are named in Chapter 1?&quot;, &quot;702: expert testimony; 703: bases of an expert opinion; 704: opinion on an ultimate issue; 705: underlying facts/data; 706: court-appointed experts; 401: relevance. These are course-slide associations, not a full statement of the rules.&quot;], [1, &quot;29–30&quot;, &quot;What factors does the chapter list for the Daubert standard?&quot;, &quot;Empirical testing, peer review, error rate and standards, and general acceptance. The chapter connects these factors to evaluating scientific expert testimony. Memory cue: test, review, error/standards, acceptance.&quot;], [1, &quot;14–15&quot;, &quot;What makes a forensic investigation difficult?&quot;, &quot;Data volume, system complexity, the size and character of the scene, and caseload/resource limits. Analysis may involve storage media, email, networks, internet activity, software, live systems, and mobile devices.&quot;], [1, &quot;18–23&quot;, &quot;What hardware and file-system names should you recognize?&quot;, &quot;Memory and storage; SCSI, IDE, EIDE, PATA, SATA; SSD flash storage versus mechanical HDDs. File systems listed: FAT, NTFS, ReFS, APFS, EXT, and Berkeley Fast File System. A file is stored content; a file system organizes storage.&quot;], [1, &quot;24–27&quot;, &quot;MAC address, IP address, logical port, and URL: how do they differ?&quot;, &quot;MAC: link-layer interface identifier. IP: network-layer address. Logical port: identifies a service/communication endpoint on a host. URL: a resource address. A physical port is a connector, not a TCP/UDP port number.&quot;], [1, &quot;25–27&quot;, &quot;What do ipconfig, ping, and tracert help examine?&quot;, &quot;ipconfig displays local IP configuration; ping tests whether a destination responds to network probes; tracert shows the responding hops along a route. A failed ping alone does not prove the destination is down.&quot;], [1, &quot;28&quot;, &quot;Obscured information versus anti-forensics?&quot;, &quot;Obscuring can have legitimate purposes, such as protecting business information. Anti-forensics deliberately frustrates investigation through destruction, hiding, transformation, or file-system alteration. Encryption alone does not establish criminal intent.&quot;], [1, &quot;31–37&quot;, &quot;Which legal topics need recognition?&quot;, &quot;Review the slides&#x27; names: Privacy Act, PPA, CALEA, ECPA, Computer Security Act, FISA, child protection/privacy laws, Communications Decency Act, Telecommunications Act, Wireless Communications and Public Safety Act, PATRIOT Act, Sarbanes-Oxley, computer/access-device fraud, DMCA, identity theft, and warrants. Learn the instructor&#x27;s associations; this is course review, not current legal guidance.&quot;], [1, &quot;34, 37&quot;, &quot;What are the chapter&#x27;s CALEA, FISA, and warrant associations?&quot;, &quot;CALEA: assistance with lawful interception of communications. FISA: foreign-intelligence surveillance and the FISA court. Warrants: search and seizure, the Fourth Amendment, and reasonable expectations of privacy. Review the original pages for the course wording.&quot;], [1, &quot;3–4&quot;, &quot;What are the seven IT infrastructure domains?&quot;, &quot;User, Workstation, LAN, LAN-to-WAN, WAN, Remote Access, and System/Application. Digital evidence can arise across all seven, so investigation is not limited to a desktop hard drive.&quot;], [2, &quot;3&quot;, &quot;What three roles can a computer play in crime?&quot;, &quot;Target: the system is attacked. Instrument: it is used to commit the act. Evidence repository: it stores relevant records. Example: a laptop used to send fraudulent messages is an instrument and can also hold evidence.&quot;], [2, &quot;6–8, 12&quot;, &quot;How do identity theft, phishing, and dumpster diving connect?&quot;, &quot;Identity theft uses someone else&#x27;s identity, often for economic gain. Phishing tricks people into revealing information. Discarded information can also expose identity details; collecting it is often called dumpster diving.&quot;], [2, &quot;8&quot;, &quot;Phishing, spear phishing, and whaling?&quot;, &quot;Phishing commonly casts a broad net using trusted-looking messages. Spear phishing targets a particular person or group. Whaling is targeted phishing aimed at high-profile or senior individuals.&quot;], [2, &quot;9–11&quot;, &quot;What evidence would you seek in a spyware or phishing case?&quot;, &quot;For spyware, look for monitoring software and where it sends data, such as email attachments or server traffic. For phishing, inspect email and browser history. Spyware can monitor keystrokes or screenshots; its use is not always illegal.&quot;], [2, &quot;14–15&quot;, &quot;SQL injection versus cross-site scripting (XSS)?&quot;, &quot;SQL injection manipulates a database query through input; the slides point to firewall and database logs. XSS inserts script into web content so it executes for visitors; inspect injected scripts and web-server logs. Database query versus browser script is the key contrast.&quot;], [2, &quot;16–18&quot;, &quot;What is the Ophcrack/rainbow-table connection?&quot;, &quot;Ophcrack uses precomputed password-hash information to seek matches to Windows password hashes in the chapter&#x27;s example. The SAM file stores Windows account credential information. A table lookup is not reversing a one-way hash.&quot;], [2, &quot;19–20&quot;, &quot;How do human behavior and credibility affect investigation?&quot;, &quot;The tech-support example exploits a privileged user&#x27;s actions. For cyberstalking, assess possibility, credibility, frequency, and seriousness, then trace communications and examine relevant devices. The person is the target; the computer is the vehicle.&quot;], [2, &quot;23&quot;, &quot;What is the forensic approach to fraud?&quot;, &quot;Fraud seeks financial reward through deception. Trace communications and follow the money. Messages may show the deception; transaction records may show where funds went.&quot;], [2, &quot;24–26&quot;, &quot;What is the TCP handshake, and how does a SYN flood disrupt it?&quot;, &quot;Normal sequence: SYN → SYN/ACK → ACK. In the slides&#x27; SYN-flood example, the attacker sends SYN requests but does not finish the handshake, consuming connection resources and denying service to legitimate users.&quot;], [2, &quot;28&quot;, &quot;What virus categories are listed?&quot;, &quot;Macro, memory-resident, multi-partite, armored, sparse infector, and polymorphic. Know the names and review any definitions supplied in class. Investigators document the malware and look for common exposure across infected machines; finding it does not automatically identify its author.&quot;], [2, &quot;29&quot;, &quot;What distinguishes a logic bomb?&quot;, &quot;A harmful action is triggered when a condition is met, often a date or time. A Trojan horse can carry a logic bomb. The trigger condition is the defining clue.&quot;], [2, &quot;24, 30&quot;, &quot;What are the chapter&#x27;s non-access crime and cyberterrorism examples?&quot;, &quot;The slides group DoS, viruses, and logic bombs under non-access crimes. Cyberterrorism can involve major network or power-grid disruption. The chapter emphasizes that jurisdiction changes and refers cyberterrorism/cyberespionage matters to the FBI.&quot;], [3, &quot;3&quot;, &quot;What four forensic-methodology principles are listed?&quot;, &quot;Minimize handling original data, comply with evidence rules, stay within your expertise, and create an analysis plan. Decide what you need to establish before using tools.&quot;], [3, &quot;4–5&quot;, &quot;What is the basic authentication idea in Rule 901?&quot;, &quot;Support a finding that an item is what you claim it is. The slides mention a knowledgeable witness, comparison with an authenticated specimen, and evidence that a process produces accurate results. Rules 901 and 902 are named for authentication/identification.&quot;], [3, &quot;6–7&quot;, &quot;What does order of volatility mean?&quot;, &quot;Prioritize information likely to disappear or change first. Registers/cache and live memory are more volatile than stored disk data. Consider information lifetime and collect quickly while preserving bit-level information. Do not automatically power off a live system before considering volatile evidence.&quot;], [3, &quot;6&quot;, &quot;What is the slide&#x27;s example order of volatility?&quot;, &quot;Registers/cache → routing tables → ARP cache → process table → kernel statistics/modules → main memory → temporary file systems → secondary memory → router configuration → network topology. This is the chapter&#x27;s example order; understand the principle as well as the list.&quot;], [3, &quot;8&quot;, &quot;Which forensic frameworks are named?&quot;, &quot;DC3 (DoD Cyber Crime Center), DFRWS (Digital Forensic Research Workshop), SWGDE (Scientific Working Group on Digital Evidence), and Purdue&#x27;s event-based investigation framework.&quot;], [3, &quot;9–10&quot;, &quot;Find, preserve, prepare: what happens at each stage?&quot;, &quot;Find: gather evidence and isolate it from contamination. Preserve: handle computers and storage cautiously. Prepare: document the source and establish that evidence has not changed. Also determine when it was created, search thoroughly, and present it clearly.&quot;], [3, &quot;11–12&quot;, &quot;What is file slack?&quot;, &quot;Unused space from a file&#x27;s logical end to the end of its allocated storage unit. A 1 KB file in one 4 KB cluster leaves 3 KB of slack. That space may retain useful remnants. It is not the same as all unallocated space on the disk.&quot;], [3, &quot;13–14&quot;, &quot;Why document methodology as well as findings?&quot;, &quot;A result must be supported by a traceable process. Record evidence processing, maintain chain of custody, and explain findings thoroughly. Another reader should be able to understand how the conclusion follows from the examination.&quot;], [3, &quot;15–16&quot;, &quot;What does the chapter require in a forensic lab?&quot;, &quot;Adequate equipment/storage, redundancy, drive/device compatibility, and suitable connectors. Security includes isolated examination systems/networks, limited physical access, secured doors/windows, and attention to electromagnetic interference. The slide specifically recommends RAID 5.&quot;], [3, &quot;18–19&quot;, &quot;Match 27037, 27041, and 27042 to their focus.&quot;, &quot;27037: identification, collection, acquisition, preservation. 27041: suitability and adequacy of investigative methods. 27042: analysis and interpretation. Memory sequence: collect → choose sound methods → analyze.&quot;], [3, &quot;20–22&quot;, &quot;NIST CFTT, ASCLD, and TEMPEST: which is which?&quot;, &quot;NIST CFTT tests computer-forensic tools. ASCLD is discussed in relation to lab management and accreditation. TEMPEST concerns electromagnetic emissions. These are different from an individual examiner&#x27;s certification.&quot;], [3, &quot;23–28&quot;, &quot;Which forensic tool names should you recognize?&quot;, &quot;EnCase, FTK, OSForensics, Helix, Kali Linux, AnaDisk, CopyQM Plus, The Sleuth Kit, Disk Investigator, and Autopsy. The slides show case viewing, search, and email-analysis screens. A tool&#x27;s output still needs interpretation and documentation.&quot;], [3, &quot;29–30&quot;, &quot;General IT certifications versus forensic certifications?&quot;, &quot;General foundations listed include A+, Network+/CCNA, Security+/CISSP, CEH, and GPEN. Forensic credentials listed include EnCase Certified Examiner, AccessData Certified Examiner, OSForensics, CHFI, and GIAC certifications. Recognize the category and associated tool/organization.&quot;], [4, &quot;3, 18–19&quot;, &quot;Steganography versus encryption?&quot;, &quot;Steganography hides that a message exists. Encryption makes its content unreadable without the appropriate key. You can encrypt a message and then hide it inside an image; the techniques can be combined.&quot;], [4, &quot;4–7&quot;, &quot;How does least-significant-bit steganography work?&quot;, &quot;Replace low-value bits in a carrier with hidden data. Changing 11111111 (255) to 11111110 (254) changes the numeric value by only one. Such a small color change may be difficult to notice visually.&quot;], [4, &quot;7, 9&quot;, &quot;Payload, carrier, channel, and steganophony?&quot;, &quot;Payload: hidden information. Carrier: the file or medium holding it, such as an image. Channel: the path/medium used to communicate it. Steganophony hides information in sound; video steganography uses video.&quot;], [4, &quot;10–17&quot;, &quot;What is steganalysis, and which hiding tools are named?&quot;, &quot;Steganalysis looks for hidden content; the slides mention close-color pairs for LSB detection. Invisible Secrets, MP3Stego, and Deep Sound are named hiding tools. Detecting a likely hidden payload is different from recovering its contents.&quot;], [4, &quot;20–21&quot;, &quot;Plaintext, ciphertext, and Caesar cipher?&quot;, &quot;Plaintext is the original readable message; ciphertext is the encrypted result. Caesar shifts each letter by a fixed amount. With a +3 shift, A CAT becomes D FDW. Decryption shifts back by 3.&quot;], [4, &quot;22–23&quot;, &quot;Atbash, ROT13, and Scytale?&quot;, &quot;Atbash reverses the alphabet (A↔Z, B↔Y). ROT13 shifts by 13; applying it twice restores the original letters. Scytale uses a strip wrapped around a matching cylinder and illustrates rearrangement of character positions.&quot;], [4, &quot;24–27&quot;, &quot;What are the Playfair cipher&#x27;s core features?&quot;, &quot;Playfair encrypts letter pairs using a 5x5 keyword grid (the slides combine I/J). To encrypt: split into pairs, separating repeated letters within a pair and padding a final single letter with a filler, commonly X; same row -&gt; take the letter to the right, wrapping; same column -&gt; take the letter below, wrapping; otherwise -&gt; use the other rectangle corners, keeping each letter in its original row. In the slide grid, the first row is F A L C O: FA encrypts to AL. A and T form a rectangle and encrypt to C and R. Decryption reverses row/column movement.&quot;], [4, &quot;28–30&quot;, &quot;How do multialphabet substitution, Vigenère, and Enigma connect?&quot;, &quot;They use changing substitution alphabets rather than one fixed alphabet. Vigenère uses a repeated keyword pattern; the chapter displays its table. Enigma used electromechanical rotors, changing the substitution as typing progressed.&quot;], [4, &quot;31–32, 41&quot;, &quot;Symmetric versus asymmetric cryptography?&quot;, &quot;Symmetric encryption/decryption uses the same secret key for a communication direction. Asymmetric cryptography uses a related pair of different keys. Having separate symmetric keys in two directions does not make a system asymmetric.&quot;], [4, &quot;33&quot;, &quot;Substitution versus transposition?&quot;, &quot;Substitution changes the symbols/values. Transposition changes their positions. Combining the operations makes patterns harder to exploit. Memory cue: substitute = replace; transpose = rearrange.&quot;], [4, &quot;34&quot;, &quot;Block cipher versus stream cipher?&quot;, &quot;A block cipher processes fixed-size groups of bits. A stream cipher processes a stream incrementally; the slides describe one bit at a time. Do not confuse block size with key size.&quot;], [4, &quot;35–37&quot;, &quot;What numbers matter for DES and 3DES?&quot;, &quot;DES: 64-bit block, 56-bit effective key, 16 rounds. The chapter describes 3DES as applying DES three times with three different keys. Three passes do not turn the block size into 192 bits.&quot;], [4, &quot;38&quot;, &quot;What are AES key sizes and block size?&quot;, &quot;Keys: 128, 192, or 256 bits. Block size: always 128 bits for AES. AES-256 describes the key length, not a 256-bit block. The chapter also names Rijndael.&quot;], [4, &quot;39&quot;, &quot;What happens in AES rounds?&quot;, &quot;After key expansion: initial AddRoundKey; main rounds use SubBytes, ShiftRows, MixColumns, AddRoundKey; final round uses SubBytes, ShiftRows, AddRoundKey. The final round omits MixColumns.&quot;], [4, &quot;40&quot;, &quot;What three hash properties are listed?&quot;, &quot;One-way, fixed-length output for a given algorithm regardless of input length, and collision resistance. Hashing is not reversible encryption. Collision resistance means finding matching outputs for different inputs should be difficult, not mathematically impossible.&quot;], [4, &quot;42–43&quot;, &quot;RSA versus Diffie–Hellman?&quot;, &quot;RSA is asymmetric and relies on the difficulty of factoring large integers. Diffie–Hellman lets two parties establish a shared secret over an insecure channel. Key agreement is its role; it is not itself the message-encryption step.&quot;], [4, &quot;44–46&quot;, &quot;Frequency analysis versus Kasiski examination?&quot;, &quot;Frequency analysis exploits uneven letter frequencies in classic ciphers. Kasiski looks for repeated ciphertext strings to infer a repeating keyword&#x27;s length; the ciphertext can then be split into columns for frequency analysis.&quot;], [4, &quot;44, 47&quot;, &quot;Known-plaintext, chosen-plaintext, and ciphertext-only attacks?&quot;, &quot;Known-plaintext: some original messages and corresponding ciphertexts are available. Chosen-plaintext: the attacker can choose inputs and obtain their ciphertexts. Ciphertext-only: only encrypted messages are available. Ask what information or access the attacker has.&quot;], [4, &quot;44, 47–49&quot;, &quot;Related-key attacks, rainbow tables, and John the Ripper?&quot;, &quot;Related-key attacks exploit relationships between keys. Rainbow tables precompute information used in password-hash matching. The slides associate Ophcrack with rainbow tables and John the Ripper with word-list password attempts. Guessing then checking hashes does not decrypt a hash.&quot;], [4, &quot;50&quot;, &quot;Why does the chapter discuss quantum computing?&quot;, &quot;Sufficiently capable quantum computers threaten the factoring and discrete-log problems used by RSA and Diffie–Hellman. Treat the slide as explaining a cryptographic threat model, not as a claim that today&#x27;s systems can already be broken at will.&quot;]], &quot;quiz&quot;: [[1, &quot;16&quot;, &quot;An evidence drive changes hands between examiners. What most directly records that transfer?&quot;, [&quot;Chain-of-custody record&quot;, &quot;Network route table&quot;, &quot;Cipher key schedule&quot;, &quot;Virus signature list&quot;], 0, &quot;Chain of custody accounts for possession and transfer of evidence.&quot;], [1, &quot;12&quot;, &quot;Which makes a file useful as evidence?&quot;, [&quot;It is the largest file&quot;, &quot;It supports a relevant finding in the investigation&quot;, &quot;It is stored on an SSD&quot;, &quot;It has an unusual extension&quot;], 1, &quot;Relevance to the case and a finding matters, not size or storage type.&quot;], [1, &quot;29–30&quot;, &quot;Which set matches the chapter&#x27;s Daubert factors?&quot;, [&quot;Speed, cost, popularity, file size&quot;, &quot;Encryption, compression, deletion, hashing&quot;, &quot;Testing, peer review, error rate/standards, general acceptance&quot;, &quot;IP, MAC, URL, port&quot;], 2, &quot;These are the four factor groups shown on Chapter 1 page 30.&quot;], [1, &quot;8–9&quot;, &quot;A document lists an examiner&#x27;s tests, findings, conclusions, and CV. What is it?&quot;, [&quot;A deposition&quot;, &quot;An expert report&quot;, &quot;A warrant&quot;, &quot;A packet capture&quot;], 1, &quot;An expert report is the written account. A deposition is pretrial testimony.&quot;], [1, &quot;9–10&quot;, &quot;Which rule is associated with expert testimony in the chapter?&quot;, [&quot;Rule 401&quot;, &quot;Rule 901&quot;, &quot;Rule 702&quot;, &quot;Rule 902&quot;], 2, &quot;The chapter links 702 to expert testimony and 401 to relevance; Chapter 3 discusses authentication under 901/902.&quot;], [1, &quot;24–27&quot;, &quot;Which utility is used to examine the responding hops toward a destination?&quot;, [&quot;ipconfig&quot;, &quot;tracert&quot;, &quot;A file hash&quot;, &quot;A keyword search&quot;], 1, &quot;tracert examines the route; ipconfig reports local IP configuration.&quot;], [1, &quot;24&quot;, &quot;Which item identifies a service endpoint rather than a physical connector?&quot;, [&quot;SATA connector&quot;, &quot;USB socket&quot;, &quot;Logical port number&quot;, &quot;Drive bay&quot;], 2, &quot;Logical ports belong to network communications. They are not physical sockets.&quot;], [1, &quot;28&quot;, &quot;A business encrypts confidential documents. What can you conclude from encryption alone?&quot;, [&quot;The owner committed a crime&quot;, &quot;The files contain no evidence&quot;, &quot;A warrant is unnecessary&quot;, &quot;The content is obscured; intent needs more evidence&quot;], 3, &quot;The chapter explicitly notes legitimate business uses for obscured information.&quot;], [1, &quot;34&quot;, &quot;Which topic is paired with foreign-intelligence surveillance and a specialized court?&quot;, [&quot;FISA&quot;, &quot;FAT&quot;, &quot;FTK&quot;, &quot;AES&quot;], 0, &quot;This is the association shown on Chapter 1 page 34.&quot;], [1, &quot;14, 16&quot;, &quot;An examiner has a large caseload and very complex devices. What is the best response among these choices?&quot;, [&quot;Skip handling records&quot;, &quot;Plan and prioritize while maintaining preservation and documentation&quot;, &quot;Change originals to make searching easier&quot;, &quot;Assume all files are relevant&quot;], 1, &quot;Resource limitations do not remove the need for documented, careful handling.&quot;], [2, &quot;3&quot;, &quot;A computer is used to send fraudulent investment messages. Which role best describes that use?&quot;, [&quot;Target only&quot;, &quot;Instrument of the crime&quot;, &quot;Lab accreditation authority&quot;, &quot;Physical warrant&quot;], 1, &quot;It is being used to carry out the act. It may also store relevant evidence.&quot;], [2, &quot;8&quot;, &quot;A deceptive message is tailored specifically to one company&#x27;s finance director. Which category best fits?&quot;, [&quot;Random broad phishing only&quot;, &quot;SYN flood&quot;, &quot;Targeted phishing / whaling&quot;, &quot;File slack&quot;], 2, &quot;Tailoring to a senior/high-profile target distinguishes this from broad phishing.&quot;], [2, &quot;11&quot;, &quot;Spyware is found on a victim&#x27;s device. What is a useful next evidence lead?&quot;, [&quot;Where it sends the captured data&quot;, &quot;Whether the desktop background changed&quot;, &quot;Only the screen size&quot;, &quot;The brand of keyboard&quot;], 0, &quot;The slides point to outgoing email/attachments or traffic to an attacker-accessible server.&quot;], [2, &quot;14–15&quot;, &quot;Input alters the logic of a backend database query. Which technique does this describe?&quot;, [&quot;Steganography&quot;, &quot;SQL injection&quot;, &quot;XSS&quot;, &quot;ROT13&quot;], 1, &quot;SQL injection changes database-query behavior. XSS runs injected script in a browser context.&quot;], [2, &quot;15&quot;, &quot;A malicious script in a product review runs when other people read the page. What is this?&quot;, [&quot;File slack&quot;, &quot;A logic bomb based only on date&quot;, &quot;Cross-site scripting&quot;, &quot;Disk imaging&quot;], 2, &quot;The chapter uses posted web content to illustrate XSS.&quot;], [2, &quot;23&quot;, &quot;Which investigative pair fits a financial fraud case?&quot;, [&quot;Trace communications and follow money&quot;, &quot;Ignore messages and inspect colors&quot;, &quot;Delete duplicates and discard originals&quot;, &quot;Check only CPU temperature&quot;], 0, &quot;Messages reveal the deception and financial records help trace the proceeds.&quot;], [2, &quot;25&quot;, &quot;What is the normal TCP three-way handshake?&quot;, [&quot;ACK → SYN → FIN&quot;, &quot;SYN → SYN/ACK → ACK&quot;, &quot;SYN → SYN → SYN&quot;, &quot;FIN → ACK → RST&quot;], 1, &quot;The client starts with SYN, the server replies SYN/ACK, and the client completes with ACK.&quot;], [2, &quot;26&quot;, &quot;Many connection requests arrive without the final handshake acknowledgment. Which attack fits?&quot;, [&quot;SYN flood&quot;, &quot;Atbash&quot;, &quot;Kasiski examination&quot;, &quot;Identity-document shredding&quot;], 0, &quot;The unfinished connections consume resources that legitimate clients need.&quot;], [2, &quot;29&quot;, &quot;Malware deletes records when a specific date arrives. What feature identifies it as a logic bomb?&quot;, [&quot;A 128-bit block&quot;, &quot;A condition-triggered harmful action&quot;, &quot;Its use of a MAC address&quot;, &quot;Its digital signature&quot;], 1, &quot;The triggering condition, often date/time, distinguishes the logic bomb.&quot;], [2, &quot;20, 28&quot;, &quot;Why is finding malware not the same as identifying its author?&quot;, [&quot;Malware never leaves evidence&quot;, &quot;All malware authors use their real names&quot;, &quot;Presence establishes infection, but attribution needs further evidence&quot;, &quot;The infected user must have written it&quot;], 2, &quot;The slides distinguish locating malware from tracing it back to its creator.&quot;], [3, &quot;3&quot;, &quot;Which approach best follows the chapter&#x27;s methodology?&quot;, [&quot;Try every tool on the original first&quot;, &quot;Plan the analysis and minimize handling originals&quot;, &quot;Skip evidence rules when busy&quot;, &quot;Work outside your expertise without documenting it&quot;], 1, &quot;The four principles include planning, minimal handling, evidence rules, and staying within expertise.&quot;], [3, &quot;4–5&quot;, &quot;What is authentication trying to establish?&quot;, [&quot;The item is what the proponent claims&quot;, &quot;Every witness agrees&quot;, &quot;The device is expensive&quot;, &quot;The report has no pictures&quot;], 0, &quot;Rule 901 is presented as requiring support for the claimed identity of the evidence.&quot;], [3, &quot;6–7&quot;, &quot;Why might volatile data require attention before a disk examination?&quot;, [&quot;It is always larger&quot;, &quot;It cannot be relevant&quot;, &quot;It may disappear or change quickly&quot;, &quot;It never needs documentation&quot;], 2, &quot;Information lifetime drives order-of-volatility decisions.&quot;], [3, &quot;6&quot;, &quot;Which appears first in the slide&#x27;s example order of volatility?&quot;, [&quot;Secondary memory&quot;, &quot;Network topology&quot;, &quot;Router configuration&quot;, &quot;Registers and cache&quot;], 3, &quot;The example begins with registers/cache and ends with less volatile items.&quot;], [3, &quot;12&quot;, &quot;A 1 KB file occupies one 4 KB cluster. How much slack remains in that cluster?&quot;, [&quot;1 KB&quot;, &quot;3 KB&quot;, &quot;4 KB&quot;, &quot;5 KB&quot;], 1, &quot;4 minus 1 equals 3 KB. Slack lies after the file&#x27;s logical end in its allocation.&quot;], [3, &quot;9, 13&quot;, &quot;Which action supports preparation of evidence?&quot;, [&quot;Remove the source information&quot;, &quot;Document its source and establish it has not changed&quot;, &quot;Replace the original with a summary only&quot;, &quot;Avoid recording tool actions&quot;], 1, &quot;The prepare stage specifically connects documentation to the evidence source and unchanged state.&quot;], [3, &quot;16&quot;, &quot;Which lab arrangement matches the chapter?&quot;, [&quot;Examination machines share the everyday internet network&quot;, &quot;Unrestricted visitor access&quot;, &quot;An isolated examination network with limited physical access&quot;, &quot;Only a strong Wi-Fi password is needed&quot;], 2, &quot;The chapter emphasizes network separation and physical security.&quot;], [3, &quot;18–19&quot;, &quot;Which standard focuses on analysis and interpretation of digital evidence?&quot;, [&quot;27042&quot;, &quot;27037&quot;, &quot;27041&quot;, &quot;TCP&quot;], 0, &quot;27042 concerns analysis/interpretation; 27037 concerns collection/preservation; 27041 concerns methods.&quot;], [3, &quot;20&quot;, &quot;Which program tests computer-forensic tools?&quot;, [&quot;NIST CFTT&quot;, &quot;ROT13&quot;, &quot;FISA&quot;, &quot;SYN/ACK&quot;], 0, &quot;CFTT stands for Computer Forensics Tool Testing.&quot;], [3, &quot;13–14&quot;, &quot;An examiner states a conclusion but records no method. What is the main weakness?&quot;, [&quot;The conclusion cannot be evaluated against a documented process&quot;, &quot;The report must use encryption&quot;, &quot;All reports must be screenshots&quot;, &quot;Tool names alone prove the result&quot;], 0, &quot;Documentation connects the result to the processing and reasoning that produced it.&quot;], [4, &quot;18–19&quot;, &quot;Which comparison is correct?&quot;, [&quot;Encryption hides existence; steganography scrambles content&quot;, &quot;Steganography hides existence; encryption obscures content&quot;, &quot;Hashing and encryption are identical&quot;, &quot;Steganography always requires a public key&quot;], 1, &quot;Existence versus readability is the key contrast.&quot;], [4, &quot;4&quot;, &quot;Changing 11111111 to 11111110 changes its decimal value by how much?&quot;, [&quot;1&quot;, &quot;2&quot;, &quot;8&quot;, &quot;128&quot;], 0, &quot;The least significant bit has place value 1: 255 becomes 254.&quot;], [4, &quot;7&quot;, &quot;A secret text file is hidden in a photograph. What is the photograph?&quot;, [&quot;The payload&quot;, &quot;The private key&quot;, &quot;The carrier&quot;, &quot;The plaintext attack&quot;], 2, &quot;The photograph carries the hidden information; the secret text is the payload.&quot;], [4, &quot;20–21&quot;, &quot;Encrypt CAT using a Caesar shift of +3.&quot;, [&quot;FDW&quot;, &quot;ECV&quot;, &quot;ZXR&quot;, &quot;PNG&quot;], 0, &quot;C→F, A→D, T→W. Each letter shifts three positions forward.&quot;], [4, &quot;22&quot;, &quot;What happens if ROT13 is applied twice to alphabetic text?&quot;, [&quot;It becomes an AES key&quot;, &quot;It restores the original letters&quot;, &quot;It changes the alphabet length&quot;, &quot;It creates a hash&quot;], 1, &quot;13 + 13 = 26, a full cycle of the alphabet.&quot;], [4, &quot;24–27&quot;, &quot;Which cipher uses digraphs and a 5×5 grid?&quot;, [&quot;DES&quot;, &quot;Caesar&quot;, &quot;Playfair&quot;, &quot;RSA&quot;], 2, &quot;Playfair encrypts pairs of letters using a keyword-based grid.&quot;], [4, &quot;31–32&quot;, &quot;A system uses one shared key in each direction, with a different shared key for the return direction. Is it necessarily asymmetric?&quot;, [&quot;Yes, any two keys mean asymmetric&quot;, &quot;No, encryption/decryption in each direction still use the same key&quot;, &quot;Yes, because it has a network&quot;, &quot;No, because it cannot encrypt&quot;], 1, &quot;Count the relationship between encryption and decryption keys for each direction, not just total keys.&quot;], [4, &quot;36, 38&quot;, &quot;Which correctly compares DES and AES block sizes?&quot;, [&quot;DES 56; AES 256&quot;, &quot;DES 64; AES 128&quot;, &quot;DES 128; AES 64&quot;, &quot;Both depend on message length&quot;], 1, &quot;DES has 64-bit blocks; AES always has 128-bit blocks. 56 and 256 can describe key lengths.&quot;], [4, &quot;38&quot;, &quot;What does 256 identify in AES-256?&quot;, [&quot;Block size&quot;, &quot;Number of messages&quot;, &quot;Key size in bits&quot;, &quot;Number of columns&quot;], 2, &quot;AES supports a 256-bit key but still processes 128-bit blocks.&quot;], [4, &quot;39&quot;, &quot;Which operation is omitted from the AES final round?&quot;, [&quot;SubBytes&quot;, &quot;ShiftRows&quot;, &quot;AddRoundKey&quot;, &quot;MixColumns&quot;], 3, &quot;The final round lists SubBytes, ShiftRows, and AddRoundKey.&quot;], [4, &quot;40&quot;, &quot;Which statement about cryptographic hashing is correct?&quot;, [&quot;A decryption key recovers the input&quot;, &quot;Longer input always means longer output&quot;, &quot;It is one-way with fixed-length output for the chosen algorithm&quot;, &quot;Collisions are mathematically impossible&quot;], 2, &quot;Collision resistance is computational difficulty, not the impossibility of a collision.&quot;], [4, &quot;42–43&quot;, &quot;Two parties establish a shared secret over an insecure channel. Which named protocol fits?&quot;, [&quot;Diffie–Hellman&quot;, &quot;ROT13&quot;, &quot;Scytale&quot;, &quot;File slack&quot;], 0, &quot;Diffie–Hellman is key agreement. RSA is the chapter&#x27;s factoring-based asymmetric example.&quot;], [4, &quot;46&quot;, &quot;Kasiski examination primarily helps infer what?&quot;, [&quot;A file&#x27;s allocation size&quot;, &quot;The repeating keyword length&quot;, &quot;The physical disk connector&quot;, &quot;The examiner&#x27;s certification&quot;], 1, &quot;Repeated ciphertext strings provide clues to the keyword period, then columns can be analyzed.&quot;], [4, &quot;47&quot;, &quot;An attacker chooses messages and obtains their encrypted versions. Which attack model is this?&quot;, [&quot;Ciphertext-only&quot;, &quot;Known-plaintext only&quot;, &quot;Chosen-plaintext&quot;, &quot;Physical transposition&quot;], 2, &quot;Choosing the inputs distinguishes chosen-plaintext from merely knowing existing message/ciphertext pairs.&quot;], [4, &quot;48–49&quot;, &quot;Why doesn&#x27;t password guessing against hashes violate the one-way property?&quot;, [&quot;Each guess is hashed and compared; the hash is not decrypted&quot;, &quot;The hash becomes reversible after three guesses&quot;, &quot;Rainbow tables contain every possible password&quot;, &quot;Hashes are really ciphertext&quot;], 0, &quot;Checking candidates is different from reversing the hash function.&quot;], [4, &quot;33, 50&quot;, &quot;Which statement correctly matches a concept?&quot;, [&quot;Transposition replaces symbols without moving them&quot;, &quot;Substitution rearranges only positions&quot;, &quot;RSA is associated with factoring difficulty&quot;, &quot;Diffie–Hellman is a file system&quot;], 2, &quot;RSA is associated with factoring. Substitution replaces values; transposition rearranges positions.&quot;]]}&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const root = document.getElementById(&#x27;cyber454-hub&#x27;);
+  const data = JSON.parse(document.getElementById(&#x27;cyber454-data&#x27;).textContent);
+  const panel = root.querySelector(&#x27;#study-panel&#x27;);
+  const chapterChoice = root.querySelector(&#x27;#chapter-choice&#x27;);
+  const esc = value =&gt; String(value).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g, c =&gt; ({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));
+  const initial = () =&gt; ({version:1,view:&#x27;plan&#x27;,chapter:1,marks:{},read:[],checks:[],deckMode:&#x27;all&#x27;,cardIndex:0,quiz:null,lastResult:null});
+  let state = initial();
+  let revealed = false;
+  let timer;
+  const restore = saved =&gt; {
+    const s = saved?.privateContent;
+    if (s?.version === 1) state = {...initial(), ...s};
+  };
+  restore(window.openai?.widgetState);
+  const save = () =&gt; {
+    const summary = {course:&#x27;CYBER 454&#x27;,scope:&#x27;Chapters 1–4 only&#x27;,chapter:state.chapter,known:Object.values(state.marks).filter(x=&gt;x===&#x27;known&#x27;).length,reviewAgain:Object.values(state.marks).filter(x=&gt;x===&#x27;again&#x27;).length,readChapters:state.read,lastResult:state.lastResult};
+    try { Promise.resolve(window.openai?.setWidgetState({modelContent:summary,privateContent:state})).catch(()=&gt;{}); } catch (_) {}
+  };
+  window.addEventListener(&#x27;openai:set_globals&#x27;, e =&gt; {
+    if (e.detail?.globals?.widgetState) {restore(e.detail.globals.widgetState); render();}
+  });
+  function button(label, action, primary=false, extra=&#x27;&#x27;) { return `&lt;button type=&quot;button&quot; class=&quot;btn${primary?&#x27; btn-primary&#x27;:&#x27;&#x27;}&quot; data-action=&quot;${action}&quot; ${extra}&gt;${label}&lt;/button&gt;`; }
+  function source(ch,p) { return `&lt;div class=&quot;text-small&quot;&gt;Chapter ${ch} · PDF p. ${esc(p)}&lt;/div&gt;`; }
+  function shuffle(arr) { const a=[...arr]; for(let i=a.length-1;i&gt;0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+  function cardIds(){return data.cards.map((_,i)=&gt;i).filter(i=&gt;(!state.chapter||data.cards[i][0]===state.chapter)&amp;&amp;(state.deckMode!==&#x27;again&#x27;||state.marks[i]===&#x27;again&#x27;));}
+  function render(){
+    clearInterval(timer);
+    root.querySelectorAll(&#x27;[data-view]&#x27;).forEach(b=&gt;b.setAttribute(&#x27;aria-pressed&#x27;,String(b.dataset.view===state.view)));
+    root.querySelector(&#x27;#chapter-controls&#x27;).hidden=state.view===&#x27;plan&#x27;||(state.view===&#x27;quiz&#x27;&amp;&amp;!!state.quiz);
+    chapterChoice.value=String(state.chapter);
+    if(state.view===&#x27;plan&#x27;) renderPlan();
+    if(state.view===&#x27;read&#x27;) renderRead();
+    if(state.view===&#x27;cards&#x27;) renderCards();
+    if(state.view===&#x27;quiz&#x27;) renderQuiz();
+  }
+  function renderPlan(){
+    const tasks=[
+      [&#x27;Start here · 15–20 minutes&#x27;,&#x27;Take a mixed practice set without notes. Use mistakes to decide which topics deserve more time.&#x27;],
+      [&#x27;Before Tuesday · Chapters 1 and 2 · 70 minutes&#x27;,&#x27;Read Chapter 1 (40 min): evidence, custody, reports, rules, Daubert. Then Chapter 2 (30 min): identify each crime and where to look for evidence. After each chapter, close the notes and answer its cards aloud.&#x27;],
+      [&#x27;Before Tuesday · Chapter 3 · 40 minutes&#x27;,&#x27;Practice evidence handling, volatility, slack-space calculations, lab security, and standards/tool matching. Explain why each step protects evidence.&#x27;],
+      [&#x27;Before Tuesday · Chapter 4 · 60 minutes&#x27;,&#x27;Compare hiding, encryption, and hashing. Practice Caesar/ROT13; study the Playfair figures in your PDF. Recall DES/AES numbers, RSA versus Diffie–Hellman, and attack models.&#x27;],
+      [&#x27;Monday evening · 50 + 25 minutes&#x27;,&#x27;Take the 25-question mock exam with notes closed. Then spend 25 minutes reviewing wrong and unanswered questions and the linked chapter pages. Aim for at least 80% as a study target, not a prediction of your exam grade.&#x27;],
+      [&#x27;Tuesday · 30–45 minutes&#x27;,&#x27;Use Review again cards, explain key distinctions aloud, and do a short practice set. Check LockDown Browser before the exam. The screenshot shows availability 1:35–5:00 p.m.; start early enough to use the full 50 minutes before closing.&#x27;]
+    ];
+    panel.innerHTML=`&lt;h3&gt;Your route to Tuesday&lt;/h3&gt;&lt;p&gt;Use the loop: read a short section → recall it without looking → practice → revisit mistakes. Break longer blocks into 25 minutes of focus and a short break. If time is tight, prioritize your mistakes and the comparisons below.&lt;/p&gt;
+    &lt;div class=&quot;viz-row&quot;&gt;${button(&#x27;Start mixed practice&#x27;,&#x27;mixed&#x27;,true)}${button(&#x27;Read Chapter 1&#x27;,&#x27;read-first&#x27;)}&lt;/div&gt;
+    ${tasks.map((t,i)=&gt;`&lt;div class=&quot;study-block&quot;&gt;&lt;label class=&quot;form-check&quot;&gt;&lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; data-check=&quot;${i}&quot; ${state.checks.includes(i)?&#x27;checked&#x27;:&#x27;&#x27;}&gt;&lt;span class=&quot;form-check-label&quot;&gt;${t[0]}&lt;/span&gt;&lt;/label&gt;&lt;p&gt;${t[1]}&lt;/p&gt;&lt;/div&gt;`).join(&#x27;&#x27;)}
+    &lt;h3&gt;Explain these without notes&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Chain of custody versus authentication; evidence versus raw data.&lt;/li&gt;&lt;li&gt;SQL injection versus XSS; phishing versus spyware; a virus versus a logic bomb.&lt;/li&gt;&lt;li&gt;Volatile data versus persistent storage; file slack versus unallocated space.&lt;/li&gt;&lt;li&gt;Steganography versus encryption versus hashing.&lt;/li&gt;&lt;li&gt;Symmetric versus asymmetric; block size versus key size; RSA versus Diffie–Hellman.&lt;/li&gt;&lt;li&gt;Known-plaintext versus chosen-plaintext versus ciphertext-only.&lt;/li&gt;&lt;/ul&gt;
+    &lt;p class=&quot;text-small&quot;&gt;Suggested study order and time allocations are recommendations based on the chapter content, not confirmed instructor weighting. The actual exam&#x27;s question format has not been provided.&lt;/p&gt;`;
+  }
+  function renderRead(){
+    const chapters=state.chapter?[state.chapter]:[1,2,3,4];
+    panel.innerHTML=chapters.map(ch=&gt;`&lt;section class=&quot;study-block&quot;&gt;&lt;h3&gt;Chapter ${ch} · ${esc(data.chapters[ch-1])}&lt;/h3&gt;
+    ${data.cards.filter(c=&gt;c[0]===ch).map(c=&gt;`&lt;article class=&quot;study-note&quot;&gt;&lt;h3&gt;${esc(c[2])}&lt;/h3&gt;&lt;p&gt;${esc(c[3])}&lt;/p&gt;${source(ch,c[1])}&lt;/article&gt;`).join(&#x27;&#x27;)}
+    &lt;label class=&quot;form-check&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;form-check-input&quot; data-read=&quot;${ch}&quot; ${state.read.includes(ch)?&#x27;checked&#x27;:&#x27;&#x27;}&gt;&lt;span class=&quot;form-check-label&quot;&gt;I reviewed Chapter ${ch} and can explain its main ideas&lt;/span&gt;&lt;/label&gt;&lt;/section&gt;`).join(&#x27;&lt;hr&gt;&#x27;);
+  }
+  function renderCards(){
+    const ids=cardIds();
+    state.cardIndex=Math.max(0,Math.min(state.cardIndex,Math.max(0,ids.length-1)));
+    const known=Object.values(state.marks).filter(v=&gt;v===&#x27;known&#x27;).length;
+    panel.innerHTML=`&lt;div class=&quot;viz-controls&quot;&gt;&lt;label class=&quot;form-label&quot;&gt;Deck &lt;select id=&quot;deck-mode&quot; class=&quot;form-select&quot;&gt;&lt;option value=&quot;all&quot;&gt;All cards&lt;/option&gt;&lt;option value=&quot;again&quot;&gt;Review again&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;&lt;span&gt;${known} / ${data.cards.length} marked known overall&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;card-area&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;`;
+    root.querySelector(&#x27;#deck-mode&#x27;).value=state.deckMode;
+    const area=root.querySelector(&#x27;#card-area&#x27;);
+    if(!ids.length){area.innerHTML=&#x27;&lt;p&gt;No cards in this review pile yet. Reveal a card in All cards, then choose Review again when you need another attempt.&lt;/p&gt;&#x27;;return;}
+    const id=ids[state.cardIndex], c=data.cards[id];
+    area.innerHTML=`&lt;div class=&quot;study-card card&quot;&gt;&lt;div class=&quot;text-small&quot;&gt;Card ${state.cardIndex+1} of ${ids.length} · ${state.marks[id]===&#x27;known&#x27;?&#x27;Marked known&#x27;:state.marks[id]===&#x27;again&#x27;?&#x27;Review again&#x27;:&#x27;Not rated&#x27;}&lt;/div&gt;&lt;h3&gt;${esc(c[2])}&lt;/h3&gt;${revealed?`&lt;p&gt;${esc(c[3])}&lt;/p&gt;${source(c[0],c[1])}`:&#x27;&lt;p&gt;Say your answer aloud before revealing it.&lt;/p&gt;&#x27;}&lt;/div&gt;
+    &lt;div class=&quot;viz-row&quot;&gt;${revealed?button(&#x27;Review again&#x27;,&#x27;again&#x27;)+button(&#x27;I know this&#x27;,&#x27;known&#x27;,true):button(&#x27;Reveal answer&#x27;,&#x27;reveal&#x27;,true)}${button(&#x27;Previous&#x27;,&#x27;prev-card&#x27;,false,state.cardIndex===0?&#x27;disabled&#x27;:&#x27;&#x27;)}${button(&#x27;Next&#x27;,&#x27;next-card&#x27;,false,state.cardIndex===ids.length-1?&#x27;disabled&#x27;:&#x27;&#x27;)}&lt;/div&gt;`;
+  }
+  function startQuiz(mode){
+    let ids;
+    if(mode===&#x27;exam&#x27;) ids=shuffle([1,2,3,4].flatMap(ch=&gt;shuffle(data.quiz.map((q,i)=&gt;q[0]===ch?i:-1).filter(i=&gt;i&gt;=0)).slice(0,ch===4?7:6)));
+    else ids=shuffle(data.quiz.map((q,i)=&gt;(!state.chapter||q[0]===state.chapter)?i:-1).filter(i=&gt;i&gt;=0)).slice(0,10);
+    state.quiz={mode,ids,orders:ids.map(i=&gt;shuffle(data.quiz[i][3].map((_,j)=&gt;j))),answers:{},submitted:{},index:0,done:false,deadline:mode===&#x27;exam&#x27;?Date.now()+50*60*1000:null};
+    save();render();
+  }
+  function finish(){
+    const q=state.quiz;if(!q||q.done)return;
+    q.done=true;
+    const correct=q.ids.filter(i=&gt;q.answers[i]===data.quiz[i][4]).length;
+    state.lastResult={mode:q.mode,correct,total:q.ids.length,percent:Math.round(correct/q.ids.length*100)};
+    save();render();
+  }
+  function renderQuiz(){
+    const q=state.quiz;
+    if(!q){panel.innerHTML=`&lt;h3&gt;Practice or simulate exam timing&lt;/h3&gt;&lt;p&gt;Practice gives feedback after each answer. The mock exam mixes all four chapters and waits until submission to show explanations. Its 25 questions and 50-minute limit match your screenshot; the multiple-choice format here is for practice.&lt;/p&gt;&lt;div class=&quot;viz-row&quot;&gt;${button(&#x27;10-question practice&#x27;,&#x27;practice&#x27;,true)}${button(&#x27;25-question mock · 50 min&#x27;,&#x27;exam&#x27;)}&lt;/div&gt;&lt;p class=&quot;text-small&quot;&gt;Practice uses the chapter selected above. Mock exams always use all four chapters: 6 each from Chapters 1–3 and 7 from Chapter 4. Questions are sampled from a ${data.quiz.length}-question bank, so retakes can repeat.&lt;/p&gt;${state.lastResult?`&lt;p&gt;Last completed set: ${state.lastResult.correct}/${state.lastResult.total} (${state.lastResult.percent}%).&lt;/p&gt;`:&#x27;&#x27;}`;return;}
+    if(q.done){renderResults();return;}
+    if(q.deadline&amp;&amp;Date.now()&gt;=q.deadline){finish();return;}
+    const id=q.ids[q.index], item=data.quiz[id], selected=q.answers[id];
+    const checked=!!q.submitted[id];
+    const answered=Object.keys(q.answers).length;
+    panel.innerHTML=`&lt;div class=&quot;viz-row&quot;&gt;&lt;span&gt;${q.mode===&#x27;exam&#x27;?&#x27;Mock exam&#x27;:&#x27;Practice&#x27;} · Question ${q.index+1}/${q.ids.length}&lt;/span&gt;&lt;span&gt;${answered} answered&lt;/span&gt;${q.deadline?&#x27;&lt;span id=&quot;exam-clock&quot; class=&quot;tabular-nums&quot; role=&quot;timer&quot;&gt;&lt;/span&gt;&#x27;:&#x27;&#x27;}&lt;/div&gt;
+    &lt;h3&gt;${esc(item[2])}&lt;/h3&gt;&lt;fieldset class=&quot;study-options&quot;&gt;&lt;legend class=&quot;sr-only&quot;&gt;Choose an answer&lt;/legend&gt;${q.orders[q.index].map(j=&gt;`&lt;label class=&quot;form-check&quot;&gt;&lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;quiz-answer&quot; value=&quot;${j}&quot; ${selected===j?&#x27;checked&#x27;:&#x27;&#x27;} ${checked?&#x27;disabled&#x27;:&#x27;&#x27;}&gt;&lt;span class=&quot;form-check-label&quot;&gt;${esc(item[3][j])}&lt;/span&gt;&lt;/label&gt;`).join(&#x27;&#x27;)}&lt;/fieldset&gt;
+    &lt;div aria-live=&quot;polite&quot;&gt;${checked?`&lt;p&gt;${selected===item[4]?&#x27;Correct.&#x27;:&#x27;Not quite.&#x27;} ${esc(item[5])}&lt;/p&gt;&lt;p&gt;Correct answer: ${esc(item[3][item[4]])}&lt;/p&gt;${source(item[0],item[1])}`:&#x27;&#x27;}&lt;/div&gt;
+    &lt;div class=&quot;viz-row&quot;&gt;${q.mode===&#x27;practice&#x27;&amp;&amp;!checked?button(&#x27;Check answer&#x27;,&#x27;check&#x27;,true,selected===undefined?&#x27;disabled&#x27;:&#x27;&#x27;):&#x27;&#x27;}${button(&#x27;Previous&#x27;,&#x27;prev-q&#x27;,false,q.index===0?&#x27;disabled&#x27;:&#x27;&#x27;)}${button(&#x27;Next&#x27;,&#x27;next-q&#x27;,false,q.index===q.ids.length-1?&#x27;disabled&#x27;:&#x27;&#x27;)}${button(q.mode===&#x27;exam&#x27;?&#x27;Submit exam&#x27;:&#x27;Finish &amp; review&#x27;,&#x27;finish&#x27;,q.mode===&#x27;exam&#x27;||checked)}&lt;/div&gt;
+    &lt;p class=&quot;text-small&quot;&gt;${q.mode===&#x27;exam&#x27;?&#x27;You can change answers before submitting. Unanswered questions count as incorrect. The timer continues if you switch study sections or close the view.&#x27;:&#x27;Choose an answer and check it for feedback, or finish to see your overall review.&#x27;}&lt;/p&gt;`;
+    if(q.deadline){const tick=()=&gt;{const remaining=Math.max(0,Math.ceil((q.deadline-Date.now())/1000));const el=root.querySelector(&#x27;#exam-clock&#x27;);if(el)el.textContent=`${Math.floor(remaining/60)}:${String(remaining%60).padStart(2,&#x27;0&#x27;)} remaining`;if(remaining===0)finish();};tick();timer=setInterval(tick,1000);}
+  }
+  function renderResults(){
+    const q=state.quiz;
+    const score=q.ids.filter(i=&gt;q.answers[i]===data.quiz[i][4]).length;
+    const wrong=q.ids.filter(i=&gt;q.answers[i]!==data.quiz[i][4]);
+    const chapters=[...new Set(q.ids.map(i=&gt;data.quiz[i][0]))].sort();
+    panel.innerHTML=`&lt;h3&gt;${score}/${q.ids.length} correct · ${Math.round(score/q.ids.length*100)}%&lt;/h3&gt;&lt;p&gt;${wrong.length?`Review the ${wrong.length} missed or unanswered questions below, then return to those chapter pages.`:&#x27;All correct in this set. Explain the reasoning without the choices, then try a new set.&#x27;}&lt;/p&gt;
+    &lt;div class=&quot;viz-row&quot;&gt;${chapters.map(ch=&gt;{const ids=q.ids.filter(i=&gt;data.quiz[i][0]===ch);return `&lt;span&gt;Chapter ${ch}: ${ids.filter(i=&gt;q.answers[i]===data.quiz[i][4]).length}/${ids.length}&lt;/span&gt;`;}).join(&#x27;&#x27;)}&lt;/div&gt;
+    &lt;div class=&quot;viz-row&quot;&gt;${button(&#x27;Choose another set&#x27;,&#x27;new-set&#x27;,true)}&lt;/div&gt;
+    ${q.ids.map((id,i)=&gt;{const item=data.quiz[id], correct=q.answers[id]===item[4];return `&lt;details class=&quot;study-block&quot; ${correct?&#x27;&#x27;:&#x27;open&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;${correct?&#x27;Correct&#x27;:&#x27;Review&#x27;} · ${i+1}. ${esc(item[2])}&lt;/summary&gt;&lt;p&gt;Your answer: ${q.answers[id]===undefined?&#x27;Unanswered&#x27;:esc(item[3][q.answers[id]])}&lt;/p&gt;&lt;p&gt;Correct answer: ${esc(item[3][item[4]])}&lt;/p&gt;&lt;p&gt;${esc(item[5])}&lt;/p&gt;${source(item[0],item[1])}&lt;/details&gt;`;}).join(&#x27;&#x27;)}`;
+  }
+  root.addEventListener(&#x27;change&#x27;,e=&gt;{
+    const el=e.target;
+    if(el===chapterChoice){state.chapter=Number(el.value);state.cardIndex=0;revealed=false;save();render();}
+    if(el.id===&#x27;deck-mode&#x27;){state.deckMode=el.value;state.cardIndex=0;revealed=false;save();render();}
+    if(el.dataset.check!==undefined){const id=Number(el.dataset.check);state.checks=state.checks.filter(x=&gt;x!==id);if(el.checked)state.checks.push(id);save();}
+    if(el.dataset.read!==undefined){const ch=Number(el.dataset.read);state.read=state.read.filter(x=&gt;x!==ch);if(el.checked)state.read.push(ch);save();}
+    if(el.name===&#x27;quiz-answer&#x27;&amp;&amp;state.quiz&amp;&amp;!state.quiz.done){state.quiz.answers[state.quiz.ids[state.quiz.index]]=Number(el.value);save();render();}
+  });
+  root.addEventListener(&#x27;click&#x27;,e=&gt;{
+    const b=e.target.closest(&#x27;button&#x27;);if(!b||b.disabled)return;
+    if(b.dataset.view){state.view=b.dataset.view;save();render();return;}
+    const a=b.dataset.action;
+    if(a===&#x27;mixed&#x27;){state.view=&#x27;quiz&#x27;;state.chapter=0;if(!state.quiz)startQuiz(&#x27;practice&#x27;);else render();}
+    if(a===&#x27;read-first&#x27;){state.view=&#x27;read&#x27;;state.chapter=1;render();}
+    if(a===&#x27;reveal&#x27;){revealed=true;renderCards();}
+    if(a===&#x27;prev-card&#x27;||a===&#x27;next-card&#x27;){state.cardIndex+=a===&#x27;prev-card&#x27;?-1:1;revealed=false;renderCards();}
+    if(a===&#x27;again&#x27;||a===&#x27;known&#x27;){
+      const ids=cardIds(), id=ids[state.cardIndex];if(id!==undefined)state.marks[id]=a;
+      if(!(state.deckMode===&#x27;again&#x27;&amp;&amp;a===&#x27;known&#x27;))state.cardIndex=(state.cardIndex+1)%ids.length;
+      revealed=false;renderCards();
+    }
+    if(a===&#x27;practice&#x27;||a===&#x27;exam&#x27;)startQuiz(a);
+    if(a===&#x27;check&#x27;){const q=state.quiz,id=q.ids[q.index];if(q.answers[id]!==undefined)q.submitted[id]=true;render();}
+    if(a===&#x27;prev-q&#x27;||a===&#x27;next-q&#x27;){state.quiz.index+=a===&#x27;prev-q&#x27;?-1:1;render();}
+    if(a===&#x27;finish&#x27;)finish();
+    if(a===&#x27;new-set&#x27;){state.quiz=null;render();}
+    save();
+  });
+  render();
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+  const storageKey = `codex:visualization-widget-state-v2:${JSON.stringify([
+    globalThis.location.pathname,
+    globalThis.location.search,
+  ])}`;
+  const parseState = (serializedState) => {
+    if (
+      typeof serializedState !== "string" ||
+      new TextEncoder().encode(serializedState).length > 16 * 1024
+    ) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    /** @type {unknown} */
+    const state = JSON.parse(serializedState);
+    if (
+      state == null ||
+      typeof state !== "object" ||
+      Array.isArray(state) ||
+      ("imageIds" in state &&
+        (!Array.isArray(state.imageIds) || state.imageIds.length > 0))
+    ) {
+      throw new TypeError("Widget state must be a JSON object");
+    }
+    const storedState = { modelContent: null, privateContent: null, ...state };
+    const canonicalState = JSON.stringify(
+      storedState,
+      (_key, /** @type {unknown} */ value) => {
+        if (typeof value === "number" && !Number.isFinite(value)) {
+          throw new TypeError("Widget state must contain finite numbers");
+        }
+        return value;
+      },
+    );
+    if (new TextEncoder().encode(canonicalState).length > 16 * 1024) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    return storedState;
+  };
+  let storage = null;
+  let state = null;
+  try {
+    const localStorage = globalThis.localStorage;
+    const probeKey = `${storageKey}:probe`;
+    localStorage.setItem(probeKey, "1");
+    localStorage.removeItem(probeKey);
+    storage = localStorage;
+    const savedState = storage.getItem(storageKey);
+    if (savedState != null) {
+      try {
+        state = parseState(savedState);
+      } catch {
+        // Invalid saved state does not disable future writes.
+      }
+    }
+  } catch {
+    storage = null;
+  }
+  const initialGlobals = {
+    widgetState: state,
+    statePersistence: storage == null ? "none" : "local",
+  };
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "widget-state-write") {
+      if (!Number.isSafeInteger(data.id) || data.id <= 0) {
+        return;
+      }
+      let ok = false;
+      try {
+        if (storage != null) {
+          const state = parseState(data.state);
+          storage.setItem(storageKey, JSON.stringify(state));
+          ok = true;
+        }
+      } catch {
+        // Storage denial, quota limits, and invalid state return a failed receipt.
+      }
+      channel.port1.postMessage({
+        type: "widget-state-result",
+        id: data.id,
+        ok,
+      });
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  // Match the trusted bootstrap element, not the same text in an authored title.
+  frame.srcdoc = srcdoc.replace(
+    '<script type="application/json" id="codex-visualization-widget-state">__CODEX_VISUALIZATION_WIDGET_STATE__<\/script>',
+    () =>
+      '<script type="application/json" id="codex-visualization-widget-state">' +
+      JSON.stringify(initialGlobals).replaceAll("<", "\\u003c") +
+      "<\/script>",
+  );
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
