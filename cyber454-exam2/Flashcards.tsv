@@ -1,0 +1,109 @@
+Chapter	Front	Back
+5	Why may a normally deleted file still be recoverable?	Its bytes may remain until its storage is reused.
+5	Unused bytes after a file ends inside its allocated cluster are called what?	File slack
+5	What does EOC identify in a FAT chain?	The end of the cluster chain
+5	Which NTFS structure describes individual files and their metadata?	Master File Table (MFT)
+5	Which pair includes full forensic tools with deleted-file recovery?	OSForensics and Autopsy
+5	A file has two hard links. One is removed. What normally happens?	The remaining hard link still accesses the file.
+5	Which utility in Chapter 5 targets ext3/ext4 undelete?	extundelete
+5	Which recovery method searches file signatures rather than intact directory metadata?	File carving
+5	The class prefix 4D 5A most strongly suggests which file type?	Windows EXE
+5	A healthy drive has corrupted directory structures after a power outage. What kind of damage is this?	Logical damage
+5	Why should a forensic examiner avoid immediately repairing the original evidence disk?	Repair may change or discard evidence.
+5	Which approach makes few assumptions about surviving filesystem structures?	Zero-knowledge analysis
+5	What most directly limits recovery of the original deleted bytes?	Those bytes have been overwritten or erased.
+6	Which boot sequence vocabulary belongs to the legacy model in the slides?	NTLDR and boot.ini
+6	Which listed file is the Windows kernel?	ntoskrnl.exe
+6	What is the chapter’s memory-analysis sequence?	Capture memory, hash the capture, analyze in isolation
+6	Which memory organization is associated with last-in, first-out behavior?	Stack
+6	Which tool is the direct match for loaded dynamic-link libraries?	ListDLLs
+6	Which file is associated with hibernation rather than ordinary paging?	hiberfil.sys
+6	Where might an examiner find a previous state of a file?	A volume shadow copy
+6	Which Windows interface is used to inspect event logs?	Event Viewer
+6	On 64-bit Windows, which directory conventionally holds 32-bit applications?	C:\Program Files (x86)
+6	An extra named stream attached to an NTFS file is what?	An alternate data stream
+6	Which browser family is associated with the chapter’s index.dat discussion?	Legacy Internet Explorer
+6	Under the chapter’s same-volume rule, a normally moved file does what?	Retains its existing permissions
+6	Which Registry root is most directly associated with machine-wide configuration?	HKEY_LOCAL_MACHINE
+6	What is CurrentControlSet conceptually?	A reference to the active control set
+6	Which artifact is especially associated with folder browsing/view settings?	ShellBags
+6	Why correlate several Windows artifacts?	One artifact may be incomplete or ambiguous.
+7	Which item is a shell rather than a distribution or desktop?	Bash
+7	Which command includes hidden dot-files in a directory listing?	ls -a
+7	Which command removes an empty directory?	rmdir
+7	Which tool most directly shows which process launched another process?	pstree
+7	Which tool links open files to processes?	lsof
+7	In the lecture Linux boot sequence, what loads before the kernel?	GRUB or LILO
+7	According to the slide table, which runlevel is multiuser without a GUI?	3
+7	Which pair describes the chapter’s main LVM benefits?	Resizing volumes and taking snapshots
+7	Which mode journals both file data and metadata?	Journal mode
+7	Which filesystem does the lecture associate with many small files?	ReiserFS
+7	Which lecture log best matches kernel messages?	/var/log/kern.log
+7	Which command follows new log lines live?	tail -f logfile
+7	Where would you usually look for system configuration files?	/etc
+7	Which directory contains device nodes?	/dev
+7	Which directory is intended for temporary data that survives reboots?	/var/tmp
+7	Why prioritize collecting relevant tmpfs content?	Its filesystem contents disappear on unmount or shutdown.
+7	What does find / -mtime -1 primarily filter on?	Modification time within the last day
+7	Which command lists systemd timers?	systemctl list-timers --all
+7	Why verify the forensic image’s hash?	To detect changes to the acquired image
+7	Which command reads the distribution identification file?	cat /etc/os-release
+8	Which is Apple’s newer filesystem contrasted with HFS+?	APFS
+8	In the chapter’s HFS+ layout, what is in sector 2?	The volume header
+8	Why does Boot Camp matter to an examiner?	Relevant evidence may also exist in the installed Windows environment.
+8	Where should you look for mounted-volume entries on macOS?	/Volumes
+8	Which database records application privacy-permission decisions?	TCC.db
+8	Which command requests Mac hardware information?	system_profiler SPHardwareDataType
+8	If a file is still in Trash, what is the simplest recovery concept?	Restore the existing item from Trash
+8	Why is resetting a login password not the same as recovering all encrypted data?	Encrypted data may require separate original keys or credentials.
+9	Which evidence should accompany a suspicious message’s visible body?	Full original headers and relevant message data
+9	Which protocol relays mail between servers?	SMTP
+9	Which secure port is associated with IMAP in the slides?	993
+9	What distinguishes an anonymous remailer?	It forwards mail while replacing or stripping identifying information.
+9	Which pair does the course identify as required header fields?	From and Date
+9	Which field can direct replies somewhere other than the From address?	Reply-To
+9	Which Received line is usually added most recently?	The topmost Received line
+9	What does SPF primarily test?	Whether the sending host is authorized for the checked envelope domain
+9	What does successful DKIM verification support?	Integrity of signed content and association with the signing domain
+9	Which result can satisfy DMARC authentication alignment?	A passing aligned SPF or DKIM result
+9	Which Gmail option is shown in the lecture for original headers?	Show original
+9	Which extension is associated with an offline Outlook store?	OST
+9	What does the lecture’s Paraben workflow organize evidence around?	A case and investigator record
+9	Why examine the email server after a user deletes a message?	Retained copies or logs may still exist.
+9	Which named law primarily concerns commercial email practices?	CAN-SPAM Act
+9	Which listed law concerns communications-provider assistance for lawful interception?	CALEA
+5	Which signature prefix suggests JPEG?	FF D8
+5	Which signature prefix suggests PDF?	25 50
+5	Which signature prefix suggests ZIP?	50 4B
+5	Which signature prefix suggests PNG?	89 50
+5	Which pair shares the abbreviated RIFF prefix 52 49 in the slides?	WAV and AVI
+5	Which NTFS structure tracks volume cluster allocation?	Cluster bitmap
+5	Which tool is associated with Windows filesystem consistency checking?	chkdsk
+6	Which tool reports logged-on users?	PsLoggedOn
+6	Which tool reports network connections?	netstat
+6	Which Registry root is for the current user?	HKCU
+6	Under the class rule, a same-volume copy normally gets which permissions?	Destination-folder inherited permissions
+6	What does MAC mean in the file-timestamp discussion?	Modified, Accessed, Created
+6	Which Windows artifact is the paging file?	pagefile.sys
+7	In the course table, which runlevel halts the system?	0
+7	In the course table, which runlevel is single-user?	1
+7	In the course table, which runlevel is graphical multiuser?	5
+7	In the course table, which runlevel reboots?	6
+7	Which directory is the root user’s home?	/root
+7	Which directory commonly holds ordinary users’ homes?	/home
+7	Which command displays the kernel ring buffer?	dmesg
+7	Which command identifies a file by content?	file
+7	Which command lists the current user’s cron entries?	crontab -l
+7	Which file-system check command appears in Linux recovery?	fsck
+7	Which location holds queued tasks such as printing?	/var/spool
+8	Which macOS directory normally contains applications?	/Applications
+8	Which macOS artifact is associated with the Knowledge framework?	knowledgeC.db
+8	Does Target Disk Mode alone guarantee write protection?	No; source protection needs a separate validated method.
+9	Which port is standard POP3 in the slides?	110
+9	Which port is POP3 over TLS?	995
+9	Which port is standard IMAP in the slides?	143
+9	Which secure SMTP port is listed in the slides?	465
+9	Which field connects a reply to the earlier message’s identifier?	In-Reply-To
+9	Does a DKIM pass prove a message is harmless?	No; authenticated mail can still be malicious.
+9	Which Outlook extension is a personal data store?	PST
+9	What does RFC 3798 describe in the slides?	Message Disposition Notifications
