@@ -9,6 +9,9 @@
 :root{color-scheme:light;--ink:#19332c;--muted:#50665f;--line:#d1ded6;--green:#163d35;--accent:#d9edda;--paper:#fffdf7;font:16px/1.5 system-ui,sans-serif}
 *{box-sizing:border-box}body{margin:0;background:#eaf0e8;color:var(--ink)}main{width:min(100% - 28px,780px);margin:clamp(14px,5vw,54px) auto 42px}header{background:var(--green);color:#f9fff4;border-radius:24px 24px 0 0;padding:clamp(22px,5vw,44px)}h1,h2,p{margin:0 0 .65em}h1{font:700 clamp(2.1rem,7vw,3.7rem)/1 Georgia,serif;margin:.25em 0}h2{font:700 1.55rem Georgia,serif}.eyebrow{font-size:.76rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase}.intro{margin:0;color:#dfebe1}.panel{background:var(--paper);border:1px solid var(--line);padding:clamp(16px,4vw,30px)}.panel:last-of-type{border-radius:0 0 24px 24px}.meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;color:var(--muted);font-size:.93rem}progress{width:100%;height:.55rem;accent-color:#267452;margin:.55rem 0 1rem}.sentence{font:700 clamp(1.35rem,5vw,2rem)/1.28 Georgia,serif;margin:.65rem 0}.prompt{color:var(--muted);margin-bottom:1rem}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}button{font:inherit;cursor:pointer;border:1px solid #a6bab0;border-radius:11px;background:#fffdf7;color:var(--ink);min-height:46px;padding:.55rem .85rem;font-weight:650;text-align:left}button:hover:not(:disabled){background:#edf6ea}button:focus-visible,summary:focus-visible{outline:3px solid #176c54;outline-offset:3px}.choice{overflow-wrap:anywhere}.choice small{display:inline-block;margin-right:.55em;color:var(--muted)}.choice.correct{background:#d5efdb;border-color:#437a4f}.choice.incorrect{background:#f7dfda;border-color:#ad524a}.choice:disabled{color:var(--ink);cursor:default}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}.primary{background:var(--green);color:white;border-color:var(--green)}.primary:hover:not(:disabled){background:#235748}.primary:disabled{opacity:.5;cursor:default}.feedback{padding:.8rem 1rem;border-radius:11px;background:#edf2e9;margin:1rem 0 0}.feedback p{margin:.3rem 0 0}summary{cursor:pointer;font-weight:700}details{margin-top:.85rem}details[open]>summary{margin-bottom:.65rem}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{padding:.35rem .5rem;text-align:left;border-bottom:1px solid var(--line)}.reference li{margin:.35rem 0}.mode{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}.mode button[aria-pressed=true]{background:var(--accent);border-color:#4c7f5b}.note,footer{color:var(--muted);font-size:.9rem}footer{padding:.85rem .25rem}[hidden]{display:none!important}@media(max-width:355px){.choices{grid-template-columns:1fr}} 
 </style>
+<style>
+.verb-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:.75rem 0 1rem}.verb-card{min-width:0;padding:.8rem .9rem;border:1px solid var(--line);border-radius:12px}.verb-card h3{margin:0;font:700 1.25rem Georgia,serif}.verb-card p{margin:.2rem 0 .45rem}.verb-card table th{font-weight:500;color:var(--muted)}.verb-card table td{font-weight:700}.verb-card table tr:last-child>*{border-bottom:0}
+</style>
 </head>
 <body>
 <main>
@@ -27,7 +30,7 @@
 <div class="feedback" id="hintText" role="status" hidden></div>
 </section>
 <section class="panel" id="result" hidden><h2 id="resultTitle" tabindex="-1">Round complete</h2><p id="resultText"></p><div class="actions"><button class="primary" id="retry">Retry missed questions</button><button id="again">Start a new round</button></div><details id="review"><summary>Review missed questions</summary><ol id="mistakes"></ol></details></section>
-<section class="panel reference" aria-label="Study reference"><details><summary>Open the endings chart and verb list</summary><p><strong>Find the subject → choose the ending → build the stem.</strong> Keep the original stem for <em>nosotros</em> and <em>vosotros</em>. Learn the special <em>yo</em> forms separately.</p><div class="table-wrap" id="endingsChart"></div><div id="verbList"></div></details></section>
+<section class="panel reference" aria-label="Study reference"><details><summary>Open the endings chart and verb list</summary><p><strong>Find the subject → choose the ending → build the stem.</strong> Keep the original stem for <em>nosotros</em> and <em>vosotros</em> in stem-changing verbs. Learn irregular forms separately.</p><div class="table-wrap" id="endingsChart"></div><p class="note">Open a verb group to see all six present-tense answers for each verb.</p><div id="verbList"></div></details></section>
 <footer>Original practice sentences based on the textbook section on pp. 153–154, the Canvas verb exercises, and related Spanish 1 verbs. Progress stays in this browser.</footer>
 </main>
 <script>
@@ -186,9 +189,25 @@ for(const id of ['restart','again'])$(id).addEventListener('click',()=>newRound(
 $('retry').addEventListener('click',()=>newRound(state.mode,state.questions.filter((q,i)=>state.answers[i]!==q.right),state.kind));
 const table=document.createElement('table');table.innerHTML='<thead><tr><th>Subject</th><th>-ar</th><th>-er</th><th>-ir</th></tr></thead><tbody>'+subjects.map((s,i)=>`<tr><th scope="row">${s}</th>${Object.values(endings).map(e=>`<td>-${e[i]}</td>`).join('')}</tr>`).join('')+'</tbody>';$('endingsChart').append(table);
 for(const [group,title] of [['textbook','Textbook exam verbs'],['canvas','Additional Canvas verbs'],['extra','Extra practice verbs']]){
- const details=document.createElement('details'),summary=document.createElement('summary'),ul=document.createElement('ul');summary.textContent=title;
- for(const v of verbs.filter(v=>v.group===group)){const li=document.createElement('li'),name=document.createElement('strong');name.textContent=v.name;li.append(name,` — ${v.meaning}${v.change?` · ${v.change}`:''}${v.forms?` · ${v.forms.join(', ')}`:''}`);ul.append(li);}
- details.append(summary,ul);$('verbList').append(details);
+ const details=document.createElement('details'),summary=document.createElement('summary'),cards=document.createElement('div');
+ const groupVerbs=verbs.filter(v=>v.group===group);
+ summary.textContent=`${title} · ${groupVerbs.length}`;
+ cards.className='verb-cards';
+ for(const v of groupVerbs){
+  const card=document.createElement('article'),name=document.createElement('h3'),meaning=document.createElement('p');
+  const conjugations=document.createElement('table'),body=document.createElement('tbody');
+  card.className='verb-card';name.textContent=v.name;name.lang='es';
+  meaning.className='note';meaning.textContent=`${v.meaning}${v.change?` · ${v.change}`:''}`;
+  conjugations.setAttribute('aria-label',`${v.name} present-tense forms`);
+  for(const [row,subject] of subjects.entries()){
+   const tr=document.createElement('tr'),label=document.createElement('th'),answer=document.createElement('td');
+   label.scope='row';label.lang='es';label.textContent=subject;
+   answer.lang='es';answer.textContent=form(v,row);
+   tr.append(label,answer);body.append(tr);
+  }
+  conjugations.append(body);card.append(name,meaning,conjugations);cards.append(card);
+ }
+ details.append(summary,cards);$('verbList').append(details);
 }
 for(const name of focusVerbs){
  const v=byName.get(name),li=document.createElement('li'),strong=document.createElement('strong');
