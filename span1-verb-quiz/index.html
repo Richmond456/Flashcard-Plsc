@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#163d35">
+<title>SPAN 1 Verb Practice</title>
+<style>
+:root{color-scheme:light;--ink:#19332c;--muted:#50665f;--line:#d1ded6;--green:#163d35;--accent:#d9edda;--paper:#fffdf7;font:16px/1.5 system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#eaf0e8;color:var(--ink)}main{width:min(100% - 28px,780px);margin:clamp(14px,5vw,54px) auto 42px}header{background:var(--green);color:#f9fff4;border-radius:24px 24px 0 0;padding:clamp(22px,5vw,44px)}h1,h2,p{margin:0 0 .65em}h1{font:700 clamp(2.1rem,7vw,3.7rem)/1 Georgia,serif;margin:.25em 0}h2{font:700 1.55rem Georgia,serif}.eyebrow{font-size:.76rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase}.intro{margin:0;color:#dfebe1}.panel{background:var(--paper);border:1px solid var(--line);padding:clamp(16px,4vw,30px)}.panel:last-of-type{border-radius:0 0 24px 24px}.meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;color:var(--muted);font-size:.93rem}progress{width:100%;height:.55rem;accent-color:#267452;margin:.55rem 0 1rem}.sentence{font:700 clamp(1.35rem,5vw,2rem)/1.28 Georgia,serif;margin:.65rem 0}.prompt{color:var(--muted);margin-bottom:1rem}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}button{font:inherit;cursor:pointer;border:1px solid #a6bab0;border-radius:11px;background:#fffdf7;color:var(--ink);min-height:46px;padding:.55rem .85rem;font-weight:650;text-align:left}button:hover:not(:disabled){background:#edf6ea}button:focus-visible,summary:focus-visible{outline:3px solid #176c54;outline-offset:3px}.choice{overflow-wrap:anywhere}.choice small{display:inline-block;margin-right:.55em;color:var(--muted)}.choice.correct{background:#d5efdb;border-color:#437a4f}.choice.incorrect{background:#f7dfda;border-color:#ad524a}.choice:disabled{color:var(--ink);cursor:default}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}.primary{background:var(--green);color:white;border-color:var(--green)}.primary:hover:not(:disabled){background:#235748}.primary:disabled{opacity:.5;cursor:default}.feedback{padding:.8rem 1rem;border-radius:11px;background:#edf2e9;margin:1rem 0 0}.feedback p{margin:.3rem 0 0}summary{cursor:pointer;font-weight:700}details{margin-top:.85rem}details[open]>summary{margin-bottom:.65rem}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{padding:.35rem .5rem;text-align:left;border-bottom:1px solid var(--line)}.reference li{margin:.35rem 0}.mode{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}.mode button[aria-pressed=true]{background:var(--accent);border-color:#4c7f5b}.note,footer{color:var(--muted);font-size:.9rem}footer{padding:.85rem .25rem}[hidden]{display:none!important}@media(max-width:355px){.choices{grid-template-columns:1fr}} 
+</style>
+</head>
+<body>
+<main>
+<header><div class="eyebrow">Spanish 1 · Present tense</div><h1>Verb Practice</h1><p class="intro">Fill in the blank. See why the answer works. Retry the ones you miss.</p></header>
+<section class="panel" aria-label="Quiz settings">
+<h2>Choose a round</h2><div class="mode" id="modes"></div><p class="note" id="modeNote"></p>
+</section>
+<section class="panel" id="quiz" aria-label="Practice question">
+<div class="meta"><span id="position"></span><span id="score"></span></div>
+<progress id="bar" aria-label="Round progress"></progress>
+<h2 class="sentence" id="sentence" lang="es" tabindex="-1"></h2><p class="prompt" id="prompt"></p>
+<div class="choices" id="choices" aria-labelledby="sentence"></div>
+<div id="feedback" class="feedback" role="status" hidden></div>
+<div class="actions"><button id="next" class="primary" disabled>Next question</button><button id="hint">Show a hint</button><button id="restart">Start a new round</button></div>
+<div class="feedback" id="hintText" role="status" hidden></div>
+</section>
+<section class="panel" id="result" hidden><h2 id="resultTitle" tabindex="-1">Round complete</h2><p id="resultText"></p><div class="actions"><button class="primary" id="retry">Retry missed questions</button><button id="again">Start a new round</button></div><details id="review"><summary>Review missed questions</summary><ol id="mistakes"></ol></details></section>
+<section class="panel reference" aria-label="Study reference"><details><summary>Open the endings chart and verb list</summary><p><strong>Find the subject → choose the ending → build the stem.</strong> Keep the original stem for <em>nosotros</em> and <em>vosotros</em>. Learn the special <em>yo</em> forms separately.</p><div class="table-wrap" id="endingsChart"></div><div id="verbList"></div></details></section>
+<footer>Original practice sentences based on the textbook section on pp. 153–154, the Canvas verb exercises, and related Spanish 1 verbs. Progress stays in this browser.</footer>
+</main>
+<script>
+'use strict';
+const subjects = ['yo','tú','él / ella / usted','nosotros/as','vosotros/as','ellos / ellas / ustedes'];
+const endings = {ar:['o','as','a','amos','áis','an'],er:['o','es','e','emos','éis','en'],ir:['o','es','e','imos','ís','en']};
+// Each row includes an original sentence ending to use with the verb.
+const textbook = [
+ ['pensar','think / plan','e→ie','estudiar esta noche'],['cerrar','close','e→ie','la ventana'],['empezar','begin','e→ie','la tarea'],['entender','understand','e→ie','la pregunta'],['preferir','prefer','e→ie','leer en casa'],['querer','want','e→ie','aprender español'],
+ ['volver','return','o→ue','a casa temprano'],['almorzar','have lunch','o→ue','a las doce'],['costar','cost','o→ue','diez dólares'],['dormir','sleep','o→ue','ocho horas'],['encontrar','find','o→ue','las llaves'],['poder','can / be able to','o→ue','ayudar mañana'],
+ ['pedir','ask for / order','e→i','ayuda'],['repetir','repeat','e→i','la palabra'],['servir','serve','e→i','la cena'],['jugar','play a game or sport','u→ue','al fútbol'],
+ ['tener','have','e→ie','que estudiar','tengo tienes tiene tenemos tenéis tienen'],['venir','come','e→ie','a la fiesta','vengo vienes viene venimos venís vienen'],['decir','say / tell','e→i','la verdad','digo dices dice decimos decís dicen'],['seguir','follow','e→i','las instrucciones','sigo sigues sigue seguimos seguís siguen']
+];
+const canvas = [
+ ['necesitar','need','','un lápiz'],['colaborar','collaborate','','con el equipo'],['estudiar','study','','en la biblioteca'],['desear','wish / want','','viajar'],['buscar','look for','','el cuaderno'],['aprender','learn','','español'],['leer','read','','un libro'],['comprender','understand','','la explicación'],['correr','run','','en el parque'],['deber','should / owe','','estudiar más'],['vivir','live','','cerca de la universidad'],['asistir','attend','','a clase'],['escribir','write','','un mensaje'],['convivir','live together','','con otras personas'],['existir','exist','',''],
+ ['poner','put','','el libro en la mesa','pongo pones pone ponemos ponéis ponen'],['salir','leave / go out','','a las seis','salgo sales sale salimos salís salen'],['oír','hear','','la música','oigo oyes oye oímos oís oyen'],['hacer','do / make','','la tarea','hago haces hace hacemos hacéis hacen'],['traer','bring','','los libros','traigo traes trae traemos traéis traen'],['saber','know a fact / know how','','la respuesta','sé sabes sabe sabemos sabéis saben'],['conocer','know / be familiar with','','la ciudad','conozco conoces conoce conocemos conocéis conocen'],
+ ['estar','be','','en casa','estoy estás está estamos estáis están'],['ser','be','','de Pensilvania','soy eres es somos sois son'],['ver','see','','la película','veo ves ve vemos veis ven'],['ir','go','','a clase','voy vas va vamos vais van'],['llegar','arrive','','temprano'],['trabajar','work','','mañana'],['hablar','speak','','con la profesora'],['practicar','practice','','todos los días'],['comer','eat','','en casa'],['responder','respond','','a la pregunta'],['comprar','buy','','un cuaderno'],['caminar','walk','','por el parque'],['esperar','wait / hope','','el autobús'],['escuchar','listen to','','música'],['tocar','play an instrument / touch','','la guitarra'],['celebrar','celebrate','','el cumpleaños'],['llamar','call','','por teléfono']
+];
+const extra = [
+ ['perder','lose','e→ie','las llaves'],['contar','count / tell','o→ue','los minutos'],['recordar','remember','o→ue','la fecha'],['sentir','feel','e→ie','frío'],['mostrar','show','o→ue','las fotos'],['medir','measure','e→i','la mesa'],['divertirse','have fun','e→ie','en la fiesta','me_divierto te_diviertes se_divierte nos_divertimos os_divertís se_divierten']
+];
+function makeVerbs(rows,group){return rows.map(([name,meaning,change,tail,forms])=>({name,meaning,change,tail,forms:forms?.split(' ').map(form=>form.replace('_',' ')),group}));}
+const verbs=[...makeVerbs(textbook,'textbook'),...makeVerbs(canvas,'canvas'),...makeVerbs(extra,'extra')];
+const byName=new Map(verbs.map(verb=>[verb.name,verb]));
+const modes={quick:{label:'Quick start',note:'12 questions from the assigned textbook section.'},exam:{label:'All exam verbs',note:'One question per verb from the assigned textbook section (pp. 153–154).'},canvas:{label:'Canvas review',note:'One question per additional Canvas verb. Do this after the exam round.'},mixed:{label:'Full review',note:'One question per verb across the textbook, Canvas, and extra practice.'},drill:{label:'Every form',note:'Practice all six subject forms where the verb fits them. Includes the full verb bank.'}};
+const $=id=>document.getElementById(id);
+const pick=list=>list[Math.floor(Math.random()*list.length)];
+function shuffle(list){const copy=[...list];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}return copy;}
+function parts(verb){const base=verb.name.replace(/se$/,'');return {stem:base.slice(0,-2),kind:base.endsWith('ír')?'ir':base.slice(-2)};}
+function changedStem(stem,change){if(!change)return stem;const [from,to]=change.split('→');const i=stem.lastIndexOf(from);return stem.slice(0,i)+to+stem.slice(i+1);}
+function form(verb,row){if(verb.forms)return verb.forms[row];const {stem,kind}=parts(verb);return ((row===3||row===4)?stem:changedStem(stem,verb.change))+endings[kind][row];}
+function allowedRows(verb){return ['costar','existir'].includes(verb.name)?[2,5]:[0,1,2,3,4,5];}
+const sentenceSubjects=[['Yo'],['Tú'],['Ella','María','Usted'],['Nosotros','Tú y yo'],['Vosotros'],['Ellos','Los estudiantes','Ustedes']];
+function question(verb,row){
+ const {stem,kind}=parts(verb),right=form(verb,row);
+ const who=verb.name==='costar'?(row===2?'El cuaderno':'Los cuadernos'):verb.name==='existir'?(row===2?'Una solución':'Varias soluciones'):pick(sentenceSubjects[row]);
+ const tail=verb.tail?' '+verb.tail:'';
+ const after=verb.tail&&[1,2,4,5].includes(row)&&/^(Tú|Usted|Ustedes|Vosotros)$/.test(who)&&Math.random()<.3;
+ const sentence=after?`¿_____ ${who.toLowerCase()}${tail}?`:`${who} _____${tail}.`;
+ const reflexive=['me','te','se','nos','os','se'];
+ const pronoun=verb.name==='divertirse'?reflexive[row]+' ':'';
+ const base=pronoun+stem+endings[kind][row];
+ const shifted=pronoun+changedStem(stem,verb.change)+endings[kind][row];
+ const others=shuffle([...new Set(subjects.map((_,i)=>form(verb,i)))]).filter(option=>option!==right&&option!==base&&option!==shifted);
+ const choices=shuffle([...new Set([right,base,shifted,...others])].slice(0,4));
+ return {name:verb.name,row,who,sentence,right,choices};
+}
+function explanation(q){
+ const v=byName.get(q.name),{stem,kind}=parts(v),row=q.row;
+ const noChange=row===3||row===4;
+ const prefix=`${q.who} uses the ${subjects[row]} form.`;
+ if(v.name==='divertirse')return `${prefix} This reflexive verb takes a matching pronoun. The full form is ${q.right}.`;
+ const useStem=noChange?stem:changedStem(stem,v.change), ending=endings[kind][row];
+ if(q.right!==useStem+ending)return `${prefix} Memorize ${q.right} as the ${subjects[row]} form of ${v.name}.`;
+ const reason=v.change?(noChange?'Keep the original stem in this row.':`Change ${v.change.replace('→',' to ')} in the stem.`):'Keep the original stem.';
+ return `${prefix} ${reason} ${useStem}- + -${ending} gives ${q.right}.`;
+}
+const saveKey='span1-verb-practice-v1';
+let state;
+function save(){try{localStorage.setItem(saveKey,JSON.stringify(state));}catch{}}
+function restore(){try{const s=JSON.parse(localStorage.getItem(saveKey));if(s?.questions?.length&&s.questions.every(q=>byName.has(q.name))&&modes[s.mode])return s;}catch{}return null;}
+function newRound(mode,missed){
+ let selected=mode==='canvas'?verbs.filter(v=>v.group==='canvas'):mode==='quick'||mode==='exam'?verbs.filter(v=>v.group==='textbook'):verbs;
+ selected=shuffle(selected);
+ if(mode==='quick'){
+  const starter=['pensar','querer','preferir','poder','dormir','pedir','servir','jugar','tener','decir','volver','empezar'];
+  selected=selected.filter(v=>starter.includes(v.name));
+ }
+ const questions=missed?shuffle(missed.map(q=>question(byName.get(q.name),q.row))):mode==='drill'?shuffle(selected.flatMap(v=>allowedRows(v).map(row=>question(v,row)))):selected.map((v,i)=>{const rows=allowedRows(v);return question(v,rows.includes(i%6)?i%6:pick(rows));});
+ state={mode,questions,index:0,answers:[],retry:!!missed};save();render();$('sentence').focus({preventScroll:true});
+}
+function render(){
+ const {questions,index,answers,mode}=state,q=questions[index];
+ const correct=answers.filter((a,i)=>a===questions[i].right).length;
+ for(const button of $('modes').children)button.setAttribute('aria-pressed',String(button.dataset.mode===mode));
+ $('modeNote').textContent=`${modes[mode].note} ${state.retry?'Currently retrying missed questions.':''}`;
+ $('quiz').hidden=!q;$('result').hidden=!!q;
+ if(!q){
+  const misses=questions.filter((item,i)=>answers[i]!==item.right);
+  $('resultText').textContent=`${correct} of ${questions.length} correct (${Math.round(100*correct/questions.length)}%).`;
+  $('retry').hidden=!misses.length;$('review').hidden=!misses.length;
+  $('mistakes').replaceChildren(...misses.map(item=>{const li=document.createElement('li');li.textContent=`${item.sentence} (${item.name}) → ${item.right}. ${explanation(item)}`;return li;}));
+  return;
+ }
+ const selected=answers[index],answered=selected!==undefined,v=byName.get(q.name);
+ $('position').textContent=`Question ${index+1} of ${questions.length}`;$('score').textContent=`${correct} correct / ${answers.length} answered`;
+ $('bar').max=questions.length;$('bar').value=answers.length;
+ $('sentence').textContent=q.sentence;$('prompt').textContent=`(${v.name}) · ${v.meaning}`;
+ $('choices').replaceChildren(...q.choices.map((choice,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='choice';b.disabled=answered;
+  const label=document.createElement('small');label.textContent=String.fromCharCode(65+i);label.setAttribute('aria-hidden','true');
+  const word=document.createElement('span');word.lang='es';word.textContent=choice;b.append(label,word);
+  if(answered&&choice===q.right)b.classList.add('correct');
+  if(answered&&choice===selected&&selected!==q.right)b.classList.add('incorrect');
+  b.addEventListener('click',()=>{state.answers[index]=choice;save();render();$('next').focus({preventScroll:true});});return b;
+ }));
+ $('feedback').hidden=!answered;$('hintText').hidden=true;$('hint').hidden=answered;$('hint').textContent='Show a hint';$('next').disabled=!answered;
+ $('next').textContent=index===questions.length-1?'See results':'Next question';
+ if(answered){const strong=document.createElement('strong'),p=document.createElement('p');strong.textContent=selected===q.right?`Correct · ${q.right}`:`You chose ${selected}. Correct answer · ${q.right}`;p.textContent=explanation(q);$('feedback').replaceChildren(strong,p);}
+}
+for(const [id,mode] of Object.entries(modes)){
+ const button=document.createElement('button');button.textContent=mode.label;button.dataset.mode=id;button.addEventListener('click',()=>{if(state.mode!==id)newRound(id);});$('modes').append(button);
+}
+$('next').addEventListener('click',()=>{state.index++;save();render();$(state.index===state.questions.length?'resultTitle':'sentence').focus({preventScroll:true});});
+$('hint').addEventListener('click',()=>{
+ const q=state.questions[state.index],v=byName.get(q.name),{kind}=parts(v),noChange=q.row===3||q.row===4;
+ const special=v.forms&&(form(v,q.row)!==((noChange?parts(v).stem:changedStem(parts(v).stem,v.change))+endings[kind][q.row]));
+ const rule=special?'Look for the special form for this subject.':`Use the -${kind} ending -${endings[kind][q.row]}. ${noChange||!v.change?'Keep the original stem.':`Stem change: ${v.change}.`}`;
+ $('hintText').textContent=`${q.who} → ${subjects[q.row]}. ${rule}`;$('hintText').hidden=!$('hintText').hidden;$('hint').textContent=$('hintText').hidden?'Show a hint':'Hide hint';
+});
+for(const id of ['restart','again'])$(id).addEventListener('click',()=>newRound(state.mode));
+$('retry').addEventListener('click',()=>newRound(state.mode,state.questions.filter((q,i)=>state.answers[i]!==q.right)));
+const table=document.createElement('table');table.innerHTML='<thead><tr><th>Subject</th><th>-ar</th><th>-er</th><th>-ir</th></tr></thead><tbody>'+subjects.map((s,i)=>`<tr><th scope="row">${s}</th>${Object.values(endings).map(e=>`<td>-${e[i]}</td>`).join('')}</tr>`).join('')+'</tbody>';$('endingsChart').append(table);
+for(const [group,title] of [['textbook','Textbook exam verbs'],['canvas','Additional Canvas verbs'],['extra','Extra practice verbs']]){
+ const details=document.createElement('details'),summary=document.createElement('summary'),ul=document.createElement('ul');summary.textContent=title;
+ for(const v of verbs.filter(v=>v.group===group)){const li=document.createElement('li'),name=document.createElement('strong');name.textContent=v.name;li.append(name,` — ${v.meaning}${v.change?` · ${v.change}`:''}${v.forms?` · ${v.forms.join(', ')}`:''}`);ul.append(li);}
+ details.append(summary,ul);$('verbList').append(details);
+}
+state=restore();if(state)render();else newRound('quick');
+</script>
+</body>
+</html>
