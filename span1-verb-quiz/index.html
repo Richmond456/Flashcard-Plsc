@@ -15,6 +15,7 @@
 <header><div class="eyebrow">Spanish 1 · Present tense</div><h1>Verb Practice</h1><p class="intro">Fill in the blank. See why the answer works. Retry the ones you miss.</p></header>
 <section class="panel" aria-label="Quiz settings">
 <h2>Choose a round</h2><div class="mode" id="modes"></div><p class="note" id="modeNote"></p>
+<div id="focusTools" hidden><div class="mode" aria-label="Eight-verb practice type"><button id="patterns" type="button">Stem changes · 8</button><button id="focusForms" type="button">Verb forms · 48</button></div><details><summary>Study the eight verbs</summary><ul id="focusList" class="reference"></ul></details></div>
 </section>
 <section class="panel" id="quiz" aria-label="Practice question">
 <div class="meta"><span id="position"></span><span id="score"></span></div>
@@ -51,7 +52,17 @@ const extra = [
 function makeVerbs(rows,group){return rows.map(([name,meaning,change,tail,forms])=>({name,meaning,change,tail,forms:forms?.split(' ').map(form=>form.replace('_',' ')),group}));}
 const verbs=[...makeVerbs(textbook,'textbook'),...makeVerbs(canvas,'canvas'),...makeVerbs(extra,'extra')];
 const byName=new Map(verbs.map(verb=>[verb.name,verb]));
-const modes={quick:{label:'Quick start',note:'12 questions from the assigned textbook section.'},exam:{label:'All exam verbs',note:'One question per verb from the assigned textbook section (pp. 153–154).'},canvas:{label:'Canvas review',note:'One question per additional Canvas verb. Do this after the exam round.'},mixed:{label:'Full review',note:'One question per verb across the textbook, Canvas, and extra practice.'},drill:{label:'Every form',note:'Practice all six subject forms where the verb fits them. Includes the full verb bank.'}};
+const focusVerbs=['pedir','repetir','servir','jugar','tener','venir','decir','seguir'];
+const assignmentGroups=[
+ ['Regular -ar',['necesitar','colaborar','estudiar','desear','buscar']],
+ ['Regular -er',['aprender','leer','comprender','correr','deber']],
+ ['Regular -ir',['vivir','asistir','escribir','convivir','existir']],
+ ['p. 122 · Irregular forms',['poner','salir','oír','hacer','traer']],
+ ['p. 130 · Two ways to say “know”',['saber','conocer']],
+ ['p. 153 · Stem changes',['pensar','volver','pedir']]
+];
+const assignmentVerbs=assignmentGroups.flatMap(([group,names])=>names.map(name=>({group,name})));
+const modes={quick:{label:'Quick start',note:'12 questions from the assigned textbook section.'},exam:{label:'All exam verbs',note:'One question per verb from the assigned textbook section (pp. 153–154).'},focus:{label:'Memorize 8 verbs',note:'Practice pedir, repetir, servir, jugar, tener, venir, decir, and seguir.'},assignment:{label:'Canvas: All 6 Forms',note:'150 questions. Practice each of the 25 assignment verbs in the Canvas order, from yo through ellos.'},canvas:{label:'Canvas review',note:'One question per additional Canvas verb. Do this after the exam round.'},mixed:{label:'Full review',note:'One question per verb across the textbook, Canvas, and extra practice.'},drill:{label:'Every form',note:'Practice all six subject forms where the verb fits them. Includes the full verb bank.'}};
 const $=id=>document.getElementById(id);
 const pick=list=>list[Math.floor(Math.random()*list.length)];
 function shuffle(list){const copy=[...list];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}return copy;}
@@ -60,7 +71,7 @@ function changedStem(stem,change){if(!change)return stem;const [from,to]=change.
 function form(verb,row){if(verb.forms)return verb.forms[row];const {stem,kind}=parts(verb);return ((row===3||row===4)?stem:changedStem(stem,verb.change))+endings[kind][row];}
 function allowedRows(verb){return ['costar','existir'].includes(verb.name)?[2,5]:[0,1,2,3,4,5];}
 const sentenceSubjects=[['Yo'],['Tú'],['Ella','María','Usted'],['Nosotros','Tú y yo'],['Vosotros'],['Ellos','Los estudiantes','Ustedes']];
-function question(verb,row){
+function question(verb,row,assignment){
  const {stem,kind}=parts(verb),right=form(verb,row);
  const who=verb.name==='costar'?(row===2?'El cuaderno':'Los cuadernos'):verb.name==='existir'?(row===2?'Una solución':'Varias soluciones'):pick(sentenceSubjects[row]);
  const tail=verb.tail?' '+verb.tail:'';
@@ -72,10 +83,17 @@ function question(verb,row){
  const shifted=pronoun+changedStem(stem,verb.change)+endings[kind][row];
  const others=shuffle([...new Set(subjects.map((_,i)=>form(verb,i)))]).filter(option=>option!==right&&option!==base&&option!==shifted);
  const choices=shuffle([...new Set([right,base,shifted,...others])].slice(0,4));
- return {name:verb.name,row,who,sentence,right,choices};
+ return assignment?{name:verb.name,row,who:subjects[row],sentence:`${subjects[row]} _____`,right,choices,assignment}:{name:verb.name,row,who,sentence,right,choices};
+}
+function patternQuestion(v){
+ return {name:v.name,pattern:true,sentence:`What is the stem change for ${v.name}?`,right:v.change,choices:shuffle(['e→i','e→ie','o→ue','u→ue'])};
 }
 function explanation(q){
  const v=byName.get(q.name),{stem,kind}=parts(v),row=q.row;
+ if(q.pattern){
+  const yo=v.forms?` The special yo form is ${form(v,0)}.`:'';
+  return `Compare tú ${form(v,1)} with nosotros ${form(v,3)}. The nosotros form keeps the original stem.${yo}`;
+ }
  const noChange=row===3||row===4;
  const prefix=`${q.who} uses the ${subjects[row]} form.`;
  if(v.name==='divertirse')return `${prefix} This reflexive verb takes a matching pronoun. The full form is ${q.right}.`;
@@ -86,23 +104,46 @@ function explanation(q){
 }
 const saveKey='span1-verb-practice-v1';
 let state;
-function save(){try{localStorage.setItem(saveKey,JSON.stringify(state));}catch{}}
-function restore(){try{const s=JSON.parse(localStorage.getItem(saveKey));if(s?.questions?.length&&s.questions.every(q=>byName.has(q.name))&&modes[s.mode])return s;}catch{}return null;}
-function newRound(mode,missed){
+function roundKey(mode,kind){return `${saveKey}-${mode}${kind?'-'+kind:''}`;}
+function save(){try{const json=JSON.stringify(state);localStorage.setItem(saveKey,json);localStorage.setItem(roundKey(state.mode,state.kind),json);}catch{}}
+function restore(key=saveKey){try{const s=JSON.parse(localStorage.getItem(key));if(s?.questions?.length&&s.questions.every(q=>byName.has(q.name))&&modes[s.mode])return s;}catch{}return null;}
+function chooseRound(mode,kind=mode==='focus'?'patterns':undefined){
+ if(state.mode===mode&&state.kind===kind)return;
+ save();
+ const saved=restore(roundKey(mode,kind));
+ if(saved){state=saved;save();render();}else newRound(mode,undefined,kind);
+}
+function newRound(mode,missed,kind=mode==='focus'?'patterns':undefined){
  let selected=mode==='canvas'?verbs.filter(v=>v.group==='canvas'):mode==='quick'||mode==='exam'?verbs.filter(v=>v.group==='textbook'):verbs;
  selected=shuffle(selected);
  if(mode==='quick'){
   const starter=['pensar','querer','preferir','poder','dormir','pedir','servir','jugar','tener','decir','volver','empezar'];
   selected=selected.filter(v=>starter.includes(v.name));
  }
- const questions=missed?shuffle(missed.map(q=>question(byName.get(q.name),q.row))):mode==='drill'?shuffle(selected.flatMap(v=>allowedRows(v).map(row=>question(v,row)))):selected.map((v,i)=>{const rows=allowedRows(v);return question(v,rows.includes(i%6)?i%6:pick(rows));});
- state={mode,questions,index:0,answers:[],retry:!!missed};save();render();$('sentence').focus({preventScroll:true});
+ let questions;
+ if(missed){
+  questions=missed.map(q=>q.pattern?patternQuestion(byName.get(q.name)):question(byName.get(q.name),q.row,q.assignment));
+  if(mode!=='assignment')questions=shuffle(questions);
+ }else if(mode==='focus'){
+  const focus=focusVerbs.map(name=>byName.get(name));
+  questions=kind==='forms'?focus.flatMap(v=>subjects.map((_,row)=>question(v,row))):shuffle(focus.map(patternQuestion));
+ }else if(mode==='assignment'){
+  questions=assignmentVerbs.flatMap(({group,name})=>subjects.map((_,row)=>question(byName.get(name),row,group)));
+ }else if(mode==='drill'){
+  questions=shuffle(selected.flatMap(v=>allowedRows(v).map(row=>question(v,row))));
+ }else{
+  questions=selected.map((v,i)=>{const rows=allowedRows(v);return question(v,rows.includes(i%6)?i%6:pick(rows));});
+ }
+ state={mode,kind,questions,index:0,answers:[],retry:!!missed};save();render();$('sentence').focus({preventScroll:true});
 }
 function render(){
  const {questions,index,answers,mode}=state,q=questions[index];
  const correct=answers.filter((a,i)=>a===questions[i].right).length;
  for(const button of $('modes').children)button.setAttribute('aria-pressed',String(button.dataset.mode===mode));
  $('modeNote').textContent=`${modes[mode].note} ${state.retry?'Currently retrying missed questions.':''}`;
+ $('focusTools').hidden=mode!=='focus';
+ $('patterns').setAttribute('aria-pressed',String(state.kind==='patterns'));
+ $('focusForms').setAttribute('aria-pressed',String(state.kind==='forms'));
  $('quiz').hidden=!q;$('result').hidden=!!q;
  if(!q){
   const misses=questions.filter((item,i)=>answers[i]!==item.right);
@@ -114,7 +155,8 @@ function render(){
  const selected=answers[index],answered=selected!==undefined,v=byName.get(q.name);
  $('position').textContent=`Question ${index+1} of ${questions.length}`;$('score').textContent=`${correct} correct / ${answers.length} answered`;
  $('bar').max=questions.length;$('bar').value=answers.length;
- $('sentence').textContent=q.sentence;$('prompt').textContent=`(${v.name}) · ${v.meaning}`;
+ $('sentence').textContent=q.sentence;$('sentence').lang=q.pattern?'en':'es';
+ $('prompt').textContent=`(${v.name}) · ${v.meaning}${q.assignment?` · ${q.assignment}`:''}`;
  $('choices').replaceChildren(...q.choices.map((choice,i)=>{
   const b=document.createElement('button');b.type='button';b.className='choice';b.disabled=answered;
   const label=document.createElement('small');label.textContent=String.fromCharCode(65+i);label.setAttribute('aria-hidden','true');
@@ -128,22 +170,29 @@ function render(){
  if(answered){const strong=document.createElement('strong'),p=document.createElement('p');strong.textContent=selected===q.right?`Correct · ${q.right}`:`You chose ${selected}. Correct answer · ${q.right}`;p.textContent=explanation(q);$('feedback').replaceChildren(strong,p);}
 }
 for(const [id,mode] of Object.entries(modes)){
- const button=document.createElement('button');button.textContent=mode.label;button.dataset.mode=id;button.addEventListener('click',()=>{if(state.mode!==id)newRound(id);});$('modes').append(button);
+ const button=document.createElement('button');button.textContent=mode.label;button.dataset.mode=id;button.addEventListener('click',()=>{if(state.mode!==id)chooseRound(id);});$('modes').append(button);
 }
+$('patterns').addEventListener('click',()=>chooseRound('focus','patterns'));
+$('focusForms').addEventListener('click',()=>chooseRound('focus','forms'));
 $('next').addEventListener('click',()=>{state.index++;save();render();$(state.index===state.questions.length?'resultTitle':'sentence').focus({preventScroll:true});});
 $('hint').addEventListener('click',()=>{
  const q=state.questions[state.index],v=byName.get(q.name),{kind}=parts(v),noChange=q.row===3||q.row===4;
  const special=v.forms&&(form(v,q.row)!==((noChange?parts(v).stem:changedStem(parts(v).stem,v.change))+endings[kind][q.row]));
  const rule=special?'Look for the special form for this subject.':`Use the -${kind} ending -${endings[kind][q.row]}. ${noChange||!v.change?'Keep the original stem.':`Stem change: ${v.change}.`}`;
- $('hintText').textContent=`${q.who} → ${subjects[q.row]}. ${rule}`;$('hintText').hidden=!$('hintText').hidden;$('hint').textContent=$('hintText').hidden?'Show a hint':'Hide hint';
+ $('hintText').textContent=q.pattern?`Try comparing tú ${form(v,1)} with nosotros ${form(v,3)}.`:`${q.who} → ${subjects[q.row]}. ${rule}`;
+ $('hintText').hidden=!$('hintText').hidden;$('hint').textContent=$('hintText').hidden?'Show a hint':'Hide hint';
 });
-for(const id of ['restart','again'])$(id).addEventListener('click',()=>newRound(state.mode));
-$('retry').addEventListener('click',()=>newRound(state.mode,state.questions.filter((q,i)=>state.answers[i]!==q.right)));
+for(const id of ['restart','again'])$(id).addEventListener('click',()=>newRound(state.mode,undefined,state.kind));
+$('retry').addEventListener('click',()=>newRound(state.mode,state.questions.filter((q,i)=>state.answers[i]!==q.right),state.kind));
 const table=document.createElement('table');table.innerHTML='<thead><tr><th>Subject</th><th>-ar</th><th>-er</th><th>-ir</th></tr></thead><tbody>'+subjects.map((s,i)=>`<tr><th scope="row">${s}</th>${Object.values(endings).map(e=>`<td>-${e[i]}</td>`).join('')}</tr>`).join('')+'</tbody>';$('endingsChart').append(table);
 for(const [group,title] of [['textbook','Textbook exam verbs'],['canvas','Additional Canvas verbs'],['extra','Extra practice verbs']]){
  const details=document.createElement('details'),summary=document.createElement('summary'),ul=document.createElement('ul');summary.textContent=title;
  for(const v of verbs.filter(v=>v.group===group)){const li=document.createElement('li'),name=document.createElement('strong');name.textContent=v.name;li.append(name,` — ${v.meaning}${v.change?` · ${v.change}`:''}${v.forms?` · ${v.forms.join(', ')}`:''}`);ul.append(li);}
  details.append(summary,ul);$('verbList').append(details);
+}
+for(const name of focusVerbs){
+ const v=byName.get(name),li=document.createElement('li'),strong=document.createElement('strong');
+ strong.textContent=v.name;li.append(strong,` — ${v.meaning} · ${v.change} · ${subjects.map((_,row)=>form(v,row)).join(', ')}`);$('focusList').append(li);
 }
 state=restore();if(state)render();else newRound('quick');
 </script>
