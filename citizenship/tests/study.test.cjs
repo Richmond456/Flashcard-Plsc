@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const dir=path.resolve(__dirname,'..');let stored='';const elements={};
-const context={console,Date,Math,JSON,Number,String,Object,Array,Boolean,Set,RegExp,assert,setTimeout:()=>0,clearTimeout(){},location:{hash:'#home'},localStorage:{getItem:()=>null,setItem:(k,v)=>stored=v},window:{STUDY_DATA:null,scrollTo(){}},document:{querySelector:s=>elements[s]||(elements[s]={innerHTML:'',value:'',style:{},textContent:''}),querySelectorAll:()=>[],addEventListener(){},body:{classList:{toggle(){}}}},confirm:()=>true};vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(dir,'data.js'),'utf8'),context);
+const context={console,Date,Math,JSON,Number,String,Object,Array,Boolean,Set,RegExp,assert,setTimeout:()=>0,clearTimeout(){},location:{hash:'#home'},localStorage:{getItem:()=>null,setItem:(k,v)=>stored=v},window:{STUDY_DATA:null,scrollTo(){},addEventListener(){}},document:{querySelector:s=>elements[s]||(elements[s]={innerHTML:'',value:'',style:{},textContent:''}),querySelectorAll:()=>[],addEventListener(){},body:{classList:{toggle(){}}}},confirm:()=>true};vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(dir,'data.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(dir,'learning-content.js'),'utf8'),context);vm.runInContext(fs.readFileSync(path.join(dir,'learning.js'),'utf8'),context);
 let app=fs.readFileSync(path.join(dir,'app.js'),'utf8').split("setupFamily();setupLearning();")[0];vm.runInContext(app,context);
 vm.runInContext(`
@@ -31,3 +31,10 @@ const sw=fs.readFileSync(path.join(dir,'sw.js'),'utf8');for(const f of ['index.h
   await vm.runInContext(`(async()=>{profiles=()=>{};render=()=>{};const count=Object.keys(db.profiles).length,original=db.profiles.family_richmond;await importBackup({size:testBackup.length,text:async()=>testBackup});assert.equal(Object.keys(db.profiles).length,count+1);assert.equal(db.profiles.family_richmond,original);assert(P().simple);assert.equal(P().records[1].right,2);assert.equal(P().studyDays[0],'2026-11-13');await importBackup({size:10,text:async()=>'{bad json'});assert.equal(Object.keys(db.profiles).length,count+1);})()`,context);
   console.log('PASS: imported backups preserve old profiles, preferences and study days; malformed imports leave data unchanged.');
 })().catch(e=>{console.error(e);process.exitCode=1});
+vm.runInContext(fs.readFileSync(path.join(dir,'sync.js'),'utf8'),context);
+vm.runInContext(`
+const local={name:'Richmond',records:{1:{right:2,wrong:0,last:200},2:{right:1,wrong:0,last:100}},tests:[{mode:'Practice quiz',date:200,correct:8,total:10}],studyDays:['2026-11-12'],checks:{},officials:{},syncUpdatedAt:10};
+const remote={name:'Richmond',records:{1:{right:1,wrong:0,last:100},2:{right:3,wrong:0,last:300}},tests:[{mode:'Practice quiz',date:200,correct:8,total:10}],studyDays:['2026-11-11'],checks:{},officials:{},updatedAt:20};
+const merged=mergeCloud(local,remote);assert.equal(merged.records[1].right,2);assert.equal(merged.records[2].right,3);assert.equal(merged.tests.length,1);assert.equal(merged.studyDays.length,2);assert.equal(cloudPayload(fresh('Test')).name,'Test');
+console.log('PASS: cloud merge keeps newer question checks and deduplicates tests and practice days.');
+`,context);

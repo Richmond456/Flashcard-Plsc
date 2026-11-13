@@ -1,6 +1,6 @@
 /* Optional account sync. Never loads the Firebase SDK before project configuration exists. */
 'use strict';
-let cloud=null,cloudUser=null,cloudApplying=false,cloudBusy=false,cloudTimer=null,cloudLocalId=null,cloudUnsubscribe=null;
+let cloud=null,cloudUser=null,cloudApplying=false,cloudBusy=false,cloudTimer=null,cloudLocalId=null,cloudUnsubscribe=null,googleTimer=null;
 function cloudConfigured(){const c=window.CITIZENSHIP_FIREBASE_CONFIG;return !!(c&&c.apiKey&&c.authDomain&&c.projectId&&c.appId)}
 function syncPanel(){return `<div class="card" style="margin-top:20px"><h2>Automatic progress sync</h2>${cloudConfigured()?`<p>Use one account per person to keep progress separate across devices. Connect the selected profile only. Sign in to the same account on your other device.</p><p id="sync-status" role="status">${cloudUser?'Connected':'Sign in to connect this profile.'}</p><div class="actions"><button type="button" id="sync-google">Continue with Google</button></div><form id="sync-form"><label>Email<input id="sync-email" type="email" autocomplete="email" required></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="8" required></label><div class="actions"><button type="submit" data-sync-submit="signin">Sign in</button><button type="submit" data-sync-submit="signup" class="secondary">Create account</button><button type="button" id="sync-signout" class="quiet">Sign out</button></div></form><p class="muted">Email and password are handled by Firebase Authentication; this site does not save passwords. Sign out before switching to another family member's account.</p>`:`<p>Account sync is being prepared. You can continue studying offline and use backups in the meantime.</p>`}</div>`}
 function syncStatus(t){const el=document.querySelector('#sync-status');if(el)el.textContent=t}
@@ -20,7 +20,7 @@ async function initCloud(){if(!cloudConfigured()||cloud)return;
   const firestore=store.initializeFirestore(app,{localCache:store.persistentLocalCache({tabManager:store.persistentMultipleTabManager()})});
   cloud={auth,store,authentication,firestore};
   auth.onAuthStateChanged(authentication,async user=>{
-    cloudUser=user;if(cloudUnsubscribe){cloudUnsubscribe();cloudUnsubscribe=null}
+    cloudUser=user;if(user)clearTimeout(googleTimer);if(cloudUnsubscribe){cloudUnsubscribe();cloudUnsubscribe=null}
     if(!user){cloudLocalId=null;syncStatus('Signed out. Progress continues to save on this device.');return}
     // The account is attached explicitly on sign-in, never to whichever profile is later selected.
     const ref=store.doc(firestore,'studyProfiles',user.uid);
@@ -57,11 +57,12 @@ document.addEventListener('submit',e=>{if(e.target.id!=='sync-form')return;e.pre
 document.addEventListener('click',e=>{
   if(e.target.id==='sync-google'){
     if(!cloud){syncStatus('Sign-in is loading. Try again in a moment.');return}
-    cloud.auth.signInWithPopup(cloud.authentication,new cloud.auth.GoogleAuthProvider()).catch(err=>{
+    syncStatus('Opening Google sign-in…');clearTimeout(googleTimer);googleTimer=setTimeout(()=>{if(!cloudUser)syncStatus('If the Google window stays blank, close it and open this study site in regular Chrome or Safari. Email/password sign-in is also available.')},12000);cloud.auth.signInWithPopup(cloud.authentication,new cloud.auth.GoogleAuthProvider()).catch(err=>{clearTimeout(googleTimer);
       syncStatus(err.code==='auth/popup-blocked'?'Your browser blocked the Google sign-in window. Allow pop-ups for this site and try again.':err.code==='auth/unauthorized-domain'?'Add richmond456.github.io to Firebase Authentication authorized domains.':err.code==='auth/popup-closed-by-user'?'Google sign-in was closed. You can try again.':'Google sign-in failed. Try again or use email and password.');
     });
   }
   if(e.target.id==='sync-signout'&&cloud)cloud.auth.signOut(cloud.authentication)
 });
 if(cloudConfigured())initCloud().catch(()=>{});
+window.addEventListener('online',()=>{if(cloudConfigured()&&!cloud)initCloud().catch(()=>{})});
 
