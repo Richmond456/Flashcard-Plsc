@@ -38,3 +38,11 @@ const remote={name:'Richmond',records:{1:{right:1,wrong:0,last:100},2:{right:3,w
 const merged=mergeCloud(local,remote);assert.equal(merged.records[1].right,2);assert.equal(merged.records[2].right,3);assert.equal(merged.tests.length,1);assert.equal(merged.studyDays.length,2);assert.equal(cloudPayload(fresh('Test')).name,'Test');
 console.log('PASS: cloud merge keeps newer question checks and deduplicates tests and practice days.');
 `,context);
+vm.runInContext(`
+window.CITIZENSHIP_FIREBASE_CONFIG={apiKey:'test',authDomain:'test',projectId:'test',appId:'test'};
+cloudUser={uid:'uid',email:'richmond@example.com'};cloudLocalId=db.active;
+assert(syncPanel().includes('Signed in and syncing'));assert(!syncPanel().includes('id="sync-form"'));
+let connected=db.active;db.active='family_desmond';assert(syncPanel().includes('Signed in to another profile'));db.active=connected;
+cloudUser=null;assert(syncPanel().includes('id="sync-form"'));
+console.log('PASS: connected account hides password form and warns on profile mismatch.');
+`,context);

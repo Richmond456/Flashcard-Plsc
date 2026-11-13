@@ -2,7 +2,13 @@
 'use strict';
 let cloud=null,cloudUser=null,cloudApplying=false,cloudBusy=false,cloudTimer=null,cloudLocalId=null,cloudUnsubscribe=null,googleTimer=null;
 function cloudConfigured(){const c=window.CITIZENSHIP_FIREBASE_CONFIG;return !!(c&&c.apiKey&&c.authDomain&&c.projectId&&c.appId)}
-function syncPanel(){return `<div class="card" style="margin-top:20px"><h2>Automatic progress sync</h2>${cloudConfigured()?`<p>Use one account per person to keep progress separate across devices. Connect the selected profile only. Sign in to the same account on your other device.</p><p id="sync-status" role="status">${cloudUser?'Connected':'Sign in to connect this profile.'}</p><div class="actions"><button type="button" id="sync-google">Continue with Google</button></div><form id="sync-form"><label>Email<input id="sync-email" type="email" autocomplete="email" required></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="8" required></label><div class="actions"><button type="submit" data-sync-submit="signin">Sign in</button><button type="submit" data-sync-submit="signup" class="secondary">Create account</button><button type="button" id="sync-signout" class="quiet">Sign out</button></div></form><p class="muted">Email and password are handled by Firebase Authentication; this site does not save passwords. Sign out before switching to another family member's account.</p>`:`<p>Account sync is being prepared. You can continue studying offline and use backups in the meantime.</p>`}</div>`}
+function syncPanel(){
+  const linked=!!cloudUser&&db.active===cloudLocalId;
+  const identity=cloudUser?.email?esc(cloudUser.email):'Google account';
+  const signedIn=cloudUser?`<div class="notice info"><strong>${linked?'✓ Signed in and syncing':'Signed in to another profile'}</strong><p>${identity}</p><p>${linked?'This profile is connected to your account. Progress saves here and syncs to your other devices.':'Your connected profile is '+esc(db.profiles[cloudLocalId]?.name||'another profile')+'. Select it above, or sign out before connecting this one.'}</p></div><p id="sync-status" role="status">${linked?'Checking sync…':'This selected profile is saved locally.'}</p><button type="button" id="sync-signout" class="secondary">Sign out</button>`:'';
+  const signedOut=`<p id="sync-status" role="status">${cloud?'Sign in to connect this profile.':'Preparing sign-in…'}</p><div class="actions"><button type="button" id="sync-google">Continue with Google</button></div><details><summary>Use email and password instead</summary><form id="sync-form"><label>Email<input id="sync-email" type="email" autocomplete="email" required></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="8" required></label><div class="actions"><button type="submit" data-sync-submit="signin">Sign in</button><button type="submit" data-sync-submit="signup" class="secondary">Create account</button></div></form><p class="muted">Firebase handles passwords; the study site does not save them.</p></details>`;
+  return `<div class="card" style="margin-top:20px"><h2>Automatic progress sync</h2>${cloudConfigured()?`<p>One Google account per family member keeps progress separate. Choose the right profile above before connecting it.</p>${cloudUser?signedIn:signedOut}`:'<p>Account sync is being prepared. You can continue studying offline and use backups in the meantime.</p>'}</div>`;
+}
 function syncStatus(t){const el=document.querySelector('#sync-status');if(el)el.textContent=t}
 function cloudPayload(p){return {name:p.name,records:p.records||{},tests:(p.tests||[]).slice(-50),checks:p.checks||{},officials:p.officials||{},verifiedDate:p.verifiedDate||'',studyDays:p.studyDays||[],simple:!!p.simple,special:!!p.special,large:!!p.large,dark:!!p.dark,rate:p.rate||.95,updatedAt:Date.now()}}
 function mergeCloud(local,remote){
@@ -21,24 +27,24 @@ async function initCloud(){if(!cloudConfigured()||cloud)return;
   cloud={auth,store,authentication,firestore};
   auth.onAuthStateChanged(authentication,async user=>{
     cloudUser=user;if(user)clearTimeout(googleTimer);if(cloudUnsubscribe){cloudUnsubscribe();cloudUnsubscribe=null}
-    if(!user){cloudLocalId=null;syncStatus('Signed out. Progress continues to save on this device.');return}
+    if(!user){cloudLocalId=null;if(location.hash.slice(1)==='settings')render();syncStatus('Signed out. Progress continues to save on this device.');return}
     // The account is attached explicitly on sign-in, never to whichever profile is later selected.
     const ref=store.doc(firestore,'studyProfiles',user.uid);
     try{
       const remote=await store.getDoc(ref);
       if(remote.exists()){
-        const data=remote.data();let id=Object.keys(db.profiles).find(id=>db.profiles[id].cloudUid===user.uid);
+        const data=remote.data();let id=Object.keys(db.profiles).find(id=>db.profiles[id].cloudUid===user.uid);if(!id&&P().name===data.name&&!P().cloudUid)id=db.active;
         if(!id){id='cloud_'+user.uid;db.profiles[id]=fresh(String(data.name||'Study').slice(0,30))}
-        cloudLocalId=id;db.profiles[id]=mergeCloud(db.profiles[id],data);db.profiles[id].cloudUid=user.uid;db.active=id;cloudApplying=true;save();cloudApplying=false;profiles();render();
+        cloudLocalId=id;db.profiles[id]=mergeCloud(db.profiles[id],data);db.profiles[id].cloudUid=user.uid;db.active=id;cloudApplying=true;save();cloudApplying=false;profiles();render();queueCloudSave();
       }else{
-        cloudLocalId=db.active;db.profiles[cloudLocalId].cloudUid=user.uid;cloudApplying=true;save();cloudApplying=false;await store.setDoc(ref,cloudPayload(P()));
+        cloudLocalId=db.active;db.profiles[cloudLocalId].cloudUid=user.uid;cloudApplying=true;save();cloudApplying=false;await store.setDoc(ref,cloudPayload(P()));if(location.hash.slice(1)==='settings')render();
       }
       syncStatus('Connected. Changes sync when online.');
       cloudUnsubscribe=store.onSnapshot(ref,{includeMetadataChanges:true},snapshot=>{
         if(!snapshot.exists()||!cloudLocalId)return;
         const p=db.profiles[cloudLocalId];if(!p)return;
         const next=mergeCloud(p,snapshot.data());
-        db.profiles[cloudLocalId]=next;cloudApplying=true;save();cloudApplying=false;if(db.active===cloudLocalId){profiles();if(!cloudBusy)render()}
+        db.profiles[cloudLocalId]=next;cloudApplying=true;save();cloudApplying=false;if(db.active===cloudLocalId)profiles()
         syncStatus(snapshot.metadata.hasPendingWrites?'Saving changes…':snapshot.metadata.fromCache?'Offline — will sync later.':'Saved across devices.');
       },()=>syncStatus('Sync could not read your progress. Check your connection and security rules.'));
     }catch{syncStatus('Could not connect. Check your connection and security rules.')} 

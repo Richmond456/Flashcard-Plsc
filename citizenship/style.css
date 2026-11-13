@@ -26,3 +26,5 @@ body.dark #toast{background:#d8ebe5;color:#14313c}
 .mobile-navigation{display:none}@media(max-width:650px){.mobile-navigation{display:block;width:100%;font-size:.8rem}.mobile-navigation select{width:100%;margin-top:6px}aside nav{display:none}aside{padding:12px 20px}}
 
 @media(max-width:650px){.learning-help dl{display:block}.learning-help dt{overflow-wrap:normal;margin-top:16px}.learning-help dd{margin-top:4px}}
+
+.account-state{font-size:.73rem;font-weight:650;color:var(--teal);white-space:nowrap}.dark .account-state{color:#b9e3ce}@media(max-width:650px){.account-state{font-size:.68rem}}
