@@ -2,7 +2,7 @@
 'use strict';
 let cloud=null,cloudUser=null,cloudApplying=false,cloudBusy=false,cloudTimer=null,cloudLocalId=null,cloudUnsubscribe=null;
 function cloudConfigured(){const c=window.CITIZENSHIP_FIREBASE_CONFIG;return !!(c&&c.apiKey&&c.authDomain&&c.projectId&&c.appId)}
-function syncPanel(){return `<div class="card" style="margin-top:20px"><h2>Automatic progress sync</h2>${cloudConfigured()?`<p>Use one account per person to keep progress separate across devices. Connect the selected profile only. Sign in to the same account on your other device.</p><p id="sync-status" role="status">${cloudUser?'Connected':'Sign in to connect this profile.'}</p><form id="sync-form"><label>Email<input id="sync-email" type="email" autocomplete="email" required></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="8" required></label><div class="actions"><button type="submit" data-sync-submit="signin">Sign in</button><button type="submit" data-sync-submit="signup" class="secondary">Create account</button><button type="button" id="sync-signout" class="quiet">Sign out</button></div></form><p class="muted">Email and password are handled by Firebase Authentication; this site does not save passwords. Sign out before switching to another family member's account.</p>`:`<p>Account sync is being prepared. You can continue studying offline and use backups in the meantime.</p>`}</div>`}
+function syncPanel(){return `<div class="card" style="margin-top:20px"><h2>Automatic progress sync</h2>${cloudConfigured()?`<p>Use one account per person to keep progress separate across devices. Connect the selected profile only. Sign in to the same account on your other device.</p><p id="sync-status" role="status">${cloudUser?'Connected':'Sign in to connect this profile.'}</p><div class="actions"><button type="button" id="sync-google">Continue with Google</button></div><form id="sync-form"><label>Email<input id="sync-email" type="email" autocomplete="email" required></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="8" required></label><div class="actions"><button type="submit" data-sync-submit="signin">Sign in</button><button type="submit" data-sync-submit="signup" class="secondary">Create account</button><button type="button" id="sync-signout" class="quiet">Sign out</button></div></form><p class="muted">Email and password are handled by Firebase Authentication; this site does not save passwords. Sign out before switching to another family member's account.</p>`:`<p>Account sync is being prepared. You can continue studying offline and use backups in the meantime.</p>`}</div>`}
 function syncStatus(t){const el=document.querySelector('#sync-status');if(el)el.textContent=t}
 function cloudPayload(p){return {name:p.name,records:p.records||{},tests:(p.tests||[]).slice(-50),checks:p.checks||{},officials:p.officials||{},verifiedDate:p.verifiedDate||'',studyDays:p.studyDays||[],simple:!!p.simple,special:!!p.special,large:!!p.large,dark:!!p.dark,rate:p.rate||.95,updatedAt:Date.now()}}
 function mergeCloud(local,remote){
@@ -54,4 +54,14 @@ async function cloudSubmit(kind,email,password){
     else await cloud.auth.signInWithEmailAndPassword(cloud.authentication,email,password);
   }catch(e){syncStatus(e.code==='auth/email-already-in-use'?'Account exists. Sign in instead.':e.code==='auth/invalid-credential'?'Check your email and password.':'Could not sign in. Check your details and try again.')}}
 document.addEventListener('submit',e=>{if(e.target.id!=='sync-form')return;e.preventDefault();const b=e.submitter;cloudSubmit(b?.dataset.syncSubmit||'signin',document.querySelector('#sync-email').value,document.querySelector('#sync-password').value)});
-document.addEventListener('click',e=>{if(e.target.id==='sync-signout'&&cloud)cloud.auth.signOut(cloud.authentication)});
+document.addEventListener('click',e=>{
+  if(e.target.id==='sync-google'){
+    if(!cloud){syncStatus('Sign-in is loading. Try again in a moment.');return}
+    cloud.auth.signInWithPopup(cloud.authentication,new cloud.auth.GoogleAuthProvider()).catch(err=>{
+      syncStatus(err.code==='auth/popup-blocked'?'Your browser blocked the Google sign-in window. Allow pop-ups for this site and try again.':err.code==='auth/unauthorized-domain'?'Add richmond456.github.io to Firebase Authentication authorized domains.':err.code==='auth/popup-closed-by-user'?'Google sign-in was closed. You can try again.':'Google sign-in failed. Try again or use email and password.');
+    });
+  }
+  if(e.target.id==='sync-signout'&&cloud)cloud.auth.signOut(cloud.authentication)
+});
+if(cloudConfigured())initCloud().catch(()=>{});
+
