@@ -39,6 +39,11 @@ const merged=mergeCloud(local,remote);assert.equal(merged.records[1].right,2);as
 console.log('PASS: cloud merge keeps newer question checks and deduplicates tests and practice days.');
 `,context);
 vm.runInContext(`
+db.active='family_richmond';P().checks.n400Filed=false;assert(plan().includes('N-400 not filed yet'));assert(plan().includes('Before filing: preparation checklist'));assert(interview().includes('Before filing'));assert(guide().includes('while preparing Form N-400'));
+P().checks.n400Filed=true;assert(plan().includes('N-400 marked as filed'));assert(plan().includes('After filing: interview checklist'));P().checks.n400Filed=false;
+console.log('PASS: filing status shows the right study checklist for each stage.');
+`,context);
+vm.runInContext(`
 window.CITIZENSHIP_FIREBASE_CONFIG={apiKey:'test',authDomain:'test',projectId:'test',appId:'test'};
 cloudUser={uid:'uid',email:'richmond@example.com'};cloudLocalId=db.active;
 assert(syncPanel().includes('Signed in and syncing'));assert(!syncPanel().includes('id="sync-form"'));
