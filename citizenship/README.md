@@ -24,3 +24,6 @@ Official resources:
 Run validation: `node citizenship/tests/study.test.cjs` from repository root.
 
 Browser QA covered flashcard reveal, multiple-choice scoring, a complete 12-correct mock exam, writing feedback, search, independent profiles and a 390px phone layout. Computational checks cover all four exam stopping thresholds, mixed-answer stopping, unique question draws and complete content counts.
+
+## Theme, audio and PDF
+The family PDF is publicly downloadable with the owner’s authorization. The header includes a saved dark/light toggle and an English voice picker with preview and playback speed. Voice selection uses the browser’s available voices, preferring voices labeled natural/enhanced/premium/neural and U.S. English when available. This heuristic cannot guarantee sound quality. Online system voices may use a remote speech provider; no app-owned TTS key or paid service is used. Voice, rate and theme are saved per profile and included in backups.
