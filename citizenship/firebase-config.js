@@ -1,6 +1,6 @@
 // Firebase Web App configuration is public. Firestore access is protected by firestore.rules.
 window.CITIZENSHIP_FIREBASE_CONFIG = {
-  apiKey: 'AIzaSyDIBLwUpcyURBHIdGc2WEDNACKEBEkscAI',
+  apiKey: 'AIzaSyDIBLwUpcyURBHIdGc2WEDNAcKEBEkscAI',
   authDomain: 'citizenship-family-study.firebaseapp.com',
   projectId: 'citizenship-family-study',
   storageBucket: 'citizenship-family-study.firebasestorage.app',

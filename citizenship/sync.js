@@ -58,7 +58,7 @@ document.addEventListener('click',e=>{
   if(e.target.id==='sync-google'){
     if(!cloud){syncStatus('Sign-in is loading. Try again in a moment.');return}
     syncStatus('Opening Google sign-in…');clearTimeout(googleTimer);googleTimer=setTimeout(()=>{if(!cloudUser)syncStatus('If the Google window stays blank, close it and open this study site in regular Chrome or Safari. Email/password sign-in is also available.')},12000);cloud.auth.signInWithPopup(cloud.authentication,new cloud.auth.GoogleAuthProvider()).catch(err=>{clearTimeout(googleTimer);
-      syncStatus(err.code==='auth/popup-blocked'?'Your browser blocked the Google sign-in window. Allow pop-ups for this site and try again.':err.code==='auth/unauthorized-domain'?'Add richmond456.github.io to Firebase Authentication authorized domains.':err.code==='auth/popup-closed-by-user'?'Google sign-in was closed. You can try again.':'Google sign-in failed. Try again or use email and password.');
+      syncStatus(err.code==='auth/popup-blocked'?'Your browser blocked the Google sign-in window. Allow pop-ups for this site and try again.':err.code==='auth/unauthorized-domain'?'Add richmond456.github.io to Firebase Authentication authorized domains.':err.code==='auth/popup-closed-by-user'?'Google sign-in was closed. You can try again.':'Google sign-in failed ('+String(err.code||'unknown')+'). Check the account or try email/password.');
     });
   }
   if(e.target.id==='sync-signout'&&cloud)cloud.auth.signOut(cloud.authentication)
