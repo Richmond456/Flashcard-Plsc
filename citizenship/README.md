@@ -27,3 +27,12 @@ Browser QA covered flashcard reveal, multiple-choice scoring, a complete 12-corr
 
 ## Theme, audio and PDF
 The family PDF is publicly downloadable with the owner’s authorization. The header includes a saved dark/light toggle and an English voice picker with preview and playback speed. Voice selection uses the browser’s available voices, preferring voices labeled natural/enhanced/premium/neural and U.S. English when available. This heuristic cannot guarantee sound quality. Online system voices may use a remote speech provider; no app-owned TTS key or paid service is used. Voice, rate and theme are saved per profile and included in backups.
+
+## Family learning update — November 2026
+Five nickname-only profiles (Richmond, Davis, Desmond, Tomi, Maurice) are added once without overwriting existing records. No birth dates, ages, residence dates or personal interview answers are stored in the repository. Tomi defaults to Simple English, larger text, 0.85× speech, and five-question daily practice. Other profiles default to ten questions.
+
+Added 128 original study explanations and memory tips; a basic English glossary; adaptive daily review; topic accuracy and confidence summaries; local-date practice streaks; and a full, self-checked interview rehearsal. Study explanations supplement the unchanged official question wording and example answers. All profiles start with the full question bank; a language preference does not enable an exemption.
+
+Offline assets (including PDF) are precached by a service worker scoped to this directory. Increment the CACHE value in sw.js whenever changing a cached asset. Updates activate when old tabs close. Audio depends on device voices and may require internet. No paid speech provider is configured. Import creates separate copies; transfers between devices are manual, not automatic sync.
+
+Validation: `node citizenship/tests/study.test.cjs`. Tests cover family migration, content completeness, unique adaptive daily sets, topic totals, streaks, both full-rehearsal outcomes, existing civics scoring, and offline asset coverage. Browser QA includes offline reload with the preview server stopped.

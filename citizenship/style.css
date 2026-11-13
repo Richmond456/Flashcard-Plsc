@@ -20,3 +20,9 @@ body.dark .progress-track{background:#30414a}
 body.dark #toast{background:#d8ebe5;color:#14313c}
 #audio-dialog select{width:100%;margin:8px 0 12px}#audio-dialog{max-width:570px}#audio-dialog p{font-size:.9rem}
 @media(max-width:650px){.header-actions{flex-wrap:wrap;gap:4px}#profile{max-width:42%}body.dark aside{background:#192a32}.header-actions .quiet{padding:8px 9px}}
+/* Learning additions */
+.learning-help{margin:18px 0;text-align:left}.learning-help p{line-height:1.65}.learning-help summary{font-size:1rem}progress{width:100%;height:14px;accent-color:var(--teal,#217568)}#simple-toggle[aria-pressed=true]{background:#d9ede6;color:#123b32}#daily-area .actions,#full-area .actions{flex-wrap:wrap}#offline-status{font-weight:600}.card ol{padding-left:22px}.card li{margin:12px 0;line-height:1.6}.dark #simple-toggle[aria-pressed=true]{background:#28554e;color:#effaf6}@media(max-width:650px){.header-actions{gap:5px;flex-wrap:wrap}.header-actions button{font-size:.8rem;padding:8px}.header-actions select{max-width:135px}}
+.learning-help dl{display:grid;grid-template-columns: minmax(85px,1fr) 3fr;gap:12px}.learning-help dd{margin:0;line-height:1.5}.learning-help dt{overflow-wrap:anywhere}
+.mobile-navigation{display:none}@media(max-width:650px){.mobile-navigation{display:block;width:100%;font-size:.8rem}.mobile-navigation select{width:100%;margin-top:6px}aside nav{display:none}aside{padding:12px 20px}}
+
+@media(max-width:650px){.learning-help dl{display:block}.learning-help dt{overflow-wrap:normal;margin-top:16px}.learning-help dd{margin-top:4px}}
