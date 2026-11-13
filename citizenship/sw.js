@@ -1,6 +1,6 @@
 'use strict';
-const CACHE='citizenship-family-v7-20261113';
-const ASSETS=['./','index.html','style.css','data.js','learning-content.js','learning.js','app.js','manifest.webmanifest','icon.svg','Family_Study_Guide.pdf'];
+const CACHE='citizenship-family-v8-20261113';
+const ASSETS=['./','index.html','style.css','data.js','learning-content.js','learning.js','firebase-config.js','sync.js','app.js','manifest.webmanifest','icon.svg','Family_Study_Guide.pdf'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS.map(url=>new Request(url,{cache:'reload'}))))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('citizenship-family-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

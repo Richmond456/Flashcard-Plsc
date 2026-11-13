@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /studyProfiles/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly(['name','records','tests','checks','officials','verifiedDate','studyDays','simple','special','large','dark','rate','updatedAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 30
+        && request.resource.data.records is map
+        && request.resource.data.tests is list
+        && request.resource.data.checks is map
+        && request.resource.data.officials is map
+        && request.resource.data.studyDays is list
+        && request.resource.data.tests.size() <= 50;
+      allow delete: if false;
+    }
+  }
+}
