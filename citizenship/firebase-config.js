@@ -1,3 +1,9 @@
-// Public Firebase Web App configuration. Add values only after the project is created.
-// Access is enforced by Firestore rules, never by keeping this object secret.
-window.CITIZENSHIP_FIREBASE_CONFIG = null;
+// Firebase Web App configuration is public. Firestore access is protected by firestore.rules.
+window.CITIZENSHIP_FIREBASE_CONFIG = {
+  apiKey: 'AIzaSyDIBLwUpcyURBHIdGc2WEDNACKEBEkscAI',
+  authDomain: 'citizenship-family-study.firebaseapp.com',
+  projectId: 'citizenship-family-study',
+  storageBucket: 'citizenship-family-study.firebasestorage.app',
+  messagingSenderId: '143553350138',
+  appId: '1:143553350138:web:078af278f10dcc8ccb3c43'
+};
