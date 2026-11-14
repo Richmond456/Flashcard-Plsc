@@ -1,0 +1,10 @@
+AI-generated English speech for the Next Chapter citizenship study site.
+Model: Gradium phonon-31m-en (Apache License 2.0)
+Model source: https://huggingface.co/gradium/phonon-31m-en
+Model revision: 92741c5b07d085ff840e26fea8ce43110b87852f
+Voice: Easton, from Gradium's Phonon voice catalog.
+Runtime: ptts 0.7.1 (MIT OR Apache-2.0), https://github.com/gradium-ai/xn-ptts
+Generated using the site's study text. No user recordings or voice cloning.
+Civics content derives from USCIS public study materials. Personal interview prompts are practice examples.
+These recordings are synthetic speech, not an official USCIS recording or a human speaker.
+Regenerate with tools/generate_audio.py using Python ptts and ffmpeg.
