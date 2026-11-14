@@ -8,7 +8,7 @@ for q in d['questions']:texts.extend([q['q'],q['a'],q['q']+'. Example answer: '+
 for q in d['interview']:texts.append(re.sub(r'^\d+\. ','',q['q']))
 for e in d['english']:texts.extend([e['read'],e['write']])
 texts.extend(['Welcome to your citizenship study space. Take your time, and answer each question clearly. What is the supreme law of the land?','Do you understand the Oath of Allegiance? Do you have any questions?'])
-texts=list(dict.fromkeys(texts));ptts.set_num_threads(2);tts=ptts.TTS('hf://gradium/phonon-31m-en',lang='en',quant='q8',revision='92741c5b07d085ff840e26fea8ce43110b87852f');manifest={}
+texts=list(dict.fromkeys(texts));ptts.set_num_threads(2);tts=ptts.TTS('hf://gradium/phonon-31m-en@92741c5b07d085ff840e26fea8ce43110b87852f',lang='en',quant='q8');manifest={}
 for i,text in enumerate(texts):
  name=hashlib.sha256(text.encode()).hexdigest()[:16]+'.mp3';out=root/'audio'/name
  if not out.exists():
