@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - citizenship/data.js
       - citizenship/tools/generate_audio.py
       - .github/workflows/study-audio.yml
 permissions:

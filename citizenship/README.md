@@ -41,3 +41,11 @@ Validation: `node citizenship/tests/study.test.cjs`. Tests cover family migratio
 This branch prepares one Firebase Authentication account per family member and a Firestore document at `studyProfiles/{uid}`. The static site stays on GitHub Pages. Never commit passwords, service account keys or an Admin SDK key. The public web config in `firebase-config.js` is not a secret; security depends on deploying `firestore.rules` before any sign-in. Current production remains local-only until project setup and a live two-device test pass.
 
 Create a Firebase project on the Spark plan, register a web app for `richmond456.github.io`, enable Authentication > Google (and optionally Email/Password), create a Cloud Firestore database, deploy the included rules and replace the null config object with the Firebase Web App config. Add `richmond456.github.io` to Authentication > Settings > Authorized domains. Google sign-in uses a popup, which may require allowing pop-ups on mobile Safari. Keep the account tied to each person's selected local profile on first sign-in; signing in on another device pulls that account's profile. Review initial profile ownership and concurrent offline edits before release. Do not switch to a paid plan or store immigration answers.
+
+## Natural voice recordings
+
+The recommended voice is Phonon Easton. `audio-manifest.js` maps exact study text to compressed MP3 recordings. The player falls back to the user's device voice for changed answers or missing/unavailable recordings. Playback speed preserves pitch. The service worker caches recordings after playback; it does not download the entire audio set on installation.
+
+Generate with Python 3.12, `pip install ptts==0.7.1`, ffmpeg, and `python citizenship/tools/generate_audio.py` from the repository root. The GitHub workflow **Generate citizenship study audio** can also be run manually. It commits generated MP3s and the manifest. Model and license information are in `audio/NOTICE.txt` and `audio/LICENSE.txt`.
+
+Run `node citizenship/tests/audio.test.cjs` to check recorded playback selection, speed, cancellation and device fallback.
